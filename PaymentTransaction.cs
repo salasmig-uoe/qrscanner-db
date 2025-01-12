@@ -22,7 +22,7 @@ namespace QRScanner
         public float Amount { get; set; }
 
         [SQLite.Column("transaction_type")]
-        public Char TransactionType { get; set; }
+        public String TransactionType { get; set; }
 
     }
 }

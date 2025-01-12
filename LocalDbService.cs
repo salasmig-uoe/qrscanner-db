@@ -17,9 +17,8 @@ namespace QRScanner
         {
             String curr_directory = FileSystem.AppDataDirectory;
             _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory,DB_NAME));
-            _connection.CreateTableAsync<PaymentTransaction>();
-            _connection.CreateTableAsync<ArtItem>();
-
+            _connection.CreateTableAsync<ArtItem>().Wait();
+            _connection.CreateTableAsync<PaymentTransaction>().Wait();
         }
 
         public async Task<List<ArtItem>> GetArtItems()

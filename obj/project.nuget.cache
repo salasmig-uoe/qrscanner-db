@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kt9jCuHrMxU=",
+  "dgSpecHash": "re0qCtL3Srk=",
   "success": true,
-  "projectFilePath": "D:\\projects\\maui\\QRScanner\\QRScanner.csproj",
+  "projectFilePath": "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\salas\\.nuget\\packages\\googlegson\\2.11.0.3\\googlegson.2.11.0.3.nupkg.sha512",
     "C:\\Users\\salas\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",

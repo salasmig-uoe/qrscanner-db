@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using ZXing.QrCode.Internal;
-using static Java.Util.Jar.Attributes;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 

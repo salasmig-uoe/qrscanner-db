@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\maui\\QRScanner\\QRScanner.csproj": {}
+    "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj": {}
   },
   "projects": {
-    "D:\\projects\\maui\\QRScanner\\QRScanner.csproj": {
+    "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\maui\\QRScanner\\QRScanner.csproj",
+        "projectUniqueName": "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj",
         "projectName": "QRScanner",
-        "projectPath": "D:\\projects\\maui\\QRScanner\\QRScanner.csproj",
+        "projectPath": "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj",
         "packagesPath": "C:\\Users\\salas\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\maui\\QRScanner\\obj\\",
+        "outputPath": "D:\\projects\\maui\\qrscanner-db\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
