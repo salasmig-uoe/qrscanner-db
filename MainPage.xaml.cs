@@ -110,6 +110,45 @@ namespace QRScanner
             });
         }
 
+        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (picker is not null)
+            {
+                if (picker.SelectedIndex != -1)
+                {
+                    string selectedPaymentType = picker.Items[picker.SelectedIndex];
+                    // Use the selectedPaymentType as needed
+                }
+            }
+        }
+
+        private void OnEntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (double.TryParse(detail_amount_EntryField.Text, out double amount))
+            {
+                detail_amount_EntryField.Text = amount.ToString("F2");
+            }
+        }
+        private async void detailSaveButton_Clicked(object sender, EventArgs e)
+        {
+            String payment_str = detail_amount_EntryField.Text;
+            float payment_float = float.Parse(payment_str);
+            String selectedPaymentType = "Cash";
+            if (picker.SelectedIndex != -1)
+            {
+                selectedPaymentType = picker.Items[picker.SelectedIndex];
+                // Use the selectedPaymentType as needed
+            }
+
+            // Add PaymentTransaction
+            await _dbService.CreatePaymentItem(new PaymentTransaction
+            {
+                ItemCode = item_codeEntryField.Text,
+                TransactionType = selectedPaymentType,
+                Amount = payment_float
+            });
+            await DisplayAlert("Payment Saved:", payment_float.ToString(), "OK");
+        }
 
         private async void saveTransactionButton_Clicked(object sender, EventArgs e)
         {
@@ -122,6 +161,18 @@ namespace QRScanner
                 artist_codeEntryField.Text = string.Empty;
                 priceEntryField.Text = string.Empty;
             });
+
+
+            if (_editPaymentItemId == 0)
+            {
+                // Add PaymentTransaction
+                await _dbService.CreatePaymentItem(new PaymentTransaction
+                {
+                    ItemCode = item_codeEntryField.Text,
+                    TransactionType = "card",
+                    Amount = 100
+                });                
+            }
 
             /*
             float _total_sofar = 100;

@@ -27,6 +27,30 @@
             <Button x:Name="capturedButton" Text="Capture" Clicked="capturedButton_Clicked"/>
 
 
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+                <Label Text="Payment:" VerticalOptions="Center"/>
+                <Entry x:Name="detail_amount_EntryField" Placeholder="Amount" WidthRequest="150" VerticalOptions="Center" 
+                       HorizontalTextAlignment="End"
+                       Keyboard="Numeric"
+                        Unfocused="OnEntryUnfocused" />
+                <StackLayout HorizontalOptions="FillAndExpand"/>
+                <Picker x:Name="picker"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        WidthRequest="150" 
+                        SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Cash</x:String>
+                            <x:String>Card</x:String>
+                            <x:String>Donation</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                    <Picker.SelectedIndex>1</Picker.SelectedIndex>
+                </Picker>
+                <Button x:Name="detailSaveButton" Text="Apply" Clicked="detailSaveButton_Clicked"/>
+            </StackLayout>
+
             <BoxView HeightRequest="5" />
 
             <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
