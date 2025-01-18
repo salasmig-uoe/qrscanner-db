@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using QRScanner.ViewModel;
 using ZXing.QrCode.Internal;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
@@ -12,9 +13,11 @@ namespace QRScanner
         private int _editPaymentItemId;
         private int _capturedItem;
 
-        public MainPage(LocalDbService dbService)
+        public MainPage(LocalDbService dbService, MainViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
+
             _capturedItem = 0;
             
             codeReader.Options = new ZXing.Net.Maui.BarcodeReaderOptions

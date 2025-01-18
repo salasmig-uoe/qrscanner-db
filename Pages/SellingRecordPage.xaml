@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QRScanner.ViewModel"
+             x:Class="QRScanner.Pages.SellingRecordPage"
+             Title="SellingRecordPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:viewmodel="clr-namespace:QRScanner.ViewModel"
+             x:DataType="viewmodel:MainViewModel">
+
+    <ContentPage.BindingContext>
+        <!-- <local:BarcodeScannerBindingContext /> -->
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <!-- <local:InvertBoolConverter x:Key="InvertBoolConverter"/> -->
+    </ContentPage.Resources>
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+                <Image
+                    Source="dotnet_bot.png"
+                    HeightRequest="185"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="dot net bot in a race car number eight" />
+                <Label
+                    Text="Barcode Scanner"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1" />
+                <Label
+                    Text="{Binding BarcodeLabelText}"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    WidthRequest="200"
+                    HeightRequest="40"
+                    BackgroundColor="Azure"
+                    Padding="2,1">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Entry x:Name="item_codeEntryField" Placeholder="Item"/>
+                <Grid
+                    ColumnDefinitions="*,2*"
+                    WidthRequest="200"
+                    HorizontalOptions="Center">
+                    <CheckBox 
+                        IsChecked="{Binding UseExternal}" 
+                        HorizontalOptions="End"
+                        Grid.Column="0"/>
+                    <Label 
+                        Grid.Column="1" 
+                        VerticalTextAlignment="Center"
+                        Margin="10,0,0,0"
+                        Text="Use Bluetooth"/>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Grid>
+            <zxing:CameraBarcodeReaderView
+                x:Name="codeReader"
+                VerticalOptions="Fill"
+                BarcodesDetected="OnBarcodeDetected"
+                IsDetecting="{Binding IsDetecting}">
+            </zxing:CameraBarcodeReaderView>
+            <Grid
+                RowDefinitions="*,100,*">
+                <Border
+                    Grid.Row="0"
+                    BackgroundColor="Black"
+                    Opacity="0.75"
+                    Margin="0"/>
+                <Border
+                    Grid.Row="2"
+                    BackgroundColor="Black"
+                    Margin="0"
+                    Opacity="0.75" />
+                <!--Do not move! We need this zorder-->
+                <Button
+                    Grid.Row="2"
+                    Text="Cancel"
+                    Margin="0,20"
+                    VerticalOptions="End"
+                    HeightRequest="40"
+                    WidthRequest="200"
+                    Command="{Binding CancelCommand}"/>
+            </Grid>
+        </Grid>
+        <Grid
+            IsVisible="{Binding IsDetectingExternal}"
+            BackgroundColor="Transparent">
+            <Border
+                Opacity="0.8"
+                BackgroundColor="#222222">
+            </Border>
+            <ActivityIndicator
+                HeightRequest="80"
+                VerticalOptions="Start"
+                IsRunning="True"
+                Margin="0,25"
+                Color="White"/>
+            <Label
+                Grid.Row="2"
+                Text="Waiting for Scan..."
+                HorizontalTextAlignment="Center"
+                Margin="0,20"
+                HeightRequest="40"
+                WidthRequest="200"
+                TextColor="White"
+                FontAttributes="Italic"
+                FontSize="Medium"/>
+            <Button
+                Grid.Row="2"
+                Text="Cancel"
+                Margin="0,20"
+                VerticalOptions="End"
+                HeightRequest="40"
+                WidthRequest="200"
+                Command="{Binding CancelCommand}"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>

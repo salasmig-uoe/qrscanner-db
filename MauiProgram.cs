@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using QRScanner.Pages;
+using QRScanner.ViewModel;
 using ZXing.Net.Maui.Controls;
 
 namespace QRScanner
@@ -16,8 +18,12 @@ namespace QRScanner
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 }).UseBarcodeReader();
 
+            builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<LocalDbService>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainScanPage>();
+            
+
 
 #if DEBUG
     		builder.Logging.AddDebug();
