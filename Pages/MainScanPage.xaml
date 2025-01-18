@@ -42,7 +42,12 @@
                                     Text="{Binding .}"
                                    FontSize=" 20">
                                     <Label.GestureRecognizers>
+                                        <!--
                                         <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
+                                        -->
+                                        <SwipeGestureRecognizer Direction="Right" 
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteCommand}"
+                                                                CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                             </Border>

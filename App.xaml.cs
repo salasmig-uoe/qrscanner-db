@@ -1,11 +1,13 @@
-﻿namespace QRScanner
+﻿using QRScanner.Services;
+using QRScanner.ViewModel;
+
+namespace QRScanner
 {
     public partial class App : Application
     {
         public App(MainPage mainPage)
         {
             InitializeComponent();
-            //MainPage = mainPage;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

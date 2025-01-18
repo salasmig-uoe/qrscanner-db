@@ -9,10 +9,12 @@
              x:DataType="viewmodel:MainViewModel">
 
     <ContentPage.BindingContext>
-        <!-- <local:BarcodeScannerBindingContext /> -->
+        <!--
+        <local:MainViewModel />
+        -->
     </ContentPage.BindingContext>
     <ContentPage.Resources>
-        <!-- <local:InvertBoolConverter x:Key="InvertBoolConverter"/> -->
+        <local:InvertBoolConverter x:Key="InvertBoolConverter"/>
     </ContentPage.Resources>
     <Grid>
         <ScrollView>
@@ -57,7 +59,8 @@
                 </Grid>
             </VerticalStackLayout>
         </ScrollView>
-        <Grid>
+        <Grid
+            IsVisible="{Binding IsDetectingInternal}">
             <zxing:CameraBarcodeReaderView
                 x:Name="codeReader"
                 VerticalOptions="Fill"
