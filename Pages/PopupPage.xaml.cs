@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using QRScanner.Popups;
 using QRScanner.ViewModel;
 
 namespace QRScanner.Pages;
@@ -6,9 +7,12 @@ namespace QRScanner.Pages;
 public partial class PopupPage: Popup
 {
     private MainViewModel VM;
-    public PopupPage(MainViewModel vm)
+    private PopupResult _result;
+    public PopupPage(MainViewModel vm, PopupResult result)
 	{
 		InitializeComponent();
+
+        _result = result;
 
         codeReader.Options = new ZXing.Net.Maui.BarcodeReaderOptions
         {
@@ -24,8 +28,6 @@ public partial class PopupPage: Popup
 
         CheckCameraPermission();
     }
-
-
     private async Task CheckCameraPermission()
     {
         codeReader.IsEnabled = false;
@@ -82,7 +84,12 @@ public partial class PopupPage: Popup
                         break;
                 }
             }
-            int finished = 1;
+
+
+            _result.ReturnData =field_key["item_code"];
+            this.Close(_result);
+            //Dismiss(_result); // Ensure this line is active
+
         });
     }
     private void OnBarcodeDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
@@ -98,4 +105,6 @@ public partial class PopupPage: Popup
         String strcode = first.Value;
         analyseContent(strcode);
     }
+
+
 }

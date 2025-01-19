@@ -6,10 +6,11 @@
            xmlns:viewmodel="clr-namespace:QRScanner.ViewModel"
        x:Class="QRScanner.Pages.PopupPage">
 
-    <zxing:CameraBarcodeReaderView
-        x:Name="codeReader"
-        HeightRequest="300"
-        WidthRequest="300"
-        BarcodesDetected="OnBarcodeDetected"/>
 
+    <zxing:CameraBarcodeReaderView
+                        x:Name="codeReader"
+                        HeightRequest="300"
+                        WidthRequest="300"
+                        BarcodesDetected="OnBarcodeDetected"/>
+    
 </mct:Popup>

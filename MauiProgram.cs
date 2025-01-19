@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using QRScanner.Pages;
+using QRScanner.Popups;
 using QRScanner.Services;
 using QRScanner.ViewModel;
 using ZXing.Net.Maui.Controls;
@@ -26,6 +27,7 @@ namespace QRScanner
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<AlertService>();
+            builder.Services.AddSingleton<PopupResult>();
            
             
 #if DEBUG
