@@ -80,13 +80,6 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     void Cancel()
     {
-        int a = 0;
-        /*
-        VM.IsDetectingInternal = true;
-        VM.IsDetectingExternal = false;
-        VM.UseExternal = false;
-        VM.IsDetecting = true;
-        */
         IsDetectingInternal = IsDetectingExternal = false;
     }
 }

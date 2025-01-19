@@ -1,7 +1,6 @@
 
-
+using CommunityToolkit.Maui.Views;
 using QRScanner.ViewModel;
-
 
 namespace QRScanner.Pages;
 
@@ -21,10 +20,14 @@ public partial class SellingRecordPage : ContentPage
         };
         VM = vm;
         BindingContext = vm;
-        VM.IsDetectingInternal = true;
+        VM.IsDetectingInternal = false;
         VM.IsDetecting = true;
+
         // Check camera permission
         CheckCameraPermission();
+
+        // Add Unloaded event handler
+        Unloaded += OnPageUnloaded;
 
     }
     //new BarcodeScannerBindingContext BindingContext => (BarcodeScannerBindingContext)base.BindingContext;
@@ -45,45 +48,108 @@ public partial class SellingRecordPage : ContentPage
         }
     }
 
+
+    private void analyseContent(String strcode)
+    {
+        String[] fields = strcode.Split(':');
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+
+            Dictionary<string,string> field_key = new Dictionary<string, string>(8);
+            String full_text = "";
+            for (int i = 0; i < fields.Length; i++)
+            {
+                String field_value = fields[i].Trim();
+                switch (i)
+                {
+                    case 0:
+                        //artist_codeEntryField.Text = field_value;
+                        field_key.Add("artist_code", field_value);
+                        break;
+                    case 1:
+                        //titleEntryField.Text = field_value;
+                        //amountEntryField.Text = field_value;
+                        field_key.Add("title", field_value);
+                        full_text = "Title:   " + field_value + "    ";
+                        break;
+                    case 2:
+                        //typeEntryField.Text = field_value;
+                        field_key.Add("work_type", field_value);
+                        full_text += "Media:    " + field_value + "     ";
+                        break;
+                    case 3:
+                        field_key.Add("size", field_value);
+                        full_text += "Dimensions:    " + field_value + " (cm)";
+                        break;
+                    case 4:
+                        field_key.Add("price", field_value);
+                        //priceEntryField.Text = field_value;
+                        break;
+                    case 5:
+                        field_key.Add("amount", field_value);
+                        break;
+                    case 6:
+                        field_key.Add("item_code", field_value);
+                        //item_codeEntryField.Text = field_value;
+                        //transaction_typeEntryField.Text = field_value;
+                        break;
+                    case 7:
+                        field_key.Add("qr_id", field_value);
+                        break;
+                }
+            }
+            int finished = 1;
+            //amountEntryField.Text = full_text;
+        });
+    }
     private void OnBarcodeDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
-        
-        
-        VM.BarcodeLabelText = $"{e.Results.FirstOrDefault()?.Value}";
+
+        var first = e.Results?.FirstOrDefault();
+        if (first is null)
+            return;
+
+        VM.BarcodeLabelText = $"{first.Value}";
         VM.IsDetectingInternal = false;
+
+        String strcode = first.Value;
+        analyseContent(strcode);
+
 
         Dispatcher.DispatchAsync(async () =>
         {
             await DisplayAlert("Barcode Detected", VM.BarcodeLabelText, "OK");
         });
-        
+    }
 
-        //Vibration.Vibrate();
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        this.ShowPopup(new PopupPage(VM));
+    }
+
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
 
         /*
-        var first = e.Results?.FirstOrDefault();
-        if (first is null)
-            return;
-                       
-        // It is waiting to capture the following Item
-        if (_capturedItem == 0)
+        // Show the popup
+        var result = await this.ShowPopupAsync(new QRScanner.Popups.CodeReaderPopup());
+        if (result is string barcode)
         {
-            _capturedItem = 1;
-            //analyseContent(sender, first.Value);
-            String strcode = first.Value;
-            //analyseContent(strcode);
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                item_codeEntryField.Text = "Item";
-            });
-            codeReader.IsEnabled = false;
-            codeReader.IsDetecting = false;
-            codeReader.IsVisible = false;
-            Dispatcher.DispatchAsync(async () =>
-            {
-                await DisplayAlert("Barcode Detected", first.Value, "OK");
-            });
+            analyseContent(barcode);
+            await DisplayAlert("Barcode Detected", barcode, "OK");
         }
         */
+        codeReader.IsDetecting = true;
+        // Re-enable the codeReader if permissions are granted
+        CheckCameraPermission();
+
+    }
+
+    // Unloaded event handler
+    private void OnPageUnloaded(object sender, EventArgs e)
+    {
+        VM.IsDetectingInternal = false;
+        codeReader.Handler?.DisconnectHandler();
     }
 }

@@ -51,11 +51,11 @@ build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.MainScanPa
 build_metadata.AdditionalFiles.TargetPath = Pages\MainScanPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\MainScanPage.xaml
 
-[C:/Users/msalasz/source/qrscanner-db/Pages/ScratchPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/PopupPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.ScratchPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\ScratchPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\ScratchPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.PopupPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PopupPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PopupPage.xaml
 
 [C:/Users/msalasz/source/qrscanner-db/Pages/SellingRecordPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

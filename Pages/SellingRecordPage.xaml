@@ -42,7 +42,14 @@
                         <TapGestureRecognizer Command="{Binding ScanCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Entry x:Name="item_codeEntryField" Placeholder="Item"/>
+                <Button Grid.Column="1"
+                    Text="Click Me"
+                    Margin="0,20"
+                    VerticalOptions="End"
+                    HeightRequest="40"
+                    WidthRequest="200"
+                    Clicked="OnCounterClicked"/>
+
                 <Grid
                     ColumnDefinitions="*,2*"
                     WidthRequest="200"
@@ -121,6 +128,13 @@
                 HeightRequest="40"
                 WidthRequest="200"
                 Command="{Binding CancelCommand}"/>
+            <Button Grid.Column="1"
+                    Text="Click Me"
+                    Margin="0,20"
+                    VerticalOptions="End"
+                    HeightRequest="40"
+                    WidthRequest="200"
+                    Clicked="OnCounterClicked"/>
         </Grid>
     </Grid>
 

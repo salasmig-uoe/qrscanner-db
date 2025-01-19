@@ -12,18 +12,11 @@
         </Grid>
     </Shell.FlyoutHeader>
     <FlyoutItem Title="Art Scanner">
+        <ShellContent Title="Sale"
+                ContentTemplate="{DataTemplate local:SellingRecordPage}" />
         <ShellContent Title="Scan"
                 ContentTemplate="{DataTemplate local:MainScanPage}" />
         <ShellContent Title="View"
             ContentTemplate="{DataTemplate local:ViewRecordsPage}" />
-        <ShellContent Title="Sale"
-                ContentTemplate="{DataTemplate local:SellingRecordPage}" />
     </FlyoutItem>
-    <!-- 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    -->
-
 </Shell>

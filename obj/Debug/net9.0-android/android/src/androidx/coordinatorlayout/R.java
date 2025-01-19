@@ -22,10 +22,10 @@ public final class R {
 		public static final int bottom = 0x7f080061;
 		public static final int end = 0x7f0800ba;
 		public static final int left = 0x7f0800f9;
-		public static final int none = 0x7f080153;
-		public static final int right = 0x7f080185;
-		public static final int start = 0x7f0801c1;
-		public static final int top = 0x7f0801ef;
+		public static final int none = 0x7f080154;
+		public static final int right = 0x7f080186;
+		public static final int start = 0x7f0801c2;
+		public static final int top = 0x7f0801f0;
 	}
 	public static final class style {
 		public static final int Widget_Support_CoordinatorLayout = 0x7f100468;

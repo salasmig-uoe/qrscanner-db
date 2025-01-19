@@ -19,7 +19,7 @@ public final class R {
 		public static final int fitCenter = 0x7f0800c9;
 		public static final int fitEnd = 0x7f0800ca;
 		public static final int fitStart = 0x7f0800cb;
-		public static final int performance = 0x7f080178;
+		public static final int performance = 0x7f080179;
 	}
 	public static final class styleable {
 		public static final int[] PreviewView = new int[] { 0x7f030248, 0x7f0303c6 };

@@ -39,9 +39,9 @@ public final class R {
 		public static final int bottomToTop = 0x7f080062;
 		public static final int locale = 0x7f080101;
 		public static final int ltr = 0x7f080102;
-		public static final int never = 0x7f08014e;
-		public static final int rtl = 0x7f08018b;
-		public static final int topToBottom = 0x7f0801f1;
+		public static final int never = 0x7f08014f;
+		public static final int rtl = 0x7f08018c;
+		public static final int topToBottom = 0x7f0801f2;
 	}
 	public static final class styleable {
 		public static final int[] ActivityFilter = new int[] { 0x7f030028, 0x7f03002a };
