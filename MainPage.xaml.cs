@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using QRScanner.Database;
+using QRScanner.Services;
 using QRScanner.ViewModel;
 using ZXing.QrCode.Internal;
 using static System.Net.Mime.MediaTypeNames;
@@ -148,7 +150,8 @@ namespace QRScanner
             {
                 ItemCode = item_codeEntryField.Text,
                 TransactionType = selectedPaymentType,
-                Amount = payment_float
+                Amount = payment_float,
+                Created = DateTime.Now
             });
             await DisplayAlert("Payment Saved:", payment_float.ToString(), "OK");
         }

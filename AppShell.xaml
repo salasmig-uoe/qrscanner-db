@@ -18,5 +18,7 @@
                 ContentTemplate="{DataTemplate local:MainScanPage}" />
         <ShellContent Title="View"
             ContentTemplate="{DataTemplate local:ViewRecordsPage}" />
+        <ShellContent Title="Sale Details"
+            ContentTemplate="{DataTemplate local:DetailViewPage}" />
     </FlyoutItem>
 </Shell>

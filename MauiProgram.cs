@@ -28,6 +28,7 @@ namespace QRScanner
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<AlertService>();
             builder.Services.AddSingleton<PopupResult>();
+            builder.Services.AddSingleton<DetailViewPage>();
            
             
 #if DEBUG
