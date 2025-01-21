@@ -24,10 +24,11 @@
                     Aspect="AspectFit"
                     SemanticProperties.Description="dot net bot in a race car number eight" />
                 <Label
-                    Text="Barcode Scannerx"
+                    Text="Barcode Scanner"
                     Style="{StaticResource Headline}"
                     SemanticProperties.HeadingLevel="Level1" />
                 <Label
+                    x:Name="MainLabel"
                     Text="{Binding Text}"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"

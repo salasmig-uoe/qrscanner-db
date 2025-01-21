@@ -17,8 +17,39 @@ public partial class DetailViewPage : ContentPage
 		InitializeComponent();
         BindingContext = vm;
         _dbService = dbService;
+
+        // Set values manually
+        ItemCodeLabel.Text = "000000000";
+        ArtistCodeLabel.Text = "Artist0000000";
+        TitleLabel.Text = "Title";
+        MaterialLabel.Text = "";
+        DimensionsLabel.Text = "";
+        PriceLabel.Text = "0";
+
+        MessagingCenter.Subscribe<PopupPage, ArtistItemData>(this, "UpdateControls", (sender, data) =>
+        {
+            scannedIEntryField.Text = data.TextboxText;
+            ItemCodeLabel.Text = data.ItemCodeLabel;
+            ArtistCodeLabel.Text = data.ArtistCodeLabel;
+            TitleLabel.Text=data.TitleLabel;
+            MaterialLabel.Text=data.MaterialLabel;
+            DimensionsLabel.Text = data.DimensionsLabel;
+            PriceLabel.Text = data.PriceLabel;
+        });
+
         Task.Run(async () =>listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("c0", "Card", "2025-01-19"));
     }
+
+
+    /*
+     
+    // TODO when a button in main screen is pressed, then unsubscribe
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        MessagingCenter.Unsubscribe<PopupPage, ArtistItemData>(this, "UpdateControls");
+    }
+    */
 
     // Method to update the Picker based on a string value
     public void UpdateTransactionTypePicker(string newValue)

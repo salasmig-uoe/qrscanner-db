@@ -29,10 +29,10 @@ namespace QRScanner
             builder.Services.AddSingleton<AlertService>();
             builder.Services.AddSingleton<PopupResult>();
             builder.Services.AddSingleton<DetailViewPage>();
-           
-            
+
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

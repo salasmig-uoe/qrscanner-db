@@ -1,8 +1,10 @@
 using CommunityToolkit.Maui.Views;
 using QRScanner.Popups;
 using QRScanner.ViewModel;
+using QRScanner.Database;
 
 namespace QRScanner.Pages;
+
 
 public partial class PopupPage: Popup
 {
@@ -87,6 +89,21 @@ public partial class PopupPage: Popup
 
 
             _result.ReturnData =field_key["item_code"];
+
+
+            var artistItemData = new ArtistItemData
+            {                
+                TextboxText = field_key["item_code"],
+                ItemCodeLabel = field_key["item_code"],
+                ArtistCodeLabel = field_key["artist_code"],
+                TitleLabel = field_key["title"],
+                MaterialLabel = field_key["work_type"],
+                DimensionsLabel = field_key["size"],
+                PriceLabel = field_key["price"],
+            };
+
+            MessagingCenter.Send(this, "UpdateControls", artistItemData);
+
             this.Close(_result);
             //Dismiss(_result); // Ensure this line is active
 
@@ -104,6 +121,7 @@ public partial class PopupPage: Popup
 
         String strcode = first.Value;
         analyseContent(strcode);
+
     }
 
 

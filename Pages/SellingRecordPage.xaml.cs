@@ -30,4 +30,5 @@ public partial class SellingRecordPage : ContentPage
             VM.Text = res.ReturnData;
         }
     }
+
 }
