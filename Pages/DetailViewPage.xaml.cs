@@ -13,8 +13,8 @@ public partial class DetailViewPage : ContentPage
 
 
     public DetailViewPage(LocalDbService dbService, MainViewModel vm)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BindingContext = vm;
         _dbService = dbService;
 
@@ -28,18 +28,38 @@ public partial class DetailViewPage : ContentPage
 
         MessagingCenter.Subscribe<PopupPage, ArtistItemData>(this, "UpdateControls", (sender, data) =>
         {
-            scannedIEntryField.Text = data.TextboxText;
+            // Updating the Headers
             ItemCodeLabel.Text = data.ItemCodeLabel;
             ArtistCodeLabel.Text = data.ArtistCodeLabel;
-            TitleLabel.Text=data.TitleLabel;
-            MaterialLabel.Text=data.MaterialLabel;
+            TitleLabel.Text = data.TitleLabel;
+            MaterialLabel.Text = data.MaterialLabel;
             DimensionsLabel.Text = data.DimensionsLabel;
             PriceLabel.Text = data.PriceLabel;
+            // Updating the payment row
+            itemCodeEntryField.Text = data.ItemCodeLabel;
+            quantityEntryField.Text = "1";
+            amountEntryField.Text = data.PriceLabel;
+            // Execute the list update
+            // TODO check why is not updating the listView 
+            Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync(data.ItemCodeLabel, "2025-01-22"));
         });
 
-        Task.Run(async () =>listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("c0", "Card", "2025-01-19"));
+        Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("KD2022001", "2025-01-22"));
     }
 
+
+    public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
+    {
+        String str_today = DateTime.Now.ToString("ddMMyy");
+        String new_key = "";
+        String old_key = transaction_group_EntryLabel.Text; 
+        if (old_key is null || old_key.Trim() == "")
+            new_key = str_today + "-00001";
+        else
+            new_key = str_today + "-00002";
+        transaction_group_EntryLabel.Text = new_key;
+        transactionGroupIdEntryField.Text = new_key;
+    }
 
     /*
      
@@ -68,7 +88,7 @@ public partial class DetailViewPage : ContentPage
             case "Edit":
                 _editPaymentTransferRecordId = item.PaymentId;
                 paymentIdEntryField.Text = item.PaymentId.ToString();
-                itemCodeEntryField.Text = item.ItemCode;    
+                itemCodeEntryField.Text = item.ItemCode;
                 UpdateTransactionTypePicker(item.TransactionType);
                 amountEntryField.Text = item.Amount.ToString();
                 _editCreateUpdateDate = DateTime.Now;
@@ -106,7 +126,8 @@ public partial class DetailViewPage : ContentPage
         if (_editPaymentTransferRecordId == 0)
         {
             detailSaveButton_Clicked(sender, e);
-        } else
+        }
+        else
         {
             String payment_str = amountEntryField.Text;
             float payment_float = float.Parse(payment_str);
@@ -126,14 +147,14 @@ public partial class DetailViewPage : ContentPage
             });
             _editPaymentItemId = 0;
         }
-        Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("c0", "Card","2025-01-19"));
+        Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("c0","2025-01-19"));
         Dispatcher.DispatchAsync(async () =>
         {
             await DisplayAlert("Saving the detail and updating totals with ", "", "OK");
         });
     }
 
-    
+
     private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
     {
         if (transactionTypePicker is not null)
@@ -144,12 +165,12 @@ public partial class DetailViewPage : ContentPage
             }
         }
     }
-    
+
     private void OnEntryUnfocused(object sender, FocusEventArgs e)
     {
         if (double.TryParse(amountEntryField.Text, out double amount))
         {
             amountEntryField.Text = amount.ToString("F2");
         }
-    } 
+    }
 }

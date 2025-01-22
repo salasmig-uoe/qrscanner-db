@@ -59,7 +59,7 @@ namespace QRScanner.Services
             return await _connection.Table<PaymentTransaction>().ToListAsync();
         }
 
-        public async Task<List<PaymentTransaction>> GetItemsNotDoneAsync(string code, string  ttype, string datestr)
+        public async Task<List<PaymentTransaction>> GetItemsNotDoneAsync(string code, string datestr)
         {
 
             DateTime dt1 = DateTime.ParseExact(datestr+" 00:00", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
@@ -68,11 +68,19 @@ namespace QRScanner.Services
             String sql_command = string.Format("" +
                 "SELECT * FROM[payment_transaction] " +
                 "WHERE[item_code] = '{0}' " +
-                "and [transaction_type] = '{1}' " +
-                "and ([created]>={2} and [created]<={3})", code, ttype, dt1.Ticks, dt2.Ticks);
+                "and ([created]>={1} and [created]<={2})", code, dt1.Ticks, dt2.Ticks);
             return await _connection.QueryAsync<PaymentTransaction>(sql_command);
         }
 
+        public async Task<List<PaymentTransaction>> GetItemsGroupNotDoneAsync(string itemCode, string groupCode)
+        {
+
+            String sql_command = string.Format("" +
+                "SELECT * FROM[payment_transaction] " +
+                "WHERE[item_code] = '{0}' " +
+                "and [transaction_code] = {1} ", itemCode, groupCode);
+            return await _connection.QueryAsync<PaymentTransaction>(sql_command);
+        }
 
 
         public async Task<PaymentTransaction> GetByArtItemCodeAndDate(string item_code, string dateString)

@@ -15,8 +15,14 @@ namespace QRScanner.Database
         [Column("payment_id")]
         public int PaymentId { get; set; }
 
+        [Column("transaction_code")]
+        public string TransactionCode { get; set; }
+
         [Column("item_code")]
         public string ItemCode { get; set; }
+
+        [Column("quantity")]
+        public float Quantity { get; set; }
 
         [Column("amount")]
         public float Amount { get; set; }
