@@ -1,4 +1,5 @@
-﻿using QRScanner.Database;
+﻿
+using QRScanner.Database;
 using SQLite;
 using System.Globalization;
 
@@ -54,6 +55,12 @@ namespace QRScanner.Services
         }
 
 
+
+        public async Task<PaymentTransaction> GetPaymentItemByIdAsync(int id)
+        {
+            return await _connection.Table<PaymentTransaction>().Where(x => x.PaymentId == id).FirstOrDefaultAsync();
+        }
+
         public async Task<List<PaymentTransaction>> GetDArtItems()
         {
             return await _connection.Table<PaymentTransaction>().ToListAsync();
@@ -97,6 +104,25 @@ namespace QRScanner.Services
                 .Where(x => x.ItemCode == item_code && x.Created.Date == parsedDate.Date)
                 .FirstOrDefaultAsync();
         }
+
+
+        public async Task<List<PaymentTransaction>> GetPaymentTransferByDate( string datestr)
+        {
+
+            DateTime dt1 = DateTime.ParseExact(datestr + " 00:00", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            DateTime dt2 = DateTime.ParseExact(datestr + " 23:59", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+
+            String sql_command = string.Format("" +
+                "SELECT * FROM[payment_transaction] " +
+                "WHERE ([created]>={0} and [created]<={1}) " +
+                "ORDER BY [created] ", dt1.Ticks, dt2.Ticks);
+
+            sql_command = sql_command;
+
+            return await _connection.QueryAsync<PaymentTransaction>(sql_command);
+        }
+
+
         public async Task<List<PaymentTransaction>> GetDetailItems()
         {
             return await _connection.Table<PaymentTransaction>().ToListAsync();

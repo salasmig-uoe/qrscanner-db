@@ -482,3 +482,7 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\courses_workshops.scale-100.jpg
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\courses_workshops.scale-100.jpg
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\crow.scale-100.jpg
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\crow.scale-100.jpg

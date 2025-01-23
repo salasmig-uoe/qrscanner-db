@@ -14,7 +14,7 @@
                 <Label x:Name="transaction_group_EntryLabel"  FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="End" Grid.Column="1" />
                 <Label x:Name="time_EntryLabel"  FontSize="Large" Text="(10:00)" VerticalOptions="Center" Grid.Column="2" HorizontalTextAlignment="End" />
                 <Button x:Name="generateNextTransactionButton" Text="Generate Transaction" Clicked="generateNextTransactionGroupButton_Clicked" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="3" />
-                <Button Text="Scan" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="4" />
+                <Button Text="Scan" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="4"  Clicked="OnScanButtonClicked" />
             </Grid>
 
             <Border Stroke="#CCCCCC"
@@ -132,6 +132,8 @@
                                     <ColumnDefinition Width="2*" />
                                     <!-- TransactionType -->
                                     <ColumnDefinition Width="2.5*" />
+                                    <!-- Quantity -->
+                                    <ColumnDefinition Width="0.7*" />
                                     <!-- Amount -->
                                     <ColumnDefinition Width="0.5*" />
                                     <!-- Spacer -->
@@ -142,14 +144,42 @@
                                 <Label x:Name="PaymentIdLabel" Grid.Column="0" Text="{Binding PaymentId}" FontSize="17" />
                                 <Label x:Name="ItemCodeLabel" Grid.Column="1" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
                                 <Label x:Name="TransactionTypeLabel" Grid.Column="2" Text="{Binding TransactionType}" FontSize="17" />
-                                <Label x:Name="AmountLabel" Grid.Column="3" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
+                                <Label x:Name="QuantityLabel" Grid.Column="3" Text="{Binding Quantity}" FontSize="17" />
+                                <Label x:Name="AmountLabel" Grid.Column="4" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
                                 <!-- Spacer -->
-                                <Label x:Name="CreatedLabel" Grid.Column="5" Text="{Binding Created, StringFormat='{0:dd/MM/yyyy HH:mm}'}" FontSize="17" />
+                                <Label x:Name="CreatedLabel" Grid.Column="6" Text="{Binding Created, StringFormat='{0:dd/MM/yyyy HH:mm}'}" FontSize="17" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="2" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="CardLabel" Grid.Column="0" Text="Card:" FontSize="17" Margin="0,0,10,0" />
+                    <Label x:Name="CardAmountLabel" Grid.Column="1" Text="{Binding CardAmount, StringFormat='{0:C}'}"
+               FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
+                    <Label x:Name="CashLabel" Grid.Column="2" Text="Cash:" FontSize="17" Margin="0,0,10,0" />
+                    <Label x:Name="CashAmountLabel" Grid.Column="3" Text="{Binding CashAmount, StringFormat='{0:C}'}" 
+               FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
+                    <Label x:Name="TotalLabel" Grid.Column="4" Text="Total:" FontSize="17" Margin="0,0,10,0" />
+                    <Label x:Name="TotalAmountLabel" Grid.Column="5" Text="{Binding TotalAmount, StringFormat='{0:C}'}" 
+               FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
+                </Grid>
+            </Grid>
         </VerticalStackLayout>
     </FlexLayout>
 </ContentPage>

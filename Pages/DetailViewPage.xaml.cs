@@ -1,6 +1,8 @@
+using CommunityToolkit.Maui.Views;
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
+using QRScanner.Popups;
 namespace QRScanner.Pages;
 
 public partial class DetailViewPage : ContentPage
@@ -11,12 +13,24 @@ public partial class DetailViewPage : ContentPage
     private int _editPaymentItemId;
     private int _capturedItem;
 
+    private string _lastCreated;
+    private string _lastTransactionGroup;
 
-    public DetailViewPage(LocalDbService dbService, MainViewModel vm)
+
+    // Popup variables
+    private MainViewModel VM;
+    private PopupResult _result;
+
+    public DetailViewPage(LocalDbService dbService, MainViewModel vm, PopupResult result)
     {
         InitializeComponent();
         BindingContext = vm;
         _dbService = dbService;
+
+        // Variables for the Popup
+        VM = vm;
+        _result = result;
+        BindingContext = VM;
 
         // Set values manually
         ItemCodeLabel.Text = "000000000";
@@ -39,15 +53,51 @@ public partial class DetailViewPage : ContentPage
             itemCodeEntryField.Text = data.ItemCodeLabel;
             quantityEntryField.Text = "1";
             amountEntryField.Text = data.PriceLabel;
-            // Execute the list update
-            // TODO check why is not updating the listView 
-            Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync(data.ItemCodeLabel, "2025-01-22"));
-        });
 
-        Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("KD2022001", "2025-01-22"));
+            // Execute the list update
+            Task.Run(async () =>
+            {
+                // Extract the date from the transaction code
+                string formattedDate = string.Empty;
+                if (transaction_group_EntryLabel != null && transaction_group_EntryLabel.Text != "")
+                {
+                    string datePart = transaction_group_EntryLabel.Text.Substring(0, 6); // Extract "230125"
+                    DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
+                    formattedDate = date.ToString("yyyy-MM-dd");
+
+                    
+                    var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+                    await Device.InvokeOnMainThreadAsync(() =>
+                    {
+                        listView.ItemsSource = items;
+                        calculateTotals(items);
+                    });                    
+                }
+            });
+        });
     }
 
+    private void calculateTotals(List<PaymentTransaction> items)
+    {
+        float totalCard = 0;
+        float totalCash = 0;
+        float total = 0;
+        // Iterate over items to calculate totals
+        foreach (var item in items)
+        {
+            if (item.TransactionType == "Card")
+                // Assuming item has CardAmount and CashAmount properties
+                totalCard += item.Amount; // Adjust the property names as per your model
+            if (item.TransactionType == "Cash")
+                totalCash += item.Amount;
+        }
+        total = totalCard + totalCash;
 
+        CardAmountLabel.Text = totalCard.ToString();
+        CashAmountLabel.Text = totalCash.ToString();
+        TotalAmountLabel.Text = total.ToString();
+    }
+    
     public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
     {
         String str_today = DateTime.Now.ToString("ddMMyy");
@@ -61,15 +111,17 @@ public partial class DetailViewPage : ContentPage
         transactionGroupIdEntryField.Text = new_key;
     }
 
-    /*
-     
-    // TODO when a button in main screen is pressed, then unsubscribe
-    protected override void OnDisappearing()
+
+    private async void OnScanButtonClicked(object sender, EventArgs e)
     {
-        base.OnDisappearing();
-        MessagingCenter.Unsubscribe<PopupPage, ArtistItemData>(this, "UpdateControls");
+        var result = await this.ShowPopupAsync(new PopupPage(VM, _result));
+        if (result != null)
+        {
+            PopupResult res = (PopupResult)result;
+            VM.BarcodeLabelText = res.ReturnData;
+            VM.Text = res.ReturnData;
+        }
     }
-    */
 
     // Method to update the Picker based on a string value
     public void UpdateTransactionTypePicker(string newValue)
@@ -95,7 +147,14 @@ public partial class DetailViewPage : ContentPage
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
-                // TODO: needs refresh the view
+                
+                String formattedDate = item.Created.ToString("yyyy-MM-dd");
+                var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    listView.ItemsSource = items;
+                    calculateTotals(items);
+                });
                 break;
         }
     }
@@ -103,8 +162,10 @@ public partial class DetailViewPage : ContentPage
     private async void detailSaveButton_Clicked(object sender, EventArgs e)
     {
         String payment_str = amountEntryField.Text;
+        String item_code = itemCodeEntryField.Text;
         float payment_float = float.Parse(payment_str);
         String selectedPaymentType = "Cash";
+        int quantity = int.Parse(quantityEntryField.Text);
         if (transactionTypePicker.SelectedIndex != -1)
         {
             selectedPaymentType = transactionTypePicker.SelectedItem.ToString();
@@ -113,12 +174,26 @@ public partial class DetailViewPage : ContentPage
         // Add PaymentTransaction
         await _dbService.CreatePaymentItem(new PaymentTransaction
         {
-            ItemCode = itemCodeEntryField.Text,
-            TransactionType = selectedPaymentType,
+            TransactionCode = transaction_group_EntryLabel.Text,
+            ItemCode = item_code,
+            Quantity = quantity,
             Amount = payment_float,
-            Created = DateTime.Now
+            TransactionType = selectedPaymentType,            
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
         });
-        await DisplayAlert("Payment Saved:", payment_float.ToString(), "OK");
+
+        // Extract the date from the transaction group date
+        string formattedDate = string.Empty;
+        string datePart = transaction_group_EntryLabel.Text.Substring(0, 6);
+        DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
+        formattedDate = date.ToString("yyyy-MM-dd");
+        var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+        Device.BeginInvokeOnMainThread(() =>
+        {
+            listView.ItemsSource = items;
+            calculateTotals(items);
+        });
     }
 
     private async void savePaymentTransactionButton_Clicked(object sender, EventArgs e)
@@ -130,28 +205,39 @@ public partial class DetailViewPage : ContentPage
         else
         {
             String payment_str = amountEntryField.Text;
+            String item_code = itemCodeEntryField.Text;
             float payment_float = float.Parse(payment_str);
             String selectedPaymentType = "Cash";
+            int quantity = int.Parse(quantityEntryField.Text);
             if (transactionTypePicker.SelectedIndex != -1)
             {
                 selectedPaymentType = transactionTypePicker.SelectedItem.ToString();
             }
+
+            var existingTransaction = await _dbService.GetPaymentItemByIdAsync(_editPaymentTransferRecordId);
+
             // Add PaymentTransaction
             await _dbService.UpdatePaymentItem(new PaymentTransaction
             {
                 PaymentId = _editPaymentTransferRecordId,
-                ItemCode = itemCodeEntryField.Text,
-                TransactionType = transactionTypePicker.SelectedItem.ToString(),
+                TransactionCode = existingTransaction.TransactionCode,
+                ItemCode = item_code,
+                Quantity = quantity,
                 Amount = payment_float,
-                Updated = DateTime.Now
+                TransactionType = selectedPaymentType,
+                Updated = DateTime.Now,
+                Created = existingTransaction.Created,
             });
             _editPaymentItemId = 0;
+
+            String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");           
+            var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                listView.ItemsSource = items;
+                calculateTotals(items);
+            });
         }
-        Task.Run(async () => listView.ItemsSource = await _dbService.GetItemsNotDoneAsync("c0","2025-01-19"));
-        Dispatcher.DispatchAsync(async () =>
-        {
-            await DisplayAlert("Saving the detail and updating totals with ", "", "OK");
-        });
     }
 
 
