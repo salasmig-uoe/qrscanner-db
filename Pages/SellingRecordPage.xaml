@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:QRScanner.ViewModel"
              x:Class="QRScanner.Pages.SellingRecordPage"
              Title="SellingRecordPage"
-             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              xmlns:viewmodel="clr-namespace:QRScanner.ViewModel"
              x:DataType="viewmodel:MainViewModel">
 
@@ -37,14 +36,46 @@
                     BackgroundColor="Azure"
                     Padding="2,1">
                 </Label>
-                <Button Grid.Column="1"
-                    Text="Click Me"
-                    Margin="0,20"
-                    VerticalOptions="End"
-                    HeightRequest="40"
-                    WidthRequest="200"
-                    Clicked="OnCounterClicked"/>
 
+                <HorizontalStackLayout
+                    Spacing="10"  
+                    VerticalOptions="End"
+                    HorizontalOptions="Center">
+
+                    <Grid
+                        BackgroundColor="DarkGreen"
+                        Padding="2"
+                        WidthRequest="50"
+                        HeightRequest="50">
+
+                        <ImageButton
+                            Source="sale.jpg"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Clicked="OnSellingButtonClicked"
+                            BackgroundColor="Transparent" />
+                    </Grid>
+
+                    <ImageButton
+                        Source="view.png"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        Clicked="OnEmailButtonClicked" />
+                    
+                    <ImageButton
+                        Source="email.png"
+                        HeightRequest="40"
+                        WidthRequest="40" 
+                        Clicked="OnEmailButtonClicked" />
+                    <ImageButton
+                        Source="listwithpen.png"
+                        HeightRequest="40"
+                        WidthRequest="40" 
+                        Clicked="OnEmailButtonClicked" 
+                        />
+
+                </HorizontalStackLayout>
+                
                 <Grid
                     ColumnDefinitions="*,2*"
                     WidthRequest="200"

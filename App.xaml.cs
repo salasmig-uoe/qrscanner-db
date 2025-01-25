@@ -5,7 +5,7 @@ namespace QRScanner
 {
     public partial class App : Application
     {
-        public App(MainPage mainPage)
+        public App()
         {
             InitializeComponent();
         }

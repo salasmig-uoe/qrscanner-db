@@ -4,6 +4,15 @@
         <name>QRScanner</name>
     </assembly>
     <members>
+        <member name="T:QRScanner.ViewModel.EmailViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:QRScanner.ViewModel.EmailViewModel.sendMailCommand">
+            <summary>The backing field for <see cref="P:QRScanner.ViewModel.EmailViewModel.SendMailCommand"/>.</summary>
+        </member>
+        <member name="P:QRScanner.ViewModel.EmailViewModel.SendMailCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:QRScanner.ViewModel.EmailViewModel.SendMail"/>.</summary>
+        </member>
         <member name="T:QRScanner.ViewModel.MainViewModel">
             <inheritdoc/>
             <inheritdoc/>

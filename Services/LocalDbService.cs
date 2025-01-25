@@ -10,13 +10,18 @@ namespace QRScanner.Services
     {
         private const string DB_NAME = "demo_local_db.db3";
         private readonly SQLiteAsyncConnection _connection;
-
+        
         public LocalDbService()
         {
-            string curr_directory = "C:\\Users\\msalasz\\"; // FileSystem.AppDataDirectory;
+            
+            string curr_directory = FileSystem.AppDataDirectory;
             _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
+            
             _connection.CreateTableAsync<ArtItem>().Wait();
             _connection.CreateTableAsync<PaymentTransaction>().Wait();
+            _connection.CreateTableAsync<LastTransactions>().Wait();
+            
+            
         }
 
         public async Task<List<ArtItem>> GetArtItems()
@@ -132,7 +137,22 @@ namespace QRScanner.Services
         {
             await _connection.DeleteAsync(item);
         }
+        //============ Last Transactions ================
 
+        public async Task<LastTransactions> GetLastTransactionAsync(string code)
+        {
+            return await _connection.Table<LastTransactions>().Where(x => x.BaseCode == code).FirstOrDefaultAsync();
+        }
+
+        public async Task CreateLastTransaction(LastTransactions item)
+        {
+            await _connection.InsertAsync(item);
+        }
+
+        public async Task UpdateLastTransaction(LastTransactions item)
+        {
+            await _connection.UpdateAsync(item);
+        }
 
 
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRScanner.Pages.EmailFormPage"
+             Title="EmailFormPage"
+             xmlns:viewModel="clr-namespace:QRScanner.ViewModel"
+             x:DataType="viewModel:EmailViewModel">
+    <VerticalStackLayout>
+        <!-- Self-contained Grid for Entries and Button -->
+        <Grid
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
+            ColumnDefinitions="*,*"
+            Margin="0,0,0,30"
+            HorizontalOptions="Center">
+
+            <Entry 
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Placeholder="test@test.com"
+                FontSize="Medium"
+                Text="{Binding GetEmail.TO, Mode=TwoWay}"/>
+
+            <Entry 
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Placeholder="test@test.com"
+                FontSize="Medium"
+                Text="{Binding GetEmail.CC, Mode=TwoWay}"/>
+
+            <Entry 
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Placeholder="Message from maui app"
+                FontSize="Medium"
+                Text="{Binding GetEmail.Subject, Mode=TwoWay}"/>
+
+            <Entry 
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Placeholder="Hello World !!!"
+                FontSize="Medium"
+                Text="{Binding GetEmail.Body, Mode=TwoWay}"/>
+
+            <Button 
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Text="Send"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextTransform="Uppercase"
+                Command="{Binding SendMailCommand}" />
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

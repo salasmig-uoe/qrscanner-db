@@ -17,6 +17,9 @@
     <MauiXaml Update="Pages\DetailViewPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Pages\EmailFormPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Pages\MainScanPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

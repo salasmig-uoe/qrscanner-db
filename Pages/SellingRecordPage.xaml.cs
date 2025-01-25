@@ -1,34 +1,35 @@
 
-using CommunityToolkit.Maui.Views;
+using QRScanner.Pages;
 using QRScanner.Popups;
+using QRScanner.Services;
 using QRScanner.ViewModel;
 
 namespace QRScanner.Pages;
 
 public partial class SellingRecordPage : ContentPage
 {
-    int _capturedItem = 0;
-    private MainViewModel VM;
-
-    private PopupResult _result;
-    public SellingRecordPage(MainViewModel vm, PopupResult result)	
+    LocalDbService _dbService;
+    MainViewModel _vm;
+    PopupResult _result;
+    EmailViewModel _emailViewModel;
+    public SellingRecordPage(LocalDbService dbService, MainViewModel vm, PopupResult result, EmailViewModel emailViewModel)	
     {
 		InitializeComponent();
-
-        VM = vm;
+        _dbService = dbService;
+        _vm = vm;
+        BindingContext = vm;
         _result = result;
-        BindingContext = VM;
+        _emailViewModel = emailViewModel;
     }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
+    private async void OnSellingButtonClicked(object sender, EventArgs e)
     {
-        var result = await this.ShowPopupAsync(new PopupPage(VM,_result));
-        if (result != null)
-        {
-            PopupResult res = (PopupResult)result;
-            VM.BarcodeLabelText = res.ReturnData;
-            VM.Text = res.ReturnData;
-        }
+        Navigation.PushAsync(new QRScanner.Pages.DetailViewPage(_dbService, _vm,_result));
+    }
+
+    private async void OnEmailButtonClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new QRScanner.Pages.EmailFormPage(_emailViewModel)); 
     }
 
 }

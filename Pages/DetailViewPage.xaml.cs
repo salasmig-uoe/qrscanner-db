@@ -65,13 +65,14 @@ public partial class DetailViewPage : ContentPage
                     DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
                     formattedDate = date.ToString("yyyy-MM-dd");
 
-                    
+
                     var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-                    
-                    MainThread.BeginInvokeOnMainThread(() => {
+
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
                         listView.ItemsSource = items;
                         calculateTotals(items);
-                    });                   
+                    });
                 }
             });
         });
@@ -97,19 +98,54 @@ public partial class DetailViewPage : ContentPage
         CashAmountLabel.Text = totalCash.ToString();
         TotalAmountLabel.Text = total.ToString();
     }
-    
-    public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
+
+    private async Task UpdateDatabaseAndUIAsync()
     {
         String str_today = DateTime.Now.ToString("ddMMyy");
         String new_key = "";
-        String old_key = transaction_group_EntryLabel.Text; 
-        if (old_key is null || old_key.Trim() == "")
-            new_key = str_today + "-00001";
+
+
+        var last_transaction = await _dbService.GetLastTransactionAsync(str_today);
+        int folio_to_use = 0;
+        string transaction_time;
+
+        if (last_transaction is null)
+        {
+            await _dbService.CreateLastTransaction(new LastTransactions
+            {
+                BaseCode = str_today,
+                LastFolio = 1,
+                Updated = DateTime.Now,
+            });
+            folio_to_use = 1;
+        }
         else
-            new_key = str_today + "-00002";
-        transaction_group_EntryLabel.Text = new_key;
-        transactionGroupIdEntryField.Text = new_key;
+        {
+            folio_to_use = last_transaction.LastFolio + 1;
+            await _dbService.UpdateLastTransaction(new LastTransactions
+            {
+                Id = last_transaction.Id,
+                BaseCode = last_transaction.BaseCode,
+                LastFolio = folio_to_use,
+                Updated = DateTime.Now,
+            });
+        }
+        transaction_time = DateTime.Now.ToString("HH:mm");
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            new_key = str_today + "-" + folio_to_use.ToString("D4");
+            transaction_group_EntryLabel.Text = new_key;
+            transactionGroupIdEntryField.Text = new_key;
+            time_EntryLabel.Text = "(" + transaction_time + ")";
+        });
     }
+    public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
+    {
+
+        Task.Run(async () => await UpdateDatabaseAndUIAsync());
+
+    }
+
 
 
     private async void OnScanButtonClicked(object sender, EventArgs e)
@@ -147,7 +183,7 @@ public partial class DetailViewPage : ContentPage
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
-                
+
                 String formattedDate = item.Created.ToString("yyyy-MM-dd");
                 var items = await _dbService.GetPaymentTransferByDate(formattedDate);
                 Device.BeginInvokeOnMainThread(() =>
@@ -178,7 +214,7 @@ public partial class DetailViewPage : ContentPage
             ItemCode = item_code,
             Quantity = quantity,
             Amount = payment_float,
-            TransactionType = selectedPaymentType,            
+            TransactionType = selectedPaymentType,
             Created = DateTime.Now,
             Updated = DateTime.Now,
         });
@@ -194,6 +230,27 @@ public partial class DetailViewPage : ContentPage
             listView.ItemsSource = items;
             calculateTotals(items);
         });
+    }
+
+    private async void clearButton_Clicked(object sender, EventArgs e)
+    {
+
+        transaction_group_EntryLabel.Text = "";
+        transactionGroupIdEntryField.Text = "";
+        time_EntryLabel.Text = "(--:--)";
+
+        ItemCodeLabel.Text = "";
+        ArtistCodeLabel.Text = "";
+        TitleLabel.Text = "";
+        MaterialLabel.Text = "";
+        DimensionsLabel.Text = "";
+
+        paymentIdEntryField.Text = "";
+        itemCodeEntryField.Text = "";
+        quantityEntryField.Text = "";
+        amountEntryField.Text = "";
+        transactionTypePicker.SelectedIndex = -1;
+        _editPaymentTransferRecordId = 0;
     }
 
     private async void savePaymentTransactionButton_Clicked(object sender, EventArgs e)
@@ -230,7 +287,7 @@ public partial class DetailViewPage : ContentPage
             });
             _editPaymentItemId = 0;
 
-            String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");           
+            String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");
             var items = await _dbService.GetPaymentTransferByDate(formattedDate);
             Device.BeginInvokeOnMainThread(() =>
             {

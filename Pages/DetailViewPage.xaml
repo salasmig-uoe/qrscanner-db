@@ -9,10 +9,10 @@
         <VerticalStackLayout Padding="10" FlexLayout.Basis="700" BackgroundColor="Beige">
 
             <Grid HorizontalOptions="FillAndExpand" 
-                  ColumnDefinitions="100,300,120,200,*">
+                  ColumnDefinitions="100,200,120,200,*">
                 <Label Text="Sale:" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="0" />
                 <Label x:Name="transaction_group_EntryLabel"  FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="End" Grid.Column="1" />
-                <Label x:Name="time_EntryLabel"  FontSize="Large" Text="(10:00)" VerticalOptions="Center" Grid.Column="2" HorizontalTextAlignment="End" />
+                <Label x:Name="time_EntryLabel"  FontSize="Large" Text="--:--" VerticalOptions="Center" Grid.Column="2" HorizontalTextAlignment="End" />
                 <Button x:Name="generateNextTransactionButton" Text="Generate Transaction" Clicked="generateNextTransactionGroupButton_Clicked" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="3" />
                 <Button Text="Scan" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="4"  Clicked="OnScanButtonClicked" />
             </Grid>
@@ -114,7 +114,7 @@
 
                 <!-- Button Row -->
                 <Button x:Name="saveButton" Grid.Row="2" Grid.Column="1" Text="Save" Command="{Binding SaveCommand}" />
-                <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Command="{Binding ClearCommand}" />
+                <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" />
             </Grid>
 
 
@@ -125,29 +125,29 @@
                         <ViewCell>
                             <Grid Padding="5">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*" />
+                                    <!-- PaymentId 0 -->
+                                    <ColumnDefinition Width="4*" />
+                                    <!-- ItemCode 1 -->
                                     <ColumnDefinition Width="2*" />
-                                    <!-- PaymentId -->
-                                    <ColumnDefinition Width="3*" />
-                                    <!-- ItemCode -->
-                                    <ColumnDefinition Width="2*" />
-                                    <!-- TransactionType -->
+                                    <!-- TransactionType 2 -->
                                     <ColumnDefinition Width="2.5*" />
-                                    <!-- Quantity -->
-                                    <ColumnDefinition Width="0.7*" />
-                                    <!-- Amount -->
+                                    <!-- Quantity 3 -->
                                     <ColumnDefinition Width="0.5*" />
-                                    <!-- Spacer -->
+                                    <!-- Amount 4 -->
+                                    <ColumnDefinition Width="2.0*" />
+                                    <!-- Spacer 5 -->
                                     <ColumnDefinition Width="2*" />
-                                    <!-- Created -->
+                                    <!-- Created 6 -->
                                 </Grid.ColumnDefinitions>
 
                                 <Label x:Name="PaymentIdLabel" Grid.Column="0" Text="{Binding PaymentId}" FontSize="17" />
                                 <Label x:Name="ItemCodeLabel" Grid.Column="1" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
                                 <Label x:Name="TransactionTypeLabel" Grid.Column="2" Text="{Binding TransactionType}" FontSize="17" />
                                 <Label x:Name="QuantityLabel" Grid.Column="3" Text="{Binding Quantity}" FontSize="17" />
-                                <Label x:Name="AmountLabel" Grid.Column="4" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
                                 <!-- Spacer -->
-                                <Label x:Name="CreatedLabel" Grid.Column="6" Text="{Binding Created, StringFormat='{0:dd/MM/yyyy HH:mm}'}" FontSize="17" />
+                                <Label x:Name="AmountLabel" Grid.Column="5" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
+                                <Label x:Name="CreatedLabel" Grid.Column="6" Text="{Binding Created, StringFormat='{0:HH:mm}'}" FontSize="17" HorizontalTextAlignment="End" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -155,12 +155,12 @@
             </ListView>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="2" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                <Grid Grid.Column="1" VerticalOptions="End" HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="100" />
