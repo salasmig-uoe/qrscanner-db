@@ -104,24 +104,24 @@ public partial class PopupPage: Popup
 
             MessagingCenter.Send(this, "UpdateControls", artistItemData);
 
-            this.Close(_result);
-            //Dismiss(_result); // Ensure this line is active
-
         });
     }
     private void OnBarcodeDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
-
         var first = e.Results?.FirstOrDefault();
         if (first is null)
             return;
 
         VM.BarcodeLabelText = $"{first.Value}";
-        VM.IsDetectingInternal = false;
-
         String strcode = first.Value;
         analyseContent(strcode);
 
+        // Important: This code makes sure after a result is detected to stop the camera
+        // otherwise you get an error in relation to a popup object accessed after destroyed
+        VM.IsDetectingInternal = false;
+        VM.IsDetecting = false;
+        codeReader.IsDetecting = false;
+        this.Close(_result);
     }
 
 

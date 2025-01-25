@@ -67,11 +67,11 @@ public partial class DetailViewPage : ContentPage
 
                     
                     var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-                    await Device.InvokeOnMainThreadAsync(() =>
-                    {
+                    
+                    MainThread.BeginInvokeOnMainThread(() => {
                         listView.ItemsSource = items;
                         calculateTotals(items);
-                    });                    
+                    });                   
                 }
             });
         });
