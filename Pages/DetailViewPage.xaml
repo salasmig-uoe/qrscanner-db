@@ -59,64 +59,56 @@
             <BoxView HeightRequest="5" />
 
 
-            <Grid ColumnSpacing="10" RowSpacing="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <!-- New column for Action -->
-                </Grid.ColumnDefinitions>
+            <Border BackgroundColor="Lavender" Stroke="Black" StrokeThickness="2" Padding="10" StrokeShape="RoundRectangle 10">
+                <Grid ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <!-- Header Row -->
-                
-                <Label Text="Payment ID" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Label Text="Sale Transaction" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Label Text="Item Code" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Label Text="Quantity" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Label Text="Transaction Type" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Label Text="Amount" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Label Text="Action" Grid.Row="0" Grid.Column="6" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <!-- New header -->
+                    <!-- Header Row -->
+                    <Label Text="Payment ID" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Sale Transaction" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Item Code" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Quantity" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Transaction Type" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Amount" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Action" Grid.Row="0" Grid.Column="6" VerticalOptions="Center" HorizontalOptions="Center"/>
 
-                <!-- Entry Row -->
-                <Label x:Name="paymentIdEntryField" Grid.Row="1" Grid.Column="0" Text=""/>
-                <Label x:Name="transactionGroupIdEntryField" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
-                <Label x:Name="itemCodeEntryField" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.ItemCode, Mode=TwoWay}" HorizontalOptions="Center"/>
-                <Entry x:Name="quantityEntryField" Grid.Row="1" Grid.Column="3" Text="" HorizontalOptions="End"/>
-                <Picker x:Name="transactionTypePicker"
-                        Grid.Row="1" Grid.Column="4"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        WidthRequest="150"
-                        SelectedIndexChanged="OnPickerSelectedIndexChanged">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Cash</x:String>
-                            <x:String>Card</x:String>
-                            <x:String>Donation</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                    <Picker.SelectedIndex>1</Picker.SelectedIndex>
-                </Picker>
-                <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric"/>
-                <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="savePaymentTransactionButton_Clicked" />
-                <!-- New button -->
+                    <!-- Entry Row -->
+                    <Label x:Name="paymentIdEntryField" Grid.Row="1" Grid.Column="0" Text=""/>
+                    <Label x:Name="transactionGroupIdEntryField" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                    <Label x:Name="itemCodeEntryField" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.ItemCode, Mode=TwoWay}" HorizontalOptions="Center"/>
+                    <Entry x:Name="quantityEntryField" Grid.Row="1" Grid.Column="3" Text="" HorizontalOptions="End"/>
+                    <Picker x:Name="transactionTypePicker" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Cash</x:String>
+                                <x:String>Card</x:String>
+                                <x:String>Donation</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                        <Picker.SelectedIndex>1</Picker.SelectedIndex>
+                    </Picker>
+                    <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric"/>
+                    <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="savePaymentTransactionButton_Clicked" />
 
-                <!-- Button Row -->
-                <Button x:Name="saveButton" Grid.Row="2" Grid.Column="1" Text="Save" Command="{Binding SaveCommand}" />
-                <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" />
-            </Grid>
-
+                    <!-- Button Row -->
+                    <Button x:Name="saveButton" Grid.Row="2" Grid.Column="1" Text="Save" Command="{Binding SaveCommand}" />
+                    <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" />
+                </Grid>
+            </Border>
 
 
             <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
