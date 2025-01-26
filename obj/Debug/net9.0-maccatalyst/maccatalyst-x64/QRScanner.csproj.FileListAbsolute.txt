@@ -313,3 +313,4 @@ D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\refin
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.pdb
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.genruntimeconfig.cache
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\ref\QRScanner.dll
+D:\projects\maui\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\WinRT.Runtime.dll

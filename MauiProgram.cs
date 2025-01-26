@@ -31,6 +31,7 @@ namespace QRScanner
             builder.Services.AddSingleton<DetailViewPage>();
             builder.Services.AddSingleton<EmailViewModel>();
             builder.Services.AddSingleton<EmailFormPage>();
+            builder.Services.AddSingleton<EditTransactionsPage>();
 
 
 #if DEBUG

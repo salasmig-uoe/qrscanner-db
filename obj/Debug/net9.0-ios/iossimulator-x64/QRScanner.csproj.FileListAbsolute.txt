@@ -324,3 +324,4 @@ D:\projects\maui\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\refint\QRSca
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\QRScanner.pdb
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\QRScanner.genruntimeconfig.cache
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\ref\QRScanner.dll
+D:\projects\maui\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\WinRT.Runtime.dll

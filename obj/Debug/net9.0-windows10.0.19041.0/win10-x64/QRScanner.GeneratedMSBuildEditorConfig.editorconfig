@@ -58,6 +58,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.DetailView
 build_metadata.AdditionalFiles.TargetPath = Pages\DetailViewPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\DetailViewPage.xaml
 
+[D:/projects/maui/qrscanner-db/Pages/EditTransactionsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.EditTransactionsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\EditTransactionsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\EditTransactionsPage.xaml
+
 [D:/projects/maui/qrscanner-db/Pages/EmailFormPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.EmailFormPage.xaml

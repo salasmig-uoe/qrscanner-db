@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRScanner.Pages.EditTransactionsPage"
+             Title="EditTransactionsPage">
+
+    <FlexLayout Direction="Column">
+
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="700" BackgroundColor="Beige">
+
+            <DatePicker x:Name="datePicker"
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        DateSelected="OnDateSelected" />
+           
+            <BoxView HeightRequest="5" />
+
+            <Border BackgroundColor="Lavender" Stroke="Black" StrokeThickness="2" Padding="10" StrokeShape="RoundRectangle 10">
+                <Grid ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Label Text="Payment ID" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Sale Transaction" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Item Code" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Quantity" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Transaction Type" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Amount" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Action" Grid.Row="0" Grid.Column="6" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <!-- Entry Row -->
+                    <Label x:Name="paymentIdEntryField" Grid.Row="1" Grid.Column="0" Text=""/>
+                    <Label x:Name="transactionGroupIdEntryField" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                    <Label x:Name="itemCodeEntryField" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.ItemCode, Mode=TwoWay}" HorizontalOptions="Center"/>
+                    <Entry x:Name="quantityEntryField" Grid.Row="1" Grid.Column="3" Text="" HorizontalOptions="End"/>
+                    <Border 
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 5"
+                        Background="LightGray">
+                        <Picker 
+                            x:Name="transactionTypePicker" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="FillAndExpand" 
+                            WidthRequest="150" 
+                            SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Cash</x:String>
+                                    <x:String>Card</x:String>
+                                    <x:String>Donation</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                            <Picker.SelectedIndex>1</Picker.SelectedIndex>
+                        </Picker>
+                    </Border>
+                    <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric"/>
+                    <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="savePaymentTransactionButton_Clicked" />
+
+                    <!-- Button Row -->
+                    <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" WidthRequest="100" />
+                </Grid>
+            </Border>
+
+            <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*" />
+                                    <!-- PaymentId 0 -->
+                                    <ColumnDefinition Width="4*" />
+                                    <!-- ItemCode 1 -->
+                                    <ColumnDefinition Width="2*" />
+                                    <!-- TransactionType 2 -->
+                                    <ColumnDefinition Width="2.5*" />
+                                    <!-- Quantity 3 -->
+                                    <ColumnDefinition Width="0.5*" />
+                                    <!-- Amount 4 -->
+                                    <ColumnDefinition Width="2.0*" />
+                                    <!-- Spacer 5 -->
+                                    <ColumnDefinition Width="2*" />
+                                    <!-- Created 6 -->
+                                </Grid.ColumnDefinitions>
+
+                                <Label x:Name="PaymentIdLabel" Grid.Column="0" Text="{Binding PaymentId}" FontSize="17" />
+                                <Label x:Name="ItemCodeLabel" Grid.Column="1" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
+                                <Label x:Name="TransactionTypeLabel" Grid.Column="2" Text="{Binding TransactionType}" FontSize="17" />
+                                <Label x:Name="QuantityLabel" Grid.Column="3" Text="{Binding Quantity}" FontSize="17" />
+                                <!-- Spacer -->
+                                <Label x:Name="AmountLabel" Grid.Column="5" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
+                                <Label x:Name="CreatedLabel" Grid.Column="6" Text="{Binding Created, StringFormat='{0:HH:mm}'}" FontSize="17" HorizontalTextAlignment="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="1" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="CardLabel" Grid.Column="0" Text="Card:" FontSize="17" Margin="0,0,10,0" />
+                    <Label x:Name="CardAmountLabel" Grid.Column="1" Text="{Binding CardAmount, StringFormat='{0:C}'}"
+               FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
+                    <Label x:Name="CashLabel" Grid.Column="2" Text="Cash:" FontSize="17" Margin="0,0,10,0" />
+                    <Label x:Name="CashAmountLabel" Grid.Column="3" Text="{Binding CashAmount, StringFormat='{0:C}'}" 
+               FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
+                    <Label x:Name="TotalLabel" Grid.Column="4" Text="Total:" FontSize="17" Margin="0,0,10,0" />
+                    <Label x:Name="TotalAmountLabel" Grid.Column="5" Text="{Binding TotalAmount, StringFormat='{0:C}'}" 
+               FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
+                </Grid>
+            </Grid>
+        </VerticalStackLayout>
+    </FlexLayout>
+</ContentPage>

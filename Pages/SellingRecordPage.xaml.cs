@@ -12,7 +12,8 @@ public partial class SellingRecordPage : ContentPage
     MainViewModel _vm;
     PopupResult _result;
     EmailViewModel _emailViewModel;
-    public SellingRecordPage(LocalDbService dbService, MainViewModel vm, PopupResult result, EmailViewModel emailViewModel)	
+    EditTransactionsPage _editTransactionsPage;
+    public SellingRecordPage(LocalDbService dbService, MainViewModel vm, PopupResult result, EmailViewModel emailViewModel, EditTransactionsPage editTransactionsPage)	
     {
 		InitializeComponent();
         _dbService = dbService;
@@ -20,6 +21,7 @@ public partial class SellingRecordPage : ContentPage
         BindingContext = vm;
         _result = result;
         _emailViewModel = emailViewModel;
+        _editTransactionsPage = editTransactionsPage;
     }
 
     private async void OnSellingButtonClicked(object sender, EventArgs e)
@@ -30,6 +32,11 @@ public partial class SellingRecordPage : ContentPage
     private async void OnEmailButtonClicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new QRScanner.Pages.EmailFormPage(_emailViewModel)); 
+    }
+
+    private async void OnEditTransferButtonClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new QRScanner.Pages.EditTransactionsPage(_dbService, _vm));
     }
 
 }

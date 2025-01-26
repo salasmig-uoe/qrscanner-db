@@ -189,6 +189,7 @@ public partial class DetailViewPage : ContentPage
                 _editPaymentTransferRecordId = item.PaymentId;
                 paymentIdEntryField.Text = item.PaymentId.ToString();
                 itemCodeEntryField.Text = item.ItemCode;
+                quantityEntryField.Text = item.Quantity.ToString();
                 UpdateTransactionTypePicker(item.TransactionType);
                 amountEntryField.Text = item.Amount.ToString();
                 _editCreateUpdateDate = DateTime.Now;

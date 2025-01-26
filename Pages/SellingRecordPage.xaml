@@ -71,7 +71,7 @@
                         Source="listwithpen.png"
                         HeightRequest="40"
                         WidthRequest="40" 
-                        Clicked="OnEmailButtonClicked" 
+                        Clicked="OnEditTransferButtonClicked" 
                         />
 
                 </HorizontalStackLayout>
