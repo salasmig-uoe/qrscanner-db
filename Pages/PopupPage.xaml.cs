@@ -48,7 +48,7 @@ public partial class PopupPage: Popup
     private void analyseContent(String strcode)
     {
         String[] fields = strcode.Split(':');
-        MainThread.BeginInvokeOnMainThread(() =>
+        MainThread.BeginInvokeOnMainThread(async () =>
         {
             Dictionary<string, string> field_key = new Dictionary<string, string>(8);
             String full_text = "";
@@ -104,9 +104,19 @@ public partial class PopupPage: Popup
 
             MessagingCenter.Send(this, "UpdateControls", artistItemData);
 
+            // Important: This code makes sure after a result is detected to stop the camera
+            // otherwise you get an error in relation to a popup object accessed after destroyed
+            //VM.IsDetectingInternal = false;
+            //VM.IsDetecting = false;
+            codeReader.IsDetecting = false;
+
+            await new TaskFactory().StartNew(() => { Thread.Sleep(100); });
+
+            this.Close(_result);
+
         });
     }
-    private void OnBarcodeDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    private async void OnBarcodeDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
         var first = e.Results?.FirstOrDefault();
         if (first is null)
@@ -115,14 +125,13 @@ public partial class PopupPage: Popup
         VM.BarcodeLabelText = $"{first.Value}";
         String strcode = first.Value;
         analyseContent(strcode);
-
-        // Important: This code makes sure after a result is detected to stop the camera
-        // otherwise you get an error in relation to a popup object accessed after destroyed
-        VM.IsDetectingInternal = false;
-        VM.IsDetecting = false;
-        codeReader.IsDetecting = false;
-        this.Close(_result);
     }
 
+
+    public void ClosePopup()
+    {
+        // Logic to close the popup
+        this.Close(); // Or equivalent based on your popup implementation
+    }
 
 }

@@ -59,14 +59,16 @@ public partial class DetailViewPage : ContentPage
             {
                 // Extract the date from the transaction code
                 string formattedDate = string.Empty;
+                string transaction_code = transaction_group_EntryLabel.Text;
                 if (transaction_group_EntryLabel != null && transaction_group_EntryLabel.Text != "")
                 {
+                    /*
                     string datePart = transaction_group_EntryLabel.Text.Substring(0, 6); // Extract "230125"
                     DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
                     formattedDate = date.ToString("yyyy-MM-dd");
-
-
-                    var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+                    */
+                    formattedDate = getDateFromCode(transaction_code);
+                    var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
 
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
@@ -76,6 +78,14 @@ public partial class DetailViewPage : ContentPage
                 }
             });
         });
+    }
+
+    private string getDateFromCode(string str_code)
+    {
+        string datePart = str_code.Substring(0, 6); // Extract "230125"
+        DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
+        string formattedDate = date.ToString("yyyy-MM-dd");
+        return formattedDate;
     }
 
     private void calculateTotals(List<PaymentTransaction> items)
@@ -150,7 +160,9 @@ public partial class DetailViewPage : ContentPage
 
     private async void OnScanButtonClicked(object sender, EventArgs e)
     {
-        var result = await this.ShowPopupAsync(new PopupPage(VM, _result));
+
+        var popupPage = new PopupPage(VM, _result);
+        var result = await this.ShowPopupAsync(popupPage);        
         if (result != null)
         {
             PopupResult res = (PopupResult)result;
@@ -185,8 +197,9 @@ public partial class DetailViewPage : ContentPage
                 await _dbService.DeletePaymentTransaction(item);
 
                 String formattedDate = item.Created.ToString("yyyy-MM-dd");
-                var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-                Device.BeginInvokeOnMainThread(() =>
+                
+                var items = await _dbService.GetPaymentTransferByCodeAndDate(item.TransactionCode, formattedDate);
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     listView.ItemsSource = items;
                     calculateTotals(items);
@@ -220,12 +233,12 @@ public partial class DetailViewPage : ContentPage
         });
 
         // Extract the date from the transaction group date
-        string formattedDate = string.Empty;
-        string datePart = transaction_group_EntryLabel.Text.Substring(0, 6);
-        DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
-        formattedDate = date.ToString("yyyy-MM-dd");
-        var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-        Device.BeginInvokeOnMainThread(() =>
+        string transaction_code = transaction_group_EntryLabel.Text;
+        string formattedDate = getDateFromCode(transaction_code);
+
+        
+        var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
+        MainThread.BeginInvokeOnMainThread(() =>
         {
             listView.ItemsSource = items;
             calculateTotals(items);
@@ -288,8 +301,9 @@ public partial class DetailViewPage : ContentPage
             _editPaymentItemId = 0;
 
             String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");
-            var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-            Device.BeginInvokeOnMainThread(() =>
+            string transaction_code = existingTransaction.TransactionCode;
+            var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
+            MainThread.BeginInvokeOnMainThread(() =>
             {
                 listView.ItemsSource = items;
                 calculateTotals(items);

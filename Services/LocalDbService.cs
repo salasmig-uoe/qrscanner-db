@@ -79,7 +79,7 @@ namespace QRScanner.Services
 
             String sql_command = string.Format("" +
                 "SELECT * FROM[payment_transaction] " +
-                "WHERE[item_code] = '{0}' " +
+                "WHERE[transaction_code] = '{0}' " +
                 "and ([created]>={1} and [created]<={2})", code, dt1.Ticks, dt2.Ticks);
             return await _connection.QueryAsync<PaymentTransaction>(sql_command);
         }
@@ -89,25 +89,24 @@ namespace QRScanner.Services
 
             String sql_command = string.Format("" +
                 "SELECT * FROM[payment_transaction] " +
-                "WHERE[item_code] = '{0}' " +
+                "WHERE[transaction_code] = '{0}' " +
                 "and [transaction_code] = {1} ", itemCode, groupCode);
             return await _connection.QueryAsync<PaymentTransaction>(sql_command);
         }
 
 
-        public async Task<PaymentTransaction> GetByArtItemCodeAndDate(string item_code, string dateString)
+        public async Task<List<PaymentTransaction>> GetPaymentTransferByCodeAndDate(string transaction_code, string date_str)
         {
-            if (!DateTime.TryParseExact(dateString, "dd-MM-yyyy",
-                                        CultureInfo.InvariantCulture,
-                                        DateTimeStyles.None,
-                                        out DateTime parsedDate))
-            {
-                throw new ArgumentException("Invalid date format. Please use 'dd-MM-yyyy'.");
-            }
 
-            return await _connection.Table<PaymentTransaction>()
-                .Where(x => x.ItemCode == item_code && x.Created.Date == parsedDate.Date)
-                .FirstOrDefaultAsync();
+            DateTime dt1 = DateTime.ParseExact(date_str + " 00:00", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            DateTime dt2 = DateTime.ParseExact(date_str + " 23:59", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+
+            String sql_command = string.Format("" +
+                "SELECT * FROM[payment_transaction] " +
+                "WHERE ([created]>={0} and [created]<={1}) " +
+                "AND [transaction_code] = \"{2}\" " +
+                "ORDER BY [created] ", dt1.Ticks, dt2.Ticks, transaction_code);
+            return await _connection.QueryAsync<PaymentTransaction>(sql_command);
         }
 
 
@@ -121,9 +120,6 @@ namespace QRScanner.Services
                 "SELECT * FROM[payment_transaction] " +
                 "WHERE ([created]>={0} and [created]<={1}) " +
                 "ORDER BY [created] ", dt1.Ticks, dt2.Ticks);
-
-            sql_command = sql_command;
-
             return await _connection.QueryAsync<PaymentTransaction>(sql_command);
         }
 
