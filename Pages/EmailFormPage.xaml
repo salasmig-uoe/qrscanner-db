@@ -5,51 +5,88 @@
              Title="EmailFormPage"
              xmlns:viewModel="clr-namespace:QRScanner.ViewModel"
              x:DataType="viewModel:EmailViewModel">
+
     <VerticalStackLayout>
         <!-- Self-contained Grid for Entries and Button -->
         <Grid
-            RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
-            ColumnDefinitions="*,*"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" 
+            ColumnDefinitions="*,*,*"
             Margin="0,0,0,30"
             HorizontalOptions="Center">
 
             <Entry 
+                x:Name="To"
                 Grid.Row="0"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Placeholder="test@test.com"
                 FontSize="Medium"
                 Text="{Binding GetEmail.TO, Mode=TwoWay}"/>
 
             <Entry 
+                x:Name="CC"
                 Grid.Row="1"
-                Grid.ColumnSpan="2"
-                Placeholder="test@test.com"
+                Grid.ColumnSpan="3"
+                Placeholder="CC Email Address"
                 FontSize="Medium"
                 Text="{Binding GetEmail.CC, Mode=TwoWay}"/>
 
             <Entry 
+                x:Name="Subject"
                 Grid.Row="2"
-                Grid.ColumnSpan="2"
-                Placeholder="Message from maui app"
+                Grid.ColumnSpan="3"
+                Placeholder="Subject of the Email"
                 FontSize="Medium"
                 Text="{Binding GetEmail.Subject, Mode=TwoWay}"/>
 
             <Entry 
+                x:Name="Body"
                 Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Placeholder="Hello World !!!"
+                Grid.ColumnSpan="3"
+                Placeholder="Email Body"
                 FontSize="Medium"
                 Text="{Binding GetEmail.Body, Mode=TwoWay}"/>
 
-            <Button 
+            <!-- DatePicker and Buttons in the same row -->
+            <DatePicker 
+                x:Name="emailDatePicker"
                 Grid.Row="4"
-                Grid.ColumnSpan="2"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand"
+                Date="{Binding SelectedDate, Mode=TwoWay}"
+                DateSelected="OnDateSelected"
+                FontSize="Medium"
+                HeightRequest="50"
+                />
+            <ImageButton
+                Grid.Row="4"
+                Grid.Column="1"
+                Source="paperclip.png"
+                HeightRequest="10"
+                WidthRequest="10"
+                HorizontalOptions="Center"
+                Command="{Binding AttachReportCommand}"
+                BackgroundColor="Transparent" 
+                />
+            <ImageButton
+                Grid.Row="4"
+                Grid.Column="2"
+                Source="linkslash.png"
+                HeightRequest="10"
+                WidthRequest="10"
+                HorizontalOptions="Center"
+                Command="{Binding DetachReportCommand}"
+                BackgroundColor="Transparent" 
+                />
+            <Button 
+                Grid.Row="5"
+                Grid.ColumnSpan="3"
                 Text="Send"
                 FontSize="Large"
                 FontAttributes="Bold"
                 TextTransform="Uppercase"
-                Command="{Binding SendMailCommand}" />
+                Command="{Binding SendMailCommand}"
+                HorizontalOptions="FillAndExpand" />
         </Grid>
-
     </VerticalStackLayout>
 </ContentPage>

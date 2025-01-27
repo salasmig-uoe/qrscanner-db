@@ -24,79 +24,79 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QRScanner
-build_property.ProjectDir = D:\projects\maui\qrscanner-db\
+build_property.ProjectDir = C:\Users\msalasz\source\qrscanner-db\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/projects/maui/qrscanner-db/App.xaml]
+[C:/Users/msalasz/source/qrscanner-db/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[D:/projects/maui/qrscanner-db/AppShell.xaml]
+[C:/Users/msalasz/source/qrscanner-db/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[D:/projects/maui/qrscanner-db/MainPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/DetailViewPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/DetailViewPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.DetailViewPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\DetailViewPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\DetailViewPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/EditTransactionsPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/EditTransactionsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.EditTransactionsPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\EditTransactionsPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\EditTransactionsPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/EmailFormPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/EmailFormPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.EmailFormPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\EmailFormPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\EmailFormPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/MainScanPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/MainScanPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.MainScanPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\MainScanPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\MainScanPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/PopupPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/PopupPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.PopupPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\PopupPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\PopupPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/SellingRecordPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/SellingRecordPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.SellingRecordPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\SellingRecordPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\SellingRecordPage.xaml
 
-[D:/projects/maui/qrscanner-db/Pages/ViewRecordsPage.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Pages/ViewRecordsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.ViewRecordsPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\ViewRecordsPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\ViewRecordsPage.xaml
 
-[D:/projects/maui/qrscanner-db/Resources/Styles/Colors.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[D:/projects/maui/qrscanner-db/Resources/Styles/Styles.xaml]
+[C:/Users/msalasz/source/qrscanner-db/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml

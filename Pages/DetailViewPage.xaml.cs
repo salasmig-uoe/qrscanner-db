@@ -62,12 +62,7 @@ public partial class DetailViewPage : ContentPage
                 string transaction_code = transaction_group_EntryLabel.Text;
                 if (transaction_group_EntryLabel != null && transaction_group_EntryLabel.Text != "")
                 {
-                    /*
-                    string datePart = transaction_group_EntryLabel.Text.Substring(0, 6); // Extract "230125"
-                    DateTime date = DateTime.ParseExact(datePart, "ddMMyy", null);
-                    formattedDate = date.ToString("yyyy-MM-dd");
-                    */
-                    formattedDate = getDateFromCode(transaction_code);
+                      formattedDate = getDateFromCode(transaction_code);
                     var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
 
                     MainThread.BeginInvokeOnMainThread(() =>
@@ -161,6 +156,13 @@ public partial class DetailViewPage : ContentPage
     private async void OnScanButtonClicked(object sender, EventArgs e)
     {
 
+        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text=="")
+        {
+            string message = "You need to generate a transaction group before Scanning";
+            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+
+            return;
+        }
         var popupPage = new PopupPage(VM, _result);
         var result = await this.ShowPopupAsync(popupPage);        
         if (result != null)
@@ -267,8 +269,26 @@ public partial class DetailViewPage : ContentPage
         _editPaymentTransferRecordId = 0;
     }
 
-    private async void savePaymentTransactionButton_Clicked(object sender, EventArgs e)
+    private async void applyButton_Clicked(object sender, EventArgs e)
     {
+        if (itemCodeEntryField.Text == "")
+        {
+            string validation_message = "You need to enter an item code before saving";
+            await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
+            return;
+        }
+        if (amountEntryField.Text == "0" || amountEntryField.Text == "")
+        {
+            string validation_message = "You need to enter an amount before saving";
+            await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
+            return;
+        } 
+        if (quantityEntryField.Text == "0" || quantityEntryField.Text == "")
+        {
+            string validation_message = "You need to enter a quantity before saving";
+            await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
+            return;
+        }
         if (_editPaymentTransferRecordId == 0)
         {
             detailSaveButton_Clicked(sender, e);
@@ -310,6 +330,10 @@ public partial class DetailViewPage : ContentPage
                 calculateTotals(items);
             });
         }
+        quantityEntryField.Text = "1";
+        amountEntryField.Text = "0";
+        string message = " The changes has been saved";
+        await App.Current.MainPage.DisplayAlert("Operation completed: ", message, "Ok");
     }
 
 

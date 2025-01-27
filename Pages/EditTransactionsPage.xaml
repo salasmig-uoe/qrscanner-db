@@ -74,7 +74,7 @@
                         </Picker>
                     </Border>
                     <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric"/>
-                    <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="savePaymentTransactionButton_Clicked" />
+                    <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="applyButton_Clicked" />
 
                     <!-- Button Row -->
                     <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" WidthRequest="100" />

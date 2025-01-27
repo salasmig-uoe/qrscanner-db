@@ -106,11 +106,11 @@ public partial class PopupPage: Popup
 
             // Important: This code makes sure after a result is detected to stop the camera
             // otherwise you get an error in relation to a popup object accessed after destroyed
-            //VM.IsDetectingInternal = false;
-            //VM.IsDetecting = false;
+            VM.IsDetectingInternal = false;
+            VM.IsDetecting = false;
             codeReader.IsDetecting = false;
 
-            await new TaskFactory().StartNew(() => { Thread.Sleep(100); });
+            await new TaskFactory().StartNew(() => { Thread.Sleep(5000); });
 
             this.Close(_result);
 

@@ -6,6 +6,20 @@
     <members>
         <member name="T:QRScanner.ViewModel.EmailViewModel">
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:QRScanner.ViewModel.EmailViewModel.detachReportCommand">
+            <summary>The backing field for <see cref="P:QRScanner.ViewModel.EmailViewModel.DetachReportCommand"/>.</summary>
+        </member>
+        <member name="P:QRScanner.ViewModel.EmailViewModel.DetachReportCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:QRScanner.ViewModel.EmailViewModel.DetachReport"/>.</summary>
+        </member>
+        <member name="F:QRScanner.ViewModel.EmailViewModel.attachReportCommand">
+            <summary>The backing field for <see cref="P:QRScanner.ViewModel.EmailViewModel.AttachReportCommand"/>.</summary>
+        </member>
+        <member name="P:QRScanner.ViewModel.EmailViewModel.AttachReportCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:QRScanner.ViewModel.EmailViewModel.AttachReport"/>.</summary>
         </member>
         <member name="F:QRScanner.ViewModel.EmailViewModel.sendMailCommand">
             <summary>The backing field for <see cref="P:QRScanner.ViewModel.EmailViewModel.SendMailCommand"/>.</summary>

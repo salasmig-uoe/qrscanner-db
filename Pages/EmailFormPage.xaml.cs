@@ -8,4 +8,12 @@ public partial class EmailFormPage : ContentPage
         InitializeComponent();
         BindingContext = emailViewModel;
     }
+
+
+    public void OnDateSelected(object sender, DateChangedEventArgs e)
+    {
+        // Handle the date selected event
+
+    }
+
 }

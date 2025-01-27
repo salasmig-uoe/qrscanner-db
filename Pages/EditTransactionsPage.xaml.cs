@@ -1,9 +1,7 @@
-using CommunityToolkit.Maui.Views;
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
 using QRScanner.Popups;
-using System.Transactions;
 namespace QRScanner.Pages;
 
 public partial class EditTransactionsPage : ContentPage
@@ -135,19 +133,6 @@ public partial class EditTransactionsPage : ContentPage
         Task.Run(async () => await UpdateDatabaseAndUIAsync());
     }
 
-    /*
-    private async void OnScanButtonClicked(object sender, EventArgs e)
-    {
-        var popupPage = new PopupPage(VM, _result);
-        var result = await this.ShowPopupAsync(popupPage);
-        if (result != null)
-        {
-            PopupResult res = (PopupResult)result;
-            VM.BarcodeLabelText = res.ReturnData;
-            VM.Text = res.ReturnData;
-        }
-    }
-    */
 
     // Method to update the Picker based on a string value
     public void UpdateTransactionTypePicker(string newValue)
@@ -160,7 +145,9 @@ public partial class EditTransactionsPage : ContentPage
     private async void listView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         var item = (PaymentTransaction)e.Item;
-        var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Delete");
+        var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Duplicate", "Delete");
+        String formattedDate;
+
         switch (action)
         {
             case "Edit":
@@ -174,10 +161,27 @@ public partial class EditTransactionsPage : ContentPage
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
-
-                String formattedDate = item.Created.ToString("yyyy-MM-dd");
-
+                formattedDate = item.Created.ToString("yyyy-MM-dd");
                 var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    listView.ItemsSource = items;
+                    calculateTotals(items);
+                });
+                break;
+            case "Duplicate":
+                await _dbService.CreatePaymentItem(new PaymentTransaction
+                {
+                    TransactionCode = item.TransactionCode,
+                    ItemCode = item.ItemCode,
+                    Quantity = item.Quantity,
+                    Amount = 0,
+                    TransactionType = item.TransactionType,
+                    Created = DateTime.Now,
+                    Updated = DateTime.Now,
+                });
+                formattedDate = item.Created.ToString("yyyy-MM-dd");
+                items = await _dbService.GetPaymentTransferByDate(formattedDate);
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     listView.ItemsSource = items;
@@ -221,8 +225,27 @@ public partial class EditTransactionsPage : ContentPage
         _editPaymentTransferRecordId = 0;
     }
 
-    private async void savePaymentTransactionButton_Clicked(object sender, EventArgs e)
+    private async void applyButton_Clicked(object sender, EventArgs e)
     {
+        if (itemCodeEntryField.Text == "")
+        {
+            string validation_message = "You need to enter an item code before saving";
+            await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
+            return;
+        }
+        if (amountEntryField.Text == "0" || amountEntryField.Text == "")
+        {
+            string validation_message = "You need to enter an amount before saving";
+            await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
+            return;
+        }
+        if (quantityEntryField.Text == "0" || quantityEntryField.Text == "")
+        {
+            string validation_message = "You need to enter a quantity before saving";
+            await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
+            return;
+        }
+
         if (_editPaymentTransferRecordId == 0)
         {
             detailSaveButton_Clicked(sender, e);
@@ -263,7 +286,11 @@ public partial class EditTransactionsPage : ContentPage
                 listView.ItemsSource = items;
                 calculateTotals(items);
             });
+            clearButton_Clicked(sender, e);
         }
+        string message = " The changes has been saved";
+        await App.Current.MainPage.DisplayAlert("Operation completed: ", message, "Ok");
+        clearButton_Clicked(sender, e);
     }
 
 
