@@ -89,32 +89,48 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1.5*" />
                                     <!-- PaymentId 0 -->
+                                    <ColumnDefinition Width="3*" />
+                                    <!-- TransactionCode 1 -->
                                     <ColumnDefinition Width="4*" />
-                                    <!-- ItemCode 1 -->
+                                    <!-- ItemCode 2 -->
                                     <ColumnDefinition Width="2*" />
-                                    <!-- TransactionType 2 -->
+                                    <!-- TransactionType 3 -->
                                     <ColumnDefinition Width="2.5*" />
-                                    <!-- Quantity 3 -->
+                                    <!-- Quantity 4 -->
                                     <ColumnDefinition Width="0.5*" />
-                                    <!-- Amount 4 -->
-                                    <ColumnDefinition Width="2.0*" />
                                     <!-- Spacer 5 -->
+                                    <ColumnDefinition Width="2.0*" />
+                                    <!-- Amount 6 -->
                                     <ColumnDefinition Width="2*" />
-                                    <!-- Created 6 -->
+                                    <!-- Created 7 -->
                                 </Grid.ColumnDefinitions>
 
+                                <!-- PaymentId -->
                                 <Label x:Name="PaymentIdLabel" Grid.Column="0" Text="{Binding PaymentId}" FontSize="17" />
-                                <Label x:Name="ItemCodeLabel" Grid.Column="1" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
-                                <Label x:Name="TransactionTypeLabel" Grid.Column="2" Text="{Binding TransactionType}" FontSize="17" />
-                                <Label x:Name="QuantityLabel" Grid.Column="3" Text="{Binding Quantity}" FontSize="17" />
+
+                                <!-- TransactionCode (new column) -->
+                                <Label x:Name="TransactionCodeLabel" Grid.Column="1" Text="{Binding TransactionCode, StringFormat='{0:12}'}" TextColor="Blue" FontAttributes="Bold" FontSize="18" />
+
+                                <!-- ItemCode -->
+                                <Label x:Name="ItemCodeLabel" Grid.Column="2" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
+
+                                <!-- TransactionType -->
+                                <Label x:Name="TransactionTypeLabel" Grid.Column="3" Text="{Binding TransactionType}" FontSize="17" />
+
+                                <!-- Quantity -->
+                                <Label x:Name="QuantityLabel" Grid.Column="4" Text="{Binding Quantity}" FontSize="17" />
+
                                 <!-- Spacer -->
-                                <Label x:Name="AmountLabel" Grid.Column="5" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
-                                <Label x:Name="CreatedLabel" Grid.Column="6" Text="{Binding Created, StringFormat='{0:HH:mm}'}" FontSize="17" HorizontalTextAlignment="End" />
+                                <Label x:Name="AmountLabel" Grid.Column="6" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
+
+                                <!-- Created -->
+                                <Label x:Name="CreatedLabel" Grid.Column="7" Text="{Binding Created, StringFormat='{0:HH:mm}'}" FontSize="17" HorizontalTextAlignment="End" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250" />
@@ -143,7 +159,7 @@
                 </Grid>
             </Grid>
             <Label Text="."/>
-            <Button Text="Close Sale" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnGoBackButtonClicked"/>
+            <Button Text="Back" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnGoBackButtonClicked"/>
         </VerticalStackLayout>
     </FlexLayout>
 </ContentPage>

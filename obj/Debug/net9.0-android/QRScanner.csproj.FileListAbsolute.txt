@@ -1537,9 +1537,6 @@ C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\com.companyname.qr
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\com.companyname.qrscanner-Signed.aab
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\com.companyname.qrscanner-Signed.apk
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\com.companyname.qrscanner-Signed.apk.idsig
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\Microsoft.Maui.Controls.HotReload.Forms.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.TapContract.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-hdpi\splash.png
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-mdpi\splash.png
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-v31\maui_splash_image.xml
@@ -1553,7 +1550,6 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\resizetizer\f\Open
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\resizetizer\f\OpenSans-Semibold.ttf
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\resizetizer\6CD7C47F03026257-files.cache
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\XamlC.stamp
-C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\QRScanner.csproj.Up2Date
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\QRScanner.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\QRScanner.pdb
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\QRScanner.genruntimeconfig.cache
@@ -1605,7 +1601,6 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Extensions.Options.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Extensions.Primitives.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.dll
-C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.HotReload.Forms.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.pdb
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.Xaml.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.Xaml.pdb
@@ -1617,8 +1612,6 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.pdb
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualBasic.Core.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualBasic.dll
-C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.TapContract.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Win32.Primitives.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Win32.Registry.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Mono.Android.dll
@@ -2402,3 +2395,10 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\stamp\_ConvertReso
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\Microsoft.Maui.Controls.HotReload.Forms.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.TapContract.dll
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\QRScanner.csproj.Up2Date
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.HotReload.Forms.dll
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.TapContract.dll

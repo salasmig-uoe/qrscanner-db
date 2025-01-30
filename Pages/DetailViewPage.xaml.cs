@@ -182,8 +182,7 @@ public partial class DetailViewPage : ContentPage
         });
     }
     public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
-    {
-
+    {        
         Task.Run(async () => await UpdateDatabaseAndUIAsync());
 
     }
