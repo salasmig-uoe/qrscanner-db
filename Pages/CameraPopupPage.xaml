@@ -3,8 +3,9 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="QRScanner.Pages.CameraPopupPage"
              Title="CameraPopupPage">
-    <VerticalStackLayout>
-        <zxing:CameraBarcodeReaderView x:Name="CameraView"
-                                       BarcodesDetected="OnBarcodeDetected" />
-    </VerticalStackLayout>
+    <zxing:CameraBarcodeReaderView
+                        x:Name="codeReader"
+                        HeightRequest="300"
+                        WidthRequest="300"
+                        BarcodesDetected="OnBarcodeDetected"/>
 </ContentPage>

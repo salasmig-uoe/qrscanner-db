@@ -21,6 +21,43 @@ public partial class DetailViewPage : ContentPage
     private MainViewModel VM;
     private PopupResult _result;
 
+
+    public void UpdateParsedScanResults(ArtistItemData data)
+    {
+        ResultTextBox.Text = data.ItemCodeLabel; 
+
+        // Updating the Headers
+        ItemCodeLabel.Text = data.ItemCodeLabel;
+        ArtistCodeLabel.Text = data.ArtistCodeLabel;
+        TitleLabel.Text = data.TitleLabel;
+        MaterialLabel.Text = data.MaterialLabel;
+        DimensionsLabel.Text = data.DimensionsLabel;
+        PriceLabel.Text = data.PriceLabel;
+        // Updating the payment row
+        itemCodeEntryField.Text = data.ItemCodeLabel;
+        quantityEntryField.Text = "1";
+        amountEntryField.Text = data.PriceLabel;
+
+        // Execute the list update
+        Task.Run(async () =>
+        {
+            // Extract the date from the transaction code
+            string formattedDate = string.Empty;
+            string transaction_code = transaction_group_EntryLabel.Text;
+            if (transaction_group_EntryLabel != null && transaction_group_EntryLabel.Text != "")
+            {
+                formattedDate = getDateFromCode(transaction_code);
+                var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    listView.ItemsSource = items;
+                    calculateTotals(items);
+                });
+            }
+        });
+    }
+
     public DetailViewPage(LocalDbService dbService, MainViewModel vm, PopupResult result)
     {
         InitializeComponent();
@@ -151,27 +188,6 @@ public partial class DetailViewPage : ContentPage
 
     }
 
-
-
-    private async void OnScanButtonClicked(object sender, EventArgs e)
-    {
-
-        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text=="")
-        {
-            string message = "You need to generate a transaction group before Scanning";
-            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
-
-            return;
-        }
-        var popupPage = new PopupPage(VM, _result);
-        var result = await this.ShowPopupAsync(popupPage);        
-        if (result != null)
-        {
-            PopupResult res = (PopupResult)result;
-            VM.BarcodeLabelText = res.ReturnData;
-            VM.Text = res.ReturnData;
-        }
-    }
 
     // Method to update the Picker based on a string value
     public void UpdateTransactionTypePicker(string newValue)
@@ -356,32 +372,97 @@ public partial class DetailViewPage : ContentPage
         }
     }
 
-    /*
-    private async void OnScanQRCodeClicked(object sender, EventArgs e)
-    {
-        var cameraPopupPage = new CameraPopupPage();
-        cameraPopupPage.OnQRCodeDetected += (qrCodeValue) =>
-        {
-            // Update the TextBox with the scanned QR code value
-            //ResultTextBox.Text = qrCodeValue;
-        };
 
-        await Navigation.PushModalAsync(cameraPopupPage);
-    }
-    */
-
-    private async void OnScanQRCodeClickedx(object sender, EventArgs e)
+    private async void OnScanButtonClicked(object sender, EventArgs e)
     {
-        var scannerPage = new CameraPopupPage();
-        scannerPage.OnQRCodeDetected += (qrCodeValue) =>
+
+        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
         {
-            ResultTextBox.Text = qrCodeValue;
-        };
-        await Navigation.PushModalAsync(scannerPage);
+            string message = "You need to generate a transaction group before Scanning";
+            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+
+            return;
+        }
+        var popupPage = new PopupPage(VM, _result);
+        var result = await this.ShowPopupAsync(popupPage);
+        if (result != null)
+        {
+            PopupResult res = (PopupResult)result;
+            VM.BarcodeLabelText = res.ReturnData;
+            VM.Text = res.ReturnData;
+        }
     }
 
+
+    private void analyseContent(String strcode)
+    {
+        String[] fields = strcode.Split(':');
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            Dictionary<string, string> field_key = new Dictionary<string, string>(8);
+            String full_text = "";
+            for (int i = 0; i < fields.Length; i++)
+            {
+                String field_value = fields[i].Trim();
+                switch (i)
+                {
+                    case 0:
+                        field_key.Add("artist_code", field_value);
+                        break;
+                    case 1:
+                        field_key.Add("title", field_value);
+                        full_text = "Title:   " + field_value + "    ";
+                        break;
+                    case 2:
+                        field_key.Add("work_type", field_value);
+                        full_text += "Media:    " + field_value + "     ";
+                        break;
+                    case 3:
+                        field_key.Add("size", field_value);
+                        full_text += "Dimensions:    " + field_value + " (cm)";
+                        break;
+                    case 4:
+                        field_key.Add("price", field_value);
+                        break;
+                    case 5:
+                        field_key.Add("amount", field_value);
+                        break;
+                    case 6:
+                        field_key.Add("item_code", field_value);
+                        break;
+                    case 7:
+                        field_key.Add("qr_id", field_value);
+                        break;
+                }
+            }
+
+            var artistItemData = new ArtistItemData
+            {
+                TextboxText = field_key["item_code"],
+                ItemCodeLabel = field_key["item_code"],
+                ArtistCodeLabel = field_key["artist_code"],
+                TitleLabel = field_key["title"],
+                MaterialLabel = field_key["work_type"],
+                DimensionsLabel = field_key["size"],
+                PriceLabel = field_key["price"],
+            };
+
+            // TODO : Update the UI with the artistItemData
+            UpdateParsedScanResults(artistItemData);
+        });
+    }
+
     private async void OnScanQRCodeClicked(object sender, EventArgs e)
     {
+
+        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
+        {
+            string message = "You need to generate a transaction group before Scanning";
+            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+
+            return;
+        }
+
         // Create the CameraPopupPage
         var scannerPage = new CameraPopupPage();
 
@@ -390,6 +471,9 @@ public partial class DetailViewPage : ContentPage
 
         // Await the QR code result from the TaskCompletionSource
         var qrCodeValue = await scannerPage.QRCodeTaskCompletionSource.Task;
+
+        analyseContent(qrCodeValue);
+
 
         // Update the UI with the QR code result
         ResultTextBox.Text = qrCodeValue;

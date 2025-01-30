@@ -7,32 +7,24 @@
       "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\detailviewpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\camerapopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\camerapopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\camerapopuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\camerapopuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\sellingrecordpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\sellingrecordpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\popuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\popuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\popuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\popuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\camerapopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\camerapopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\detailviewpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\detailviewpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\camerapopuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\camerapopuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,67 +38,67 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
+              "Title": "CameraPopupPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\CameraPopupPage.xaml.cs",
+              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml.cs",
+              "RelativeToolTip": "Pages\\CameraPopupPage.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T18:39:41.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PopupPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\PopupPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\PopupPage.xaml.cs",
+              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\PopupPage.xaml.cs",
+              "RelativeToolTip": "Pages\\PopupPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T18:39:32.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PopupPage.xaml",
               "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\PopupPage.xaml",
               "RelativeDocumentMoniker": "Pages\\PopupPage.xaml",
               "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\PopupPage.xaml",
               "RelativeToolTip": "Pages\\PopupPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-29T14:43:09.239Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "MauiProgram.cs",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\MauiProgram.cs",
-              "RelativeToolTip": "MauiProgram.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCIAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T14:15:05.87Z",
+              "WhenOpened": "2025-01-30T18:38:33.583Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T14:11:10.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "CameraPopupPage.xaml",
+              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\CameraPopupPage.xaml",
+              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml",
+              "RelativeToolTip": "Pages\\CameraPopupPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-29T14:11:06.491Z",
+              "WhenOpened": "2025-01-30T18:38:28.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SellingRecordPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\SellingRecordPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\SellingRecordPage.xaml.cs",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\SellingRecordPage.xaml.cs",
-              "RelativeToolTip": "Pages\\SellingRecordPage.xaml.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAswBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T14:04:03.929Z",
+              "DocumentIndex": 4,
+              "Title": "DetailViewPage.xaml",
+              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\DetailViewPage.xaml",
+              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml",
+              "RelativeToolTip": "Pages\\DetailViewPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-30T18:30:18.348Z",
               "EditorCaption": ""
             },
             {
@@ -117,35 +109,9 @@
               "RelativeDocumentMoniker": "Pages\\DetailViewPage.xaml.cs",
               "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml.cs",
               "RelativeToolTip": "Pages\\DetailViewPage.xaml.cs",
-              "ViewState": "AgIAAHcBAAAAAAAAAAAkwIsBAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAIIBAAAAAAAAAAAWwNIBAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-29T13:49:05.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CameraPopupPage.xaml",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\CameraPopupPage.xaml",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml",
-              "RelativeToolTip": "Pages\\CameraPopupPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-29T13:44:20.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CameraPopupPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\CameraPopupPage.xaml.cs",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\CameraPopupPage.xaml.cs",
-              "RelativeToolTip": "Pages\\CameraPopupPage.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAiwC0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T13:41:17.223Z",
               "EditorCaption": ""
             }
           ]
