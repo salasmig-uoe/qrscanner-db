@@ -2,6 +2,7 @@ using QRScanner.Popups;
 using QRScanner.ViewModel;
 using ZXing.Net.Maui;
 using QRScanner.Database;
+using System.Diagnostics;
 namespace QRScanner.Pages;
 
 public partial class CameraPopupPage : ContentPage
@@ -16,8 +17,9 @@ public partial class CameraPopupPage : ContentPage
     public CameraPopupPage()
     {
         InitializeComponent();
-        //VM = vm;
     }
+
+
 
     private void OnBarcodeDetected(object sender, BarcodeDetectionEventArgs e)
     {
@@ -28,10 +30,14 @@ public partial class CameraPopupPage : ContentPage
             // Set the result of the TaskCompletionSource
             QRCodeTaskCompletionSource.TrySetResult(qrCodeValue);
 
+            codeReader.IsDetecting = false;
+
             // Close the popup on the UI thread
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await Navigation.PopModalAsync();
+                //await Navigation.PopModalAsync();
+                Debug.WriteLine("Navigation.ModalStack  PopModal ===> {0}", App.Current.MainPage.Navigation.ModalStack.Count);
+                await App.Current.MainPage.Navigation.PopModalAsync();
             });
         }
     }

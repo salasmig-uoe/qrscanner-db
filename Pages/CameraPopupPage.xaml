@@ -2,10 +2,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="QRScanner.Pages.CameraPopupPage"
-             Title="CameraPopupPage">
-    <zxing:CameraBarcodeReaderView
-                        x:Name="codeReader"
-                        HeightRequest="300"
-                        WidthRequest="300"
-                        BarcodesDetected="OnBarcodeDetected"/>
+             Title="CameraPopupPage"
+             BackgroundColor="Transparent">
+
+    <Grid>
+        <!-- Semi-transparent overlay -->
+        <BoxView Color="Black"
+                 Opacity="0.5"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"/>
+
+        <!-- Popup container -->
+        <Border HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="300"
+                HeightRequest="300"
+                BackgroundColor="White"
+                Stroke="LightGray"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 10"
+                >
+
+            <Grid>
+                <!-- Define rows and columns -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!-- Main area for the camera viewer -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Row for the close button -->
+                </Grid.RowDefinitions>
+
+                <!-- CameraBarcodeReaderView -->
+                <zxing:CameraBarcodeReaderView
+                    x:Name="codeReader"
+                    Grid.Row="0"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    BarcodesDetected="OnBarcodeDetected"/>
+
+                <!-- Close Button -->
+                <!--
+                <Button Text="X"
+                        Grid.Row="1"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        FontSize="16"
+                        Margin="10"
+                        Clicked="OnCloseButtonClicked"/>
+                -->
+            </Grid>
+        </Border>
+    </Grid>
 </ContentPage>

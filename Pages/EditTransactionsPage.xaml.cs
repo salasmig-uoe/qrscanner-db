@@ -312,4 +312,8 @@ public partial class EditTransactionsPage : ContentPage
             amountEntryField.Text = amount.ToString("F2");
         }
     }
+    private async void OnGoBackButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

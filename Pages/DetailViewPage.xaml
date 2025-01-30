@@ -7,8 +7,6 @@
     <FlexLayout Direction="Column">
 
         <VerticalStackLayout Padding="10" FlexLayout.Basis="700" BackgroundColor="Beige">
-            <Button Text="Scan QR Code" Clicked="OnScanQRCodeClicked" />
-            <Entry x:Name="ResultTextBox" Placeholder="QR Code Result" IsReadOnly="True" />
             
             <Grid HorizontalOptions="FillAndExpand" 
                   ColumnDefinitions="100,200,120,200,*">
@@ -16,7 +14,7 @@
                 <Label x:Name="transaction_group_EntryLabel"  FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="End" Grid.Column="1" />
                 <Label x:Name="time_EntryLabel"  FontSize="Large" Text="--:--" VerticalOptions="Center" Grid.Column="2" HorizontalTextAlignment="End" />
                 <Button x:Name="generateNextTransactionButton" Text="Generate Transaction" Clicked="generateNextTransactionGroupButton_Clicked" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="3" />
-                <Button Text="Scan" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="4"  Clicked="OnScanButtonClicked" />
+                <Button Text="Scan" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="4"  Clicked="OnScanQRCodeClicked" />
             </Grid>
 
             <Border Stroke="#CCCCCC"
@@ -122,7 +120,7 @@
                                     <!-- PaymentId 0 -->
                                     <ColumnDefinition Width="4*" />
                                     <!-- ItemCode 1 -->
-                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
                                     <!-- TransactionType 2 -->
                                     <ColumnDefinition Width="2.5*" />
                                     <!-- Quantity 3 -->
@@ -173,6 +171,8 @@
                FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
                 </Grid>
             </Grid>
+            <Label Text="."/>
+            <Button Text="Close Sale" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnClosingSaleButtonClicked"/>
         </VerticalStackLayout>
     </FlexLayout>
 </ContentPage>

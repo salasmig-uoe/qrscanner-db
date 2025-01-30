@@ -142,6 +142,8 @@
                FontSize="17" HorizontalTextAlignment="End" Margin="0,0,20,0" />
                 </Grid>
             </Grid>
+            <Label Text="."/>
+            <Button Text="Close Sale" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnGoBackButtonClicked"/>
         </VerticalStackLayout>
     </FlexLayout>
 </ContentPage>

@@ -24,7 +24,7 @@ public partial class DetailViewPage : ContentPage
 
     public void UpdateParsedScanResults(ArtistItemData data)
     {
-        ResultTextBox.Text = data.ItemCodeLabel; 
+        //ResultTextBox.Text = data.ItemCodeLabel; 
 
         // Updating the Headers
         ItemCodeLabel.Text = data.ItemCodeLabel;
@@ -447,7 +447,6 @@ public partial class DetailViewPage : ContentPage
                 PriceLabel = field_key["price"],
             };
 
-            // TODO : Update the UI with the artistItemData
             UpdateParsedScanResults(artistItemData);
         });
     }
@@ -473,10 +472,10 @@ public partial class DetailViewPage : ContentPage
         var qrCodeValue = await scannerPage.QRCodeTaskCompletionSource.Task;
 
         analyseContent(qrCodeValue);
-
-
-        // Update the UI with the QR code result
-        ResultTextBox.Text = qrCodeValue;
     }
 
+    private async void OnClosingSaleButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }
