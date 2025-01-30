@@ -60,7 +60,7 @@
                         Source="view.png"
                         HeightRequest="40"
                         WidthRequest="40"
-                        Clicked="OnEmailButtonClicked" />
+                        Clicked="OnViewButtonClicked" />
                     
                     <ImageButton
                         Source="email.png"

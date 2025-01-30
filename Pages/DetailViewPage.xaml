@@ -7,7 +7,9 @@
     <FlexLayout Direction="Column">
 
         <VerticalStackLayout Padding="10" FlexLayout.Basis="700" BackgroundColor="Beige">
-
+            <Button Text="Scan QR Code" Clicked="OnScanQRCodeClicked" />
+            <Entry x:Name="ResultTextBox" Placeholder="QR Code Result" IsReadOnly="True" />
+            
             <Grid HorizontalOptions="FillAndExpand" 
                   ColumnDefinitions="100,200,120,200,*">
                 <Label Text="Sale:" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="0" />

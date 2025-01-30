@@ -994,3 +994,6 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\DocumentFormat.OpenXml.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\DocumentFormat.OpenXml.Framework.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\System.IO.Packaging.dll

@@ -574,9 +574,6 @@ C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x6
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet-nativeaot.a
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet.a
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet.dylib
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.HotReload.Forms.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.TapContract.dll
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\mauiimage.inputs
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\mauifont.inputs
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\mauisplash.inputs
@@ -631,3 +628,10 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x6
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.pdb
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.genruntimeconfig.cache
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\ref\QRScanner.dll
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\f\MauiInfo.plist
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\f\FluentUI.cs
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\f\OpenSans-Regular.ttf
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\f\OpenSans-Semibold.ttf
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\DocumentFormat.OpenXml.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\DocumentFormat.OpenXml.Framework.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\System.IO.Packaging.dll

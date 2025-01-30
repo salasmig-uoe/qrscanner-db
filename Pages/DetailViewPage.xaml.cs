@@ -355,4 +355,44 @@ public partial class DetailViewPage : ContentPage
             amountEntryField.Text = amount.ToString("F2");
         }
     }
+
+    /*
+    private async void OnScanQRCodeClicked(object sender, EventArgs e)
+    {
+        var cameraPopupPage = new CameraPopupPage();
+        cameraPopupPage.OnQRCodeDetected += (qrCodeValue) =>
+        {
+            // Update the TextBox with the scanned QR code value
+            //ResultTextBox.Text = qrCodeValue;
+        };
+
+        await Navigation.PushModalAsync(cameraPopupPage);
+    }
+    */
+
+    private async void OnScanQRCodeClickedx(object sender, EventArgs e)
+    {
+        var scannerPage = new CameraPopupPage();
+        scannerPage.OnQRCodeDetected += (qrCodeValue) =>
+        {
+            ResultTextBox.Text = qrCodeValue;
+        };
+        await Navigation.PushModalAsync(scannerPage);
+    }
+
+    private async void OnScanQRCodeClicked(object sender, EventArgs e)
+    {
+        // Create the CameraPopupPage
+        var scannerPage = new CameraPopupPage();
+
+        // Push the page modally
+        await Navigation.PushModalAsync(scannerPage);
+
+        // Await the QR code result from the TaskCompletionSource
+        var qrCodeValue = await scannerPage.QRCodeTaskCompletionSource.Task;
+
+        // Update the UI with the QR code result
+        ResultTextBox.Text = qrCodeValue;
+    }
+
 }

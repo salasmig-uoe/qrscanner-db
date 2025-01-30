@@ -39,4 +39,28 @@ public partial class SellingRecordPage : ContentPage
         Navigation.PushAsync(new QRScanner.Pages.EditTransactionsPage(_dbService, _vm));
     }
 
+    private async void OnViewButtonClicked(object sender, EventArgs e)
+    {
+
+        // Define the path to your Word document
+        string inputFilePath = "c://Users//msalasz//template.docx";
+        string outputFilePath = "c://Users//msalasz//output.docx";
+        string newImagePath = "c://Users//msalasz//Downloads//sample_scan.jpg";
+
+        // Create a dictionary with placeholders and their replacements
+        Dictionary<string, string> replacements = new Dictionary<string, string>
+            {
+                { "Item_Artist", "The Artist" },
+                { "Item_Title", "This is the painting name" },
+                { "Item_Material", "The Material" },
+                { "Item_Media", "The Media" },
+                { "Item_Price", "£1,700.00" },
+                { "Item_Code", "KD00001"   },
+            };
+
+        // Call the method to replace placeholders in the document
+        WordDocumentHelper.ReplaceTablePlaceholders(inputFilePath,outputFilePath,newImagePath,replacements);
+        //WordDocumentHelper wdh = new WordDocumentHelper();
+
+    }
 }

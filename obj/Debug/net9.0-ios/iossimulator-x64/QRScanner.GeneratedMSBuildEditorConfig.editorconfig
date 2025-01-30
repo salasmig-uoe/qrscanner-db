@@ -48,6 +48,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
+[C:/Users/msalasz/source/qrscanner-db/Pages/CameraPopupPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.CameraPopupPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\CameraPopupPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\CameraPopupPage.xaml
+
 [C:/Users/msalasz/source/qrscanner-db/Pages/DetailViewPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.DetailViewPage.xaml

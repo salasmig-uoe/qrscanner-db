@@ -75,6 +75,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -137,6 +141,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[3.2.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -201,6 +209,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -264,6 +276,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[3.2.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",

@@ -11,6 +11,7 @@
         "dependencies": {
           "CommunityToolkit.Maui": "11.0.0",
           "CommunityToolkit.Mvvm": "8.4.0",
+          "DocumentFormat.OpenXml": "3.2.0",
           "Microsoft.Extensions.Logging.Debug": "9.0.0",
           "Microsoft.Maui.Controls": "9.0.30",
           "Microsoft.Windows.CsWinRT": "2.2.0",
@@ -66,6 +67,28 @@
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.4.0.0",
             "fileVersion": "8.4.0.1"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/3.2.0": {
+        "dependencies": {
+          "DocumentFormat.OpenXml.Framework": "3.2.0"
+        },
+        "runtime": {
+          "lib/net8.0/DocumentFormat.OpenXml.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml.Framework/3.2.0": {
+        "dependencies": {
+          "System.IO.Packaging": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/DocumentFormat.OpenXml.Framework.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
           }
         }
       },
@@ -533,6 +556,14 @@
           }
         }
       },
+      "System.IO.Packaging/8.0.1": {
+        "runtime": {
+          "lib/net8.0/System.IO.Packaging.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "System.Memory/4.5.3": {},
       "System.Speech/9.0.0": {
         "runtime": {
@@ -614,6 +645,20 @@
       "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
       "path": "communitytoolkit.mvvm/8.4.0",
       "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    },
+    "DocumentFormat.OpenXml/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eDBT9G0sAWUvjgE8l8E5bGCFXgxCZXIecQ8dqUnj2PyxyMR5eBmLahqRRw3Q7uSKM3cKbysaL2mEY0JJbEEOEA==",
+      "path": "documentformat.openxml/3.2.0",
+      "hashPath": "documentformat.openxml.3.2.0.nupkg.sha512"
+    },
+    "DocumentFormat.OpenXml.Framework/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e1neOKqRnSHUom4JQEorAoZ67aiJOp6+Xzsu0fc6IYfFcgQn6roo+w6i2w//N2u/5ilEfvLr35bNO9zaIN7r7g==",
+      "path": "documentformat.openxml.framework/3.2.0",
+      "hashPath": "documentformat.openxml.framework.3.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/9.0.0": {
       "type": "package",
@@ -817,6 +862,13 @@
       "sha512": "sha512-uZVTi02C1SxqzgT0HqTWatIbWGb40iIkfc3FpFCpE/r7g6K0PqzDUeefL6P6HPhDtc6BacN3yQysfzP7ks+wSQ==",
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.10",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512"
+    },
+    "System.IO.Packaging/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KYkIOAvPexQOLDxPO2g0BVoWInnQhPpkFzRqvNrNrMhVT6kqhVr0zEb6KCHlptLFukxnZrjuMVAnxK7pOGUYrw==",
+      "path": "system.io.packaging/8.0.1",
+      "hashPath": "system.io.packaging.8.0.1.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",

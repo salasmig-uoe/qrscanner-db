@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QRScanner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+6c1d68f5400610b3924c44658fb3963904fba821")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+73a4d3fc8fb9d783d17b2ffaa27bc0e24f4db47c")]
 [assembly: System.Reflection.AssemblyProductAttribute("QRScanner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QRScanner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
