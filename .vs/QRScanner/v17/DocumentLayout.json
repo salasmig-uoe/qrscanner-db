@@ -1,17 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\msalasz\\source\\qrscanner-db\\",
+  "WorkspaceRootPath": "D:\\projects\\maui\\qrscanner-db\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\detailviewpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\detailviewpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\detailviewpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\edittransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\services\\worddocumenthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:services\\worddocumenthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\edittransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\edittransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|c:\\users\\msalasz\\source\\qrscanner-db\\pages\\detailviewpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\detailviewpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\detailviewpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,27 +26,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "WordDocumentHelper.cs",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Services\\WordDocumentHelper.cs",
+              "RelativeDocumentMoniker": "Services\\WordDocumentHelper.cs",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Services\\WordDocumentHelper.cs",
+              "RelativeToolTip": "Services\\WordDocumentHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T06:17:26.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EditTransactionsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\EditTransactionsPage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditTransactionsPage.xaml",
               "RelativeDocumentMoniker": "Pages\\EditTransactionsPage.xaml",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\EditTransactionsPage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditTransactionsPage.xaml",
               "RelativeToolTip": "Pages\\EditTransactionsPage.xaml",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAABrwFMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-30T22:19:04.266Z"
+              "WhenOpened": "2025-01-30T22:19:04.266Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DetailViewPage.xaml",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\DetailViewPage.xaml",
               "RelativeDocumentMoniker": "Pages\\DetailViewPage.xaml",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\DetailViewPage.xaml",
               "RelativeToolTip": "Pages\\DetailViewPage.xaml",
               "ViewState": "AgIAAHkAAAAAAAAAAADwv6AAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -51,15 +69,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DetailViewPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\DetailViewPage.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\DetailViewPage.xaml.cs",
-              "ToolTip": "C:\\Users\\msalasz\\source\\qrscanner-db\\Pages\\DetailViewPage.xaml.cs",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\DetailViewPage.xaml.cs",
               "RelativeToolTip": "Pages\\DetailViewPage.xaml.cs",
               "ViewState": "AgIAAKQAAAAAAAAAAAAvwK4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T13:49:05.286Z"
+              "WhenOpened": "2025-01-29T13:49:05.286Z",
+              "EditorCaption": ""
             }
           ]
         }

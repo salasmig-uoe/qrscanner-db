@@ -1,7 +1,4 @@
-﻿
-
-using DocumentFormat.OpenXml.Office2019.Drawing.Model3D;
-using DocumentFormat.OpenXml.Packaging;
+﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace QRScanner.Services
@@ -68,7 +65,7 @@ namespace QRScanner.Services
                     string newImagePartId = mainPart.GetIdOfPart(newImagePart);
 
                     // Find all Blip elements that reference the old image and update them to reference the new image
-                    foreach (var blip in mainPart.Document.Descendants<Blip>())
+                    foreach (var blip in mainPart.Document.Descendants<DocumentFormat.OpenXml.Drawing.Blip>())
                     {
                         if (blip.Embed == mainPart.GetIdOfPart(oldImagePart))
                         {
