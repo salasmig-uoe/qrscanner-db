@@ -4,8 +4,16 @@
              x:Class="QRScanner.Pages.ViewSaleTransactionsPage"
              Title="View Transactions">
     <Grid>
+        <!-- Define rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.85*" />
+            <!-- 70% of the screen for ScrollView -->
+            <RowDefinition Height="0.15*" />
+            <!-- 30% of the screen for other content -->
+        </Grid.RowDefinitions>
+        
         <!-- Main content area -->
-        <ScrollView>
+        <ScrollView Grid.Row="0">
             <VerticalStackLayout Padding="10" BackgroundColor="Beige">
 
                 <Border BackgroundColor="Lavender" Stroke="Black" StrokeThickness="2" Padding="10" StrokeShape="RoundRectangle 10">
@@ -100,7 +108,7 @@
         </ScrollView>
 
         <!-- Bottom section with Card, Cash, Total labels and amounts -->
-        <VerticalStackLayout VerticalOptions="End" Spacing="10" Margin="0,0,0,20">
+        <VerticalStackLayout VerticalOptions="End" Spacing="10" Margin="0,0,0,20" Grid.Row="1">
             <!-- Grid for Card, Cash, Total labels and amounts -->
             <Grid HorizontalOptions="End" WidthRequest="800">
                 <Grid.ColumnDefinitions>

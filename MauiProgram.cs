@@ -22,7 +22,6 @@ namespace QRScanner
                 }).UseBarcodeReader();
 
             builder.Services.AddSingleton<LocalDbService>();
-            builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<AlertService>();
             builder.Services.AddSingleton<EmailViewModel>();
