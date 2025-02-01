@@ -26,7 +26,7 @@ public partial class SellingRecordPage : ContentPage
 
     private async void OnSellingButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new QRScanner.Pages.DetailViewPage(_dbService, _vm,_result));
+        Navigation.PushAsync(new QRScanner.Pages.SaleTransactionPage(_dbService, _vm,_result));
     }
 
     private async void OnEmailButtonClicked(object sender, EventArgs e)
@@ -39,7 +39,7 @@ public partial class SellingRecordPage : ContentPage
         Navigation.PushAsync(new QRScanner.Pages.EditTransactionsPage(_dbService, _vm));
     }
 
-    private async void OnViewButtonClicked(object sender, EventArgs e)
+    private async void OnViewButtonClickedx(object sender, EventArgs e)
     {
 
         // Define the path to your Word document
@@ -61,6 +61,10 @@ public partial class SellingRecordPage : ContentPage
         // Call the method to replace placeholders in the document
         WordDocumentHelper.ReplaceTablePlaceholders(inputFilePath,outputFilePath,newImagePath,replacements);
         //WordDocumentHelper wdh = new WordDocumentHelper();
+    }
 
+    private async void OnViewButtonClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new QRScanner.Pages.ViewTransactionPage(_dbService, _vm));
     }
 }

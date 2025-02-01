@@ -7,6 +7,20 @@ namespace QRScanner.ViewModel;
 public partial class MainViewModel : ObservableObject
 {
     private readonly AlertService _alertService;
+
+
+    [ObservableProperty]
+    decimal totalAmount;
+
+    [ObservableProperty]
+    decimal cashAmount;
+
+    [ObservableProperty]
+    decimal cardAmount;
+
+    [ObservableProperty]
+    decimal donationAmount;
+
     public MainViewModel(AlertService alertService)
     {
         _alertService = alertService;

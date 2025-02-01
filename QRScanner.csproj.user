@@ -32,10 +32,16 @@
     <MauiXaml Update="Pages\PopupPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Pages\SaleTransactionPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Pages\SellingRecordPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Pages\ViewRecordsPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Pages\ViewTransactionPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

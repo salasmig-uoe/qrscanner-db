@@ -1,19 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QRScanner.Pages.EditTransactionsPage"
-             Title="EditTransactionsPage">
+             x:Class="QRScanner.Pages.SaleTransactionPage"
+             Title="SaleTransactionPage">
     <Grid>
         <!-- Main content area -->
         <ScrollView>
             <VerticalStackLayout Padding="10" BackgroundColor="Beige">
 
-                <DatePicker x:Name="datePicker"
-                        Grid.Row="1"
-                        Grid.Column="4"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        DateSelected="OnDateSelected" />
+                <Grid HorizontalOptions="FillAndExpand" 
+                      ColumnDefinitions="100,200,120,200,*">
+                    <Label Text="Sale:" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="0" />
+                    <Label x:Name="transaction_group_EntryLabel"  FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="End" Grid.Column="1" />
+                    <Label x:Name="time_EntryLabel"  FontSize="Large" Text="--:--" VerticalOptions="Center" Grid.Column="2" HorizontalTextAlignment="End" />
+                    <Button x:Name="generateNextTransactionButton" Text="Generate Transaction" Clicked="generateNextTransactionGroupButton_Clicked" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="3" />
+                    <Button Text="Scan" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="4"  Clicked="OnScanQRCodeClicked" />
+                </Grid>
+
+                <Border Stroke="#CCCCCC"
+                        StrokeThickness="1"
+                        BackgroundColor="White"
+                        Padding="10"
+                        Margin="20"
+                        StrokeShape="RoundRectangle 10">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.5" Offset="5,5" />
+                    </Border.Shadow>
+                    <Grid ColumnDefinitions="Auto,*,Auto,*,Auto"
+                          RowDefinitions="Auto,Auto,Auto,Auto"
+                          Padding="10" RowSpacing="10">
+
+                        <!-- First Row -->
+                        <Label Text="Code: " FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
+                        <Label x:Name="ItemCodeLabel" FontSize="Medium" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Green"/>
+                        <Label Text="" FontAttributes="Bold" Grid.Row="0" Grid.Column="2" />
+                        <Label x:Name="ArtistCodeLabel" FontSize="Medium" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" />
+
+                        <!-- Second Row -->
+                        <Label Text="" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                        <Label x:Name="TitleLabel" FontSize="Large" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalTextAlignment="Center" TextDecorations="Underline"/>
+
+
+                        <!-- Third Row -->
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="Auto,2,Auto">
+                            <Label x:Name="MaterialLabel" Grid.Column="0" HorizontalTextAlignment="End" />
+                            <!-- Empty space with specific width -->
+                            <Label x:Name="DimensionsLabel" Grid.Column="2" HorizontalTextAlignment="Start" />
+                        </Grid>
+                        <Label Text="" FontAttributes="Bold" Grid.Row="2" Grid.Column="2" />
+                        <Label Text="" FontAttributes="Bold" Grid.Row="2" Grid.Column="3" />
+
+                        <!-- Fourth Row -->
+                        <Label Text="" FontAttributes="Bold" Grid.Row="3" Grid.Column="2" />
+                        <Label x:Name="PriceLabel" FontSize="Large" Grid.Row="3" Grid.Column="4" HorizontalTextAlignment="Center" />
+
+                    </Grid>
+                </Border>
                 <BoxView HeightRequest="5" />
 
 
@@ -121,6 +163,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </ScrollView>
+
             </VerticalStackLayout>
         </ScrollView>
 
@@ -131,18 +174,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <!-- Column for "Card:" label -->
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="Auto" />
                     <!-- Column for "Card:" label -->
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="100" />
                     <!-- Column for Card amount -->
                     <ColumnDefinition Width="Auto" />
                     <!-- Column for "Cash:" label -->
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="100" />
                     <!-- Column for Cash amount -->
                     <ColumnDefinition Width="Auto" />
                     <!-- Column for "Total:" label -->
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="100" />
                     <!-- Column for Total amount -->
                 </Grid.ColumnDefinitions>
 
@@ -168,7 +211,7 @@
             </Grid>
 
             <!-- Close Sale Button -->
-            <Button Text="Back" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnGoBackButtonClicked"
+            <Button Text="Close Sale" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnClosingSaleButtonClicked"
                     HorizontalOptions="Center" />
         </VerticalStackLayout>
     </Grid>

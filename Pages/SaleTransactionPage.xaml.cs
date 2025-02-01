@@ -1,10 +1,11 @@
+using CommunityToolkit.Maui.Views;
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
 using QRScanner.Popups;
 namespace QRScanner.Pages;
 
-public partial class EditTransactionsPage : ContentPage
+public partial class SaleTransactionPage : ContentPage
 {
     private readonly LocalDbService _dbService;
     private int _editPaymentTransferRecordId;
@@ -14,58 +15,67 @@ public partial class EditTransactionsPage : ContentPage
 
     private string _lastCreated;
     private string _lastTransactionGroup;
-    private DateTime _queryDate;
+
 
     // Popup variables
     private MainViewModel VM;
     private PopupResult _result;
-    public EditTransactionsPage(LocalDbService dbService, MainViewModel vm)
+
+
+    public void UpdateParsedScanResults(ArtistItemData data)
+    {
+        // Updating the Headers
+        ItemCodeLabel.Text = data.ItemCodeLabel;
+        ArtistCodeLabel.Text = data.ArtistCodeLabel;
+        TitleLabel.Text = data.TitleLabel;
+        MaterialLabel.Text = data.MaterialLabel;
+        DimensionsLabel.Text = data.DimensionsLabel;
+        PriceLabel.Text = data.PriceLabel;
+        // Updating the payment row
+        itemCodeEntryField.Text = data.ItemCodeLabel;
+        quantityEntryField.Text = "1";
+        amountEntryField.Text = data.PriceLabel;
+
+        // Execute the list update
+        Task.Run(async () =>
+        {
+            // Extract the date from the transaction code
+            string formattedDate = string.Empty;
+            string transaction_code = transaction_group_EntryLabel.Text;
+            if (transaction_group_EntryLabel != null && transaction_group_EntryLabel.Text != "")
+            {
+                formattedDate = getDateFromCode(transaction_code);
+                var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    listView.ItemsSource = items;
+                    calculateTotals(items);
+                });
+            }
+        });
+    }
+
+    public SaleTransactionPage(LocalDbService dbService, MainViewModel vm, PopupResult result)
     {
         InitializeComponent();
-
-        // Trigger the method when the DatePicker is initialized
-        OnDateInitialized(datePicker.Date);
-
         BindingContext = vm;
         _dbService = dbService;
 
         // Variables for the Popup
         VM = vm;
+        _result = result;
+        BindingContext = VM;
 
-        BindingContext = VM;       
+        // Set values manually
+        ItemCodeLabel.Text = "000000000";
+        ArtistCodeLabel.Text = "Artist0000000";
+        TitleLabel.Text = "Title";
+        MaterialLabel.Text = "";
+        DimensionsLabel.Text = "";
+        PriceLabel.Text = "0";
     }
 
-    private void OnDateSelected(object sender, DateChangedEventArgs e)
-    {
-         _queryDate = e.NewDate;
-        Task.Run(async () =>
-        {
-            string formattedDate = getDateFromCode(_queryDate.ToString("ddMMyy"));
-            var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                listView.ItemsSource = items;
-                calculateTotals(items);
-            });
-        });
-    }
-
-    private void OnDateInitialized(DateTime initialDate)
-    {
-        Task.Run(async () =>
-        {
-            DateTime _queryDate = initialDate;
-            string formattedDate = getDateFromCode(_queryDate.ToString("ddMMyy"));
-            await Task.Delay(TimeSpan.FromSeconds(1));
-            var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                listView.ItemsSource = items;
-                calculateTotals(items);
-            });
-        });
-
-    }
     private string getDateFromCode(string str_code)
     {
         string datePart = str_code.Substring(0, 6); // Extract "230125"
@@ -85,14 +95,14 @@ public partial class EditTransactionsPage : ContentPage
         {
             if (item.TransactionType == "Card")
                 // Assuming item has Card, Cash or Donation Amount properties
-                totalCard += (decimal)item.Amount; // Adjust the property names as per your model
+                totalCard += (decimal) item.Amount; // Adjust the property names as per your model
             if (item.TransactionType == "Cash")
-                totalCash += (decimal)item.Amount;
+                totalCash += (decimal) item.Amount;
             if (item.TransactionType == "Donation")
-                totalDonation += (decimal)item.Amount;
+                totalDonation += (decimal) item.Amount;
         }
         total = totalCard + totalCash + totalDonation;
-
+       
         VM.CardAmount = totalCard;
         VM.CashAmount = totalCash;
         VM.DonationAmount = totalDonation;
@@ -131,10 +141,18 @@ public partial class EditTransactionsPage : ContentPage
             });
         }
         transaction_time = DateTime.Now.ToString("HH:mm");
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            new_key = str_today + "-" + folio_to_use.ToString("D4");
+            transaction_group_EntryLabel.Text = new_key;
+            transactionGroupIdEntryField.Text = new_key;
+            time_EntryLabel.Text = "(" + transaction_time + ")";
+        });
     }
     public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
     {
         Task.Run(async () => await UpdateDatabaseAndUIAsync());
+
     }
 
 
@@ -149,9 +167,7 @@ public partial class EditTransactionsPage : ContentPage
     private async void listView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         var item = (PaymentTransaction)e.Item;
-        var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Duplicate", "Delete");
-        String formattedDate;
-
+        var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Delete");
         switch (action)
         {
             case "Edit":
@@ -165,27 +181,8 @@ public partial class EditTransactionsPage : ContentPage
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
-                formattedDate = item.Created.ToString("yyyy-MM-dd");
-                var items = await _dbService.GetPaymentTransferByDate(formattedDate);
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    listView.ItemsSource = items;
-                    calculateTotals(items);
-                });
-                break;
-            case "Duplicate":
-                await _dbService.CreatePaymentItem(new PaymentTransaction
-                {
-                    TransactionCode = item.TransactionCode,
-                    ItemCode = item.ItemCode,
-                    Quantity = item.Quantity,
-                    Amount = 0,
-                    TransactionType = item.TransactionType,
-                    Created = DateTime.Now,
-                    Updated = DateTime.Now,
-                });
-                formattedDate = item.Created.ToString("yyyy-MM-dd");
-                items = await _dbService.GetPaymentTransferByDate(formattedDate);
+                String formattedDate = item.Created.ToString("yyyy-MM-dd");
+                var items = await _dbService.GetPaymentTransferByCodeAndDate(item.TransactionCode, formattedDate);
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     listView.ItemsSource = items;
@@ -207,20 +204,44 @@ public partial class EditTransactionsPage : ContentPage
             selectedPaymentType = transactionTypePicker.SelectedItem.ToString();
         }
 
-        _queryDate = datePicker.Date;
+        // Add PaymentTransaction
+        await _dbService.CreatePaymentItem(new PaymentTransaction
+        {
+            TransactionCode = transaction_group_EntryLabel.Text,
+            ItemCode = item_code,
+            Quantity = quantity,
+            Amount = payment_float,
+            TransactionType = selectedPaymentType,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+        });
+
         // Extract the date from the transaction group date
-        string formattedDate = getDateFromCode(_queryDate.ToString("ddMMyy"));
-        var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+        string transaction_code = transaction_group_EntryLabel.Text;
+        string formattedDate = getDateFromCode(transaction_code);
+
+
+        var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
         MainThread.BeginInvokeOnMainThread(() =>
         {
             listView.ItemsSource = items;
             calculateTotals(items);
         });
-
     }
 
     private async void clearButton_Clicked(object sender, EventArgs e)
     {
+
+        transaction_group_EntryLabel.Text = "";
+        transactionGroupIdEntryField.Text = "";
+        time_EntryLabel.Text = "(--:--)";
+
+        ItemCodeLabel.Text = "";
+        ArtistCodeLabel.Text = "";
+        TitleLabel.Text = "";
+        MaterialLabel.Text = "";
+        DimensionsLabel.Text = "";
+
         paymentIdEntryField.Text = "";
         itemCodeEntryField.Text = "";
         quantityEntryField.Text = "";
@@ -249,7 +270,6 @@ public partial class EditTransactionsPage : ContentPage
             await App.Current.MainPage.DisplayAlert("Error: ", validation_message, "Ok");
             return;
         }
-
         if (_editPaymentTransferRecordId == 0)
         {
             detailSaveButton_Clicked(sender, e);
@@ -284,17 +304,17 @@ public partial class EditTransactionsPage : ContentPage
 
             String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");
             string transaction_code = existingTransaction.TransactionCode;
-            var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+            var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 listView.ItemsSource = items;
                 calculateTotals(items);
             });
-            clearButton_Clicked(sender, e);
         }
+        quantityEntryField.Text = "1";
+        amountEntryField.Text = "0";
         string message = " The changes has been saved";
         await App.Current.MainPage.DisplayAlert("Operation completed: ", message, "Ok");
-        clearButton_Clicked(sender, e);
     }
 
 
@@ -316,7 +336,108 @@ public partial class EditTransactionsPage : ContentPage
             amountEntryField.Text = amount.ToString("F2");
         }
     }
-    private async void OnGoBackButtonClicked(object sender, EventArgs e)
+
+    private async void OnScanButtonClicked(object sender, EventArgs e)
+    {
+
+        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
+        {
+            string message = "You need to generate a transaction group before Scanning";
+            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+
+            return;
+        }
+        var popupPage = new PopupPage(VM, _result);
+        var result = await this.ShowPopupAsync(popupPage);
+        if (result != null)
+        {
+            PopupResult res = (PopupResult)result;
+            VM.BarcodeLabelText = res.ReturnData;
+            VM.Text = res.ReturnData;
+        }
+    }
+
+    private void analyseContent(String strcode)
+    {
+        String[] fields = strcode.Split(':');
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            Dictionary<string, string> field_key = new Dictionary<string, string>(8);
+            String full_text = "";
+            for (int i = 0; i < fields.Length; i++)
+            {
+                String field_value = fields[i].Trim();
+                switch (i)
+                {
+                    case 0:
+                        field_key.Add("artist_code", field_value);
+                        break;
+                    case 1:
+                        field_key.Add("title", field_value);
+                        full_text = "Title:   " + field_value + "    ";
+                        break;
+                    case 2:
+                        field_key.Add("work_type", field_value);
+                        full_text += "Media:    " + field_value + "     ";
+                        break;
+                    case 3:
+                        field_key.Add("size", field_value);
+                        full_text += "Dimensions:    " + field_value + " (cm)";
+                        break;
+                    case 4:
+                        field_key.Add("price", field_value);
+                        break;
+                    case 5:
+                        field_key.Add("amount", field_value);
+                        break;
+                    case 6:
+                        field_key.Add("item_code", field_value);
+                        break;
+                    case 7:
+                        field_key.Add("qr_id", field_value);
+                        break;
+                }
+            }
+
+            var artistItemData = new ArtistItemData
+            {
+                TextboxText = field_key["item_code"],
+                ItemCodeLabel = field_key["item_code"],
+                ArtistCodeLabel = field_key["artist_code"],
+                TitleLabel = field_key["title"],
+                MaterialLabel = field_key["work_type"],
+                DimensionsLabel = field_key["size"],
+                PriceLabel = field_key["price"],
+            };
+
+            UpdateParsedScanResults(artistItemData);
+        });
+    }
+
+    private async void OnScanQRCodeClicked(object sender, EventArgs e)
+    {
+
+        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
+        {
+            string message = "You need to generate a transaction group before Scanning";
+            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+
+            return;
+        }
+
+        // Create the CameraPopupPage
+        var scannerPage = new CameraPopupPage();
+
+        // Push the page modally
+        await Navigation.PushModalAsync(scannerPage);
+
+        // Await the QR code result from the TaskCompletionSource
+        var qrCodeValue = await scannerPage.QRCodeTaskCompletionSource.Task;
+
+        analyseContent(qrCodeValue);
+    }
+
+    private async void OnClosingSaleButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
     }
