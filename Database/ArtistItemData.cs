@@ -18,6 +18,8 @@ namespace QRScanner.Database
 
         public string PriceLabel { get; set; }
 
+        public string AmountLabel { get; set; }
+
 
     }
 }

@@ -59,8 +59,18 @@
                         <Label Text="" FontAttributes="Bold" Grid.Row="2" Grid.Column="3" />
 
                         <!-- Fourth Row -->
-                        <Label Text="" FontAttributes="Bold" Grid.Row="3" Grid.Column="2" />
-                        <Label x:Name="PriceLabel" FontSize="Large" Grid.Row="3" Grid.Column="4" HorizontalTextAlignment="Center" />
+                       
+                        <Label x:Name="DbPriceLabel" Grid.Row="4" Grid.Column="1" Text="{Binding DbPrice, StringFormat='£{0:N2}'}"
+                        FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Center" Margin="0,0,20,0" TextColor="Blue" FontAttributes="Bold" TextDecorations="Underline"/>
+
+                        <Label x:Name="DbPriceBalanceLabel" Grid.Row="4" Grid.Column="2" Text="{Binding DbPriceBalance, StringFormat='£{0:N2}'}"
+                        FontSize="17" HorizontalTextAlignment="End" VerticalOptions="Center" Margin="0,0,20,0" TextColor="Red" FontAttributes="Bold" TextDecorations="Underline"/>
+
+                        <Label x:Name="DbAmountLabel" Grid.Row="4" Grid.Column="3" Text="{Binding DbAmount}"
+                        FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Center" Margin="0,0,20,0" TextColor="Blue" FontAttributes="Bold" TextDecorations="Underline"/>
+
+                        <Label x:Name="DbAmountBalanceLabel" Grid.Row="4" Grid.Column="4" Text="{Binding DbAmountBalance}"
+                        FontSize="17" HorizontalTextAlignment="End" VerticalOptions="Center" Margin="0,0,20,0" TextColor="Red" FontAttributes="Bold" TextDecorations="Underline"/>
 
                     </Grid>
                 </Border>

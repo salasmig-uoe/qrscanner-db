@@ -7,6 +7,17 @@ namespace QRScanner.ViewModel;
 public partial class MainViewModel : ObservableObject
 {
     private readonly AlertService _alertService;
+    [ObservableProperty]
+    decimal dbPrice;
+
+    [ObservableProperty]
+    decimal dbPriceBalance;
+
+    [ObservableProperty]
+    decimal dbAmount;
+
+    [ObservableProperty]
+    decimal dbAmountBalance;
 
 
     [ObservableProperty]

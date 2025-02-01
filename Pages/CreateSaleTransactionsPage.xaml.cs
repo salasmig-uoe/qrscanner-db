@@ -1,6 +1,7 @@
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
+
 namespace QRScanner.Pages;
 
 public partial class CreateSaleTransactionsPage : ContentPage
@@ -13,7 +14,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
 
     private string _lastCreated;
     private string _lastTransactionGroup;
-
+    private ArtItem _loaded_item;
 
     // Popup variables
     private MainViewModel VM;
@@ -34,12 +35,16 @@ public partial class CreateSaleTransactionsPage : ContentPage
         TitleLabel.Text = "Title";
         MaterialLabel.Text = "";
         DimensionsLabel.Text = "";
-        PriceLabel.Text = "0";
 
         VM.TotalAmount = 0;
         VM.CardAmount = 0;
         VM.CashAmount = 0;
         VM.DonationAmount = 0;
+
+        VM.DbPrice = 0;
+        VM.DbPriceBalance = 0;
+        VM.DbAmount = 0;
+        VM.DbAmountBalance = 0;
     }
 
 
@@ -51,11 +56,12 @@ public partial class CreateSaleTransactionsPage : ContentPage
         TitleLabel.Text = data.TitleLabel;
         MaterialLabel.Text = data.MaterialLabel;
         DimensionsLabel.Text = data.DimensionsLabel;
-        PriceLabel.Text = data.PriceLabel;
+
         // Updating the payment row
         itemCodeEntryField.Text = data.ItemCodeLabel;
-        quantityEntryField.Text = "1";
-        amountEntryField.Text = data.PriceLabel;
+        quantityEntryField.Text = data.AmountLabel;
+        amountEntryField.Text = data.PriceLabel; // This is the original price
+
 
         // Execute the list update
         Task.Run(async () =>
@@ -73,6 +79,17 @@ public partial class CreateSaleTransactionsPage : ContentPage
                     listView.ItemsSource = items;
                     calculateTotals(items);
                 });
+
+                string item_code = ItemCodeLabel.Text;
+                var art_item = await _dbService.GetByItemCode(item_code);
+                if (art_item != null)
+                {
+                    VM.DbPrice = (decimal)art_item.Price;
+                    VM.DbPriceBalance = (decimal)art_item.PriceBalance;
+                    VM.DbAmount = (decimal)art_item.Amount;
+                    VM.DbAmountBalance = (decimal)art_item.AmountBalance;
+                    _loaded_item = art_item;
+                }
             }
         });
     }
@@ -97,14 +114,14 @@ public partial class CreateSaleTransactionsPage : ContentPage
         {
             if (item.TransactionType == "Card")
                 // Assuming item has Card, Cash or Donation Amount properties
-                totalCard += (decimal) item.Amount; // Adjust the property names as per your model
+                totalCard += (decimal)item.Amount; // Adjust the property names as per your model
             if (item.TransactionType == "Cash")
-                totalCash += (decimal) item.Amount;
+                totalCash += (decimal)item.Amount;
             if (item.TransactionType == "Donation")
-                totalDonation += (decimal) item.Amount;
+                totalDonation += (decimal)item.Amount;
         }
         total = totalCard + totalCash + totalDonation;
-       
+
         VM.CardAmount = totalCard;
         VM.CashAmount = totalCash;
         VM.DonationAmount = totalDonation;
@@ -182,6 +199,12 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
+
+                float quantity = -item.Quantity; // Towards Quantity
+                float payment_float = -item.Amount; // Towards Price
+
+                updateItemHeader(payment_float, quantity);
+
                 String formattedDate = item.Created.ToString("yyyy-MM-dd");
                 var items = await _dbService.GetPaymentTransferByCodeAndDate(item.TransactionCode, formattedDate);
                 MainThread.BeginInvokeOnMainThread(() =>
@@ -193,7 +216,63 @@ public partial class CreateSaleTransactionsPage : ContentPage
         }
     }
 
-    private async void detailSaveButton_Clicked(object sender, EventArgs e)
+    private async void addItem(string item_code, float quantity, float payment, string ttype,
+        string transaction_code, string formattedDate)
+    {
+        // Add PaymentTransaction
+        await _dbService.CreatePaymentItem(new PaymentTransaction
+        {
+            TransactionCode = transaction_group_EntryLabel.Text,
+            ItemCode = item_code,
+            Quantity = quantity,
+            Amount = payment,
+            TransactionType = ttype,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+        });
+        var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            // Update the listview 
+            listView.ItemsSource = items;
+            calculateTotals(items);
+        });
+        
+    }
+
+    private async void updateItemHeader(float payment_float, float quantity)
+    {
+        await _dbService.Update(new ArtItem
+        {
+            Id = _loaded_item.Id,
+            Title = _loaded_item.Title,
+            WorkType = _loaded_item.WorkType,
+            Size = _loaded_item.Size,
+            ArtistCode = _loaded_item.ArtistCode,
+            ArtistName = _loaded_item.ArtistName,
+            Price = _loaded_item.Price,
+            Amount = _loaded_item.Amount,
+            PriceBalance = _loaded_item.PriceBalance - payment_float,
+            AmountBalance = _loaded_item.AmountBalance - quantity,
+            ItemStatus = _loaded_item.ItemStatus,
+            ItemCode = _loaded_item.ItemCode,
+            Created = _loaded_item.Created,
+            Updated = DateTime.Now
+        });
+
+        var updated_art_item = await _dbService.GetById(_loaded_item.Id);
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            // Update the ArtItem balances in the header
+            VM.DbPrice = (decimal)updated_art_item.Price;
+            VM.DbPriceBalance = (decimal)updated_art_item.PriceBalance;
+            VM.DbAmount = (decimal)updated_art_item.Amount;
+            VM.DbAmountBalance = (decimal)updated_art_item.AmountBalance;
+            _loaded_item = updated_art_item;
+        });
+    }
+
+    private async void saveSaleTransaction()
     {
         String payment_str = amountEntryField.Text;
         String item_code = itemCodeEntryField.Text;
@@ -205,34 +284,19 @@ public partial class CreateSaleTransactionsPage : ContentPage
             selectedPaymentType = transactionTypePicker.SelectedItem.ToString();
         }
 
-        // Add PaymentTransaction
-        await _dbService.CreatePaymentItem(new PaymentTransaction
-        {
-            TransactionCode = transaction_group_EntryLabel.Text,
-            ItemCode = item_code,
-            Quantity = quantity,
-            Amount = payment_float,
-            TransactionType = selectedPaymentType,
-            Created = DateTime.Now,
-            Updated = DateTime.Now,
-        });
-
         // Extract the date from the transaction group date
         string transaction_code = transaction_group_EntryLabel.Text;
         string formattedDate = getDateFromCode(transaction_code);
 
-
-        var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
-        MainThread.BeginInvokeOnMainThread(() =>
-        {
-            listView.ItemsSource = items;
-            calculateTotals(items);
-        });
+        addItem(item_code, quantity, payment_float, selectedPaymentType, 
+            transaction_code, formattedDate);
+        
+        updateItemHeader(payment_float, quantity);
     }
+
 
     private async void clearButton_Clicked(object sender, EventArgs e)
     {
-
         transaction_group_EntryLabel.Text = "";
         transactionGroupIdEntryField.Text = "";
         time_EntryLabel.Text = "(--:--)";
@@ -273,7 +337,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
         }
         if (_editPaymentTransferRecordId == 0)
         {
-            detailSaveButton_Clicked(sender, e);
+            saveSaleTransaction();
         }
         else
         {
@@ -301,6 +365,12 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 Updated = DateTime.Now,
                 Created = existingTransaction.Created,
             });
+
+            float amount_difference = existingTransaction.Amount - payment_float; // Towards price
+            float quantity_difference = existingTransaction.Quantity - quantity; // Towards quantity
+
+            updateItemHeader(amount_difference, quantity_difference);
+
             _editPaymentItemId = 0;
 
             String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");
@@ -389,8 +459,8 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 MaterialLabel = field_key["work_type"],
                 DimensionsLabel = field_key["size"],
                 PriceLabel = field_key["price"],
+                AmountLabel = field_key["amount"],
             };
-
             UpdateParsedScanResults(artistItemData);
         });
     }

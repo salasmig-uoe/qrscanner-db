@@ -1,4 +1,5 @@
 ﻿
+using DocumentFormat.OpenXml.Office2010.Excel;
 using QRScanner.Database;
 using SQLite;
 using System.Globalization;
@@ -12,16 +13,13 @@ namespace QRScanner.Services
         private readonly SQLiteAsyncConnection _connection;
         
         public LocalDbService()
-        {
-            
+        {            
             string curr_directory = FileSystem.AppDataDirectory;
             _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             
             _connection.CreateTableAsync<ArtItem>().Wait();
             _connection.CreateTableAsync<PaymentTransaction>().Wait();
             _connection.CreateTableAsync<LastTransactions>().Wait();
-            
-            
         }
 
         public async Task<List<ArtItem>> GetArtItems()
@@ -32,6 +30,11 @@ namespace QRScanner.Services
         public async Task<ArtItem> GetById(int id)
         {
             return await _connection.Table<ArtItem>().Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<ArtItem> GetByItemCode(string item_code)
+        {
+            return await _connection.Table<ArtItem>().Where(x => x.ItemCode == item_code).FirstOrDefaultAsync();
         }
 
         public async Task Create(ArtItem item)
@@ -49,7 +52,6 @@ namespace QRScanner.Services
             await _connection.DeleteAsync(item);
         }
 
-
         public async Task CreatePaymentItem(PaymentTransaction item)
         {
             await _connection.InsertAsync(item);
@@ -58,8 +60,6 @@ namespace QRScanner.Services
         {
             await _connection.UpdateAsync(item);
         }
-
-
 
         public async Task<PaymentTransaction> GetPaymentItemByIdAsync(int id)
         {
