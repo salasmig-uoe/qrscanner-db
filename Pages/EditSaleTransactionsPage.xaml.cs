@@ -1,10 +1,9 @@
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
-using QRScanner.Popups;
 namespace QRScanner.Pages;
 
-public partial class EditTransactionsPage : ContentPage
+public partial class EditSaleTransactionsPage : ContentPage
 {
     private readonly LocalDbService _dbService;
     private int _editPaymentTransferRecordId;
@@ -18,8 +17,8 @@ public partial class EditTransactionsPage : ContentPage
 
     // Popup variables
     private MainViewModel VM;
-    private PopupResult _result;
-    public EditTransactionsPage(LocalDbService dbService, MainViewModel vm)
+    
+    public EditSaleTransactionsPage(LocalDbService dbService, MainViewModel vm)
     {
         InitializeComponent();
 

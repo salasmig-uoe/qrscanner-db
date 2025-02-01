@@ -1,9 +1,9 @@
 using QRScanner.ViewModel;
 namespace QRScanner.Pages;
 
-public partial class EmailFormPage : ContentPage
+public partial class EmailSaleTransactionsPage : ContentPage
 {
-    public EmailFormPage(EmailViewModel emailViewModel)
+    public EmailSaleTransactionsPage(EmailViewModel emailViewModel)
     {
         InitializeComponent();
         BindingContext = emailViewModel;

@@ -1,42 +1,38 @@
 
-using QRScanner.Pages;
-using QRScanner.Popups;
 using QRScanner.Services;
 using QRScanner.ViewModel;
 
 namespace QRScanner.Pages;
 
-public partial class SellingRecordPage : ContentPage
+public partial class QrArtHomePage : ContentPage
 {
     LocalDbService _dbService;
     MainViewModel _vm;
-    PopupResult _result;
     EmailViewModel _emailViewModel;
-    EditTransactionsPage _editTransactionsPage;
-    public SellingRecordPage(LocalDbService dbService, MainViewModel vm, PopupResult result, EmailViewModel emailViewModel, EditTransactionsPage editTransactionsPage)	
+    EditSaleTransactionsPage _editTransactionsPage;
+    public QrArtHomePage(LocalDbService dbService, MainViewModel vm, EmailViewModel emailViewModel, EditSaleTransactionsPage editTransactionsPage)	
     {
 		InitializeComponent();
         _dbService = dbService;
         _vm = vm;
         BindingContext = vm;
-        _result = result;
         _emailViewModel = emailViewModel;
         _editTransactionsPage = editTransactionsPage;
     }
 
     private async void OnSellingButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new QRScanner.Pages.SaleTransactionPage(_dbService, _vm,_result));
+        Navigation.PushAsync(new QRScanner.Pages.CreateSaleTransactionsPage(_dbService, _vm));
     }
 
     private async void OnEmailButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new QRScanner.Pages.EmailFormPage(_emailViewModel)); 
+        Navigation.PushAsync(new QRScanner.Pages.EmailSaleTransactionsPage(_emailViewModel)); 
     }
 
     private async void OnEditTransferButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new QRScanner.Pages.EditTransactionsPage(_dbService, _vm));
+        Navigation.PushAsync(new QRScanner.Pages.EditSaleTransactionsPage(_dbService, _vm));
     }
 
     private async void OnViewButtonClickedx(object sender, EventArgs e)
@@ -65,6 +61,6 @@ public partial class SellingRecordPage : ContentPage
 
     private async void OnViewButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new QRScanner.Pages.ViewTransactionPage(_dbService, _vm));
+        Navigation.PushAsync(new QRScanner.Pages.ViewSaleTransactionsPage(_dbService, _vm));
     }
 }

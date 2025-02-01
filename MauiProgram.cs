@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using QRScanner.Pages;
-using QRScanner.Popups;
 using QRScanner.Services;
 using QRScanner.ViewModel;
 using ZXing.Net.Maui.Controls;
@@ -23,18 +22,15 @@ namespace QRScanner
                 }).UseBarcodeReader();
 
             builder.Services.AddSingleton<LocalDbService>();
-            builder.Services.AddSingleton<MainScanPage>();
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<AlertService>();
-            builder.Services.AddSingleton<PopupResult>();
-            builder.Services.AddSingleton<DetailViewPage>();
             builder.Services.AddSingleton<EmailViewModel>();
-            builder.Services.AddSingleton<EmailFormPage>();
-            builder.Services.AddSingleton<EditTransactionsPage>();
+            builder.Services.AddSingleton<EmailSaleTransactionsPage>();
+            builder.Services.AddSingleton<EditSaleTransactionsPage>();
             builder.Services.AddSingleton<CameraPopupPage>();
-            builder.Services.AddSingleton<SaleTransactionPage>();
-            builder.Services.AddSingleton<ViewTransactionPage>();
+            builder.Services.AddSingleton<CreateSaleTransactionsPage>();
+            builder.Services.AddSingleton<ViewSaleTransactionsPage>();
 
 
 #if DEBUG

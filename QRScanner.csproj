@@ -72,8 +72,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\ViewTransactionPage.xaml.cs">
-	    <DependentUpon>ViewTransactionPage.xaml</DependentUpon>
+	  <Compile Update="Pages\EditSaleTransactionsPage.xaml.cs">
+	    <DependentUpon>EditSaleTransactionsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\EmailSaleTransactionsPage.xaml.cs">
+	    <DependentUpon>EmailSaleTransactionsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\QrArtHomePage.xaml.cs">
+	    <DependentUpon>QrArtHomePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\CreateSaleTransactionsPage.xaml.cs">
+	    <DependentUpon>CreateSaleTransactionsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ViewSaleTransactionsPage.xaml.cs">
+	    <DependentUpon>ViewSaleTransactionsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -81,31 +93,19 @@
 	  <MauiXaml Update="Pages\CameraPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DetailViewPage.xaml">
+	  <MauiXaml Update="Pages\EditSaleTransactionsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\EditTransactionsPage.xaml">
+	  <MauiXaml Update="Pages\EmailSaleTransactionsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\EmailFormPage.xaml">
+	  <MauiXaml Update="Pages\CreateSaleTransactionsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\MainScanPage.xaml">
+	  <MauiXaml Update="Pages\QrArtHomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\PopupPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\SaleTransactionPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\SellingRecordPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\ViewRecordsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\ViewTransactionPage.xaml">
+	  <MauiXaml Update="Pages\ViewSaleTransactionsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

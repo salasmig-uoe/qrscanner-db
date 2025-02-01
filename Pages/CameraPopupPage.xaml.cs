@@ -1,7 +1,4 @@
-using QRScanner.Popups;
-using QRScanner.ViewModel;
 using ZXing.Net.Maui;
-using QRScanner.Database;
 using System.Diagnostics;
 namespace QRScanner.Pages;
 
@@ -18,8 +15,6 @@ public partial class CameraPopupPage : ContentPage
     {
         InitializeComponent();
     }
-
-
 
     private void OnBarcodeDetected(object sender, BarcodeDetectionEventArgs e)
     {

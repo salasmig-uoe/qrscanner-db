@@ -17,31 +17,19 @@
     <MauiXaml Update="Pages\CameraPopupPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\DetailViewPage.xaml">
+    <MauiXaml Update="Pages\EditSaleTransactionsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\EditTransactionsPage.xaml">
+    <MauiXaml Update="Pages\EmailSaleTransactionsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\EmailFormPage.xaml">
+    <MauiXaml Update="Pages\CreateSaleTransactionsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\MainScanPage.xaml">
+    <MauiXaml Update="Pages\QrArtHomePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\PopupPage.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="Pages\SaleTransactionPage.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="Pages\SellingRecordPage.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="Pages\ViewRecordsPage.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="Pages\ViewTransactionPage.xaml">
+    <MauiXaml Update="Pages\ViewSaleTransactionsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

@@ -1,11 +1,9 @@
-using CommunityToolkit.Maui.Views;
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
-using QRScanner.Popups;
 namespace QRScanner.Pages;
 
-public partial class SaleTransactionPage : ContentPage
+public partial class CreateSaleTransactionsPage : ContentPage
 {
     private readonly LocalDbService _dbService;
     private int _editPaymentTransferRecordId;
@@ -19,7 +17,30 @@ public partial class SaleTransactionPage : ContentPage
 
     // Popup variables
     private MainViewModel VM;
-    private PopupResult _result;
+
+    public CreateSaleTransactionsPage(LocalDbService dbService, MainViewModel vm)
+    {
+        InitializeComponent();
+        BindingContext = vm;
+        _dbService = dbService;
+
+        // Variables for the Popup
+        VM = vm;
+        BindingContext = VM;
+
+        // Set values manually
+        ItemCodeLabel.Text = "000000000";
+        ArtistCodeLabel.Text = "Artist0000000";
+        TitleLabel.Text = "Title";
+        MaterialLabel.Text = "";
+        DimensionsLabel.Text = "";
+        PriceLabel.Text = "0";
+
+        VM.TotalAmount = 0;
+        VM.CardAmount = 0;
+        VM.CashAmount = 0;
+        VM.DonationAmount = 0;
+    }
 
 
     public void UpdateParsedScanResults(ArtistItemData data)
@@ -56,25 +77,6 @@ public partial class SaleTransactionPage : ContentPage
         });
     }
 
-    public SaleTransactionPage(LocalDbService dbService, MainViewModel vm, PopupResult result)
-    {
-        InitializeComponent();
-        BindingContext = vm;
-        _dbService = dbService;
-
-        // Variables for the Popup
-        VM = vm;
-        _result = result;
-        BindingContext = VM;
-
-        // Set values manually
-        ItemCodeLabel.Text = "000000000";
-        ArtistCodeLabel.Text = "Artist0000000";
-        TitleLabel.Text = "Title";
-        MaterialLabel.Text = "";
-        DimensionsLabel.Text = "";
-        PriceLabel.Text = "0";
-    }
 
     private string getDateFromCode(string str_code)
     {
@@ -152,7 +154,6 @@ public partial class SaleTransactionPage : ContentPage
     public void generateNextTransactionGroupButton_Clicked(object sender, EventArgs e)
     {
         Task.Run(async () => await UpdateDatabaseAndUIAsync());
-
     }
 
 
@@ -334,26 +335,6 @@ public partial class SaleTransactionPage : ContentPage
         if (double.TryParse(amountEntryField.Text, out double amount))
         {
             amountEntryField.Text = amount.ToString("F2");
-        }
-    }
-
-    private async void OnScanButtonClicked(object sender, EventArgs e)
-    {
-
-        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
-        {
-            string message = "You need to generate a transaction group before Scanning";
-            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
-
-            return;
-        }
-        var popupPage = new PopupPage(VM, _result);
-        var result = await this.ShowPopupAsync(popupPage);
-        if (result != null)
-        {
-            PopupResult res = (PopupResult)result;
-            VM.BarcodeLabelText = res.ReturnData;
-            VM.Text = res.ReturnData;
         }
     }
 

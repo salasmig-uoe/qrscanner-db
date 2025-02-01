@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "D:\\projects\\maui\\qrscanner-db\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\edittransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\edittransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\edittransactionspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\edittransactionspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\saletransactionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\saletransactionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\viewtransactionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\viewtransactionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\viewtransactionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\viewtransactionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\sellingrecordpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\sellingrecordpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\sellingrecordpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\sellingrecordpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\camerapopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\camerapopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\saletransactionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\saletransactionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\qrarthomepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\qrarthomepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\createsaletransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\createsaletransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\editsaletransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\editsaletransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\viewsaletransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\viewsaletransactionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\createsaletransactionspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\createsaletransactionspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\pages\\emailsaletransactionspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:pages\\emailsaletransactionspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|d:\\projects\\maui\\qrscanner-db\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C8323065-3738-4E72-830E-8DFE28A86874}|QRScanner.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +50,136 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CameraPopupPage.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\CameraPopupPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\CameraPopupPage.xaml.cs",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\CameraPopupPage.xaml.cs",
+              "RelativeToolTip": "Pages\\CameraPopupPage.xaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA1wCIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T10:53:02.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EditTransactionsPage.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditTransactionsPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\EditTransactionsPage.xaml.cs",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditTransactionsPage.xaml.cs",
-              "RelativeToolTip": "Pages\\EditTransactionsPage.xaml.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAA2wGMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T10:00:01.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\AppShell.xaml",
-              "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\AppShell.xaml",
-              "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvxoAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-01T09:40:32.469Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SellingRecordPage.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\SellingRecordPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\SellingRecordPage.xaml.cs",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\SellingRecordPage.xaml.cs",
-              "RelativeToolTip": "Pages\\SellingRecordPage.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T09:40:15.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MauiProgram.cs",
               "ToolTip": "D:\\projects\\maui\\qrscanner-db\\MauiProgram.cs",
               "RelativeToolTip": "MauiProgram.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwCMAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA1wBgAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T09:39:49.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SaleTransactionPage.xaml",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\SaleTransactionPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\SaleTransactionPage.xaml",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\SaleTransactionPage.xaml",
-              "RelativeToolTip": "Pages\\SaleTransactionPage.xaml",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwv9gAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-01T09:35:51.539Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ViewTransactionPage.xaml",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\ViewTransactionPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\ViewTransactionPage.xaml",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\ViewTransactionPage.xaml",
-              "RelativeToolTip": "Pages\\ViewTransactionPage.xaml",
-              "ViewState": "AgIAAFcAAAAAAAAAAAA2wHkAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-01T09:27:28.637Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ViewTransactionPage.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\ViewTransactionPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\ViewTransactionPage.xaml.cs",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\ViewTransactionPage.xaml.cs",
-              "RelativeToolTip": "Pages\\ViewTransactionPage.xaml.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAA2wGIAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T09:24:35.332Z",
+              "WhenOpened": "2025-02-01T10:52:57.743Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SaleTransactionPage.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\SaleTransactionPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\SaleTransactionPage.xaml.cs",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\SaleTransactionPage.xaml.cs",
-              "RelativeToolTip": "Pages\\SaleTransactionPage.xaml.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAABBwFYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T09:55:09.923Z",
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\MainPage.xaml",
+              "RelativeDocumentMoniker": "MainPage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\MainPage.xaml",
+              "RelativeToolTip": "MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwwAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-01T10:52:42.812Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EditTransactionsPage.xaml",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditTransactionsPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\EditTransactionsPage.xaml",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditTransactionsPage.xaml*",
-              "RelativeToolTip": "Pages\\EditTransactionsPage.xaml*",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAJAAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "CreateSaleTransactionsPage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\CreateSaleTransactionsPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\CreateSaleTransactionsPage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\CreateSaleTransactionsPage.xaml",
+              "RelativeToolTip": "Pages\\CreateSaleTransactionsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-01T09:43:55.002Z",
+              "WhenOpened": "2025-02-01T10:50:12.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EditSaleTransactionsPage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditSaleTransactionsPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\EditSaleTransactionsPage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\EditSaleTransactionsPage.xaml",
+              "RelativeToolTip": "Pages\\EditSaleTransactionsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-01T10:49:59.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "SellingRecordPage.xaml",
-              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\SellingRecordPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\SellingRecordPage.xaml",
-              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\SellingRecordPage.xaml",
-              "RelativeToolTip": "Pages\\SellingRecordPage.xaml",
-              "ViewState": "AgIAADMAAAAAAAAAAADwvz4AAAA0AAAAAAAAAA==",
+              "Title": "ViewSaleTransactionsPage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\ViewSaleTransactionsPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\ViewSaleTransactionsPage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\ViewSaleTransactionsPage.xaml",
+              "RelativeToolTip": "Pages\\ViewSaleTransactionsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-01T09:41:04.237Z",
+              "WhenOpened": "2025-02-01T10:49:02.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EmailSaleTransactionsPage.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\EmailSaleTransactionsPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\EmailSaleTransactionsPage.xaml.cs",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\EmailSaleTransactionsPage.xaml.cs",
+              "RelativeToolTip": "Pages\\EmailSaleTransactionsPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T10:41:24.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QrArtHomePage.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\QrArtHomePage.xaml",
+              "RelativeDocumentMoniker": "Pages\\QrArtHomePage.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\QrArtHomePage.xaml",
+              "RelativeToolTip": "Pages\\QrArtHomePage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-01T10:33:24.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateSaleTransactionsPage.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\Pages\\CreateSaleTransactionsPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\CreateSaleTransactionsPage.xaml.cs",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\Pages\\CreateSaleTransactionsPage.xaml.cs",
+              "RelativeToolTip": "Pages\\CreateSaleTransactionsPage.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACkAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T10:32:12.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "D:\\projects\\maui\\qrscanner-db\\AppShell.xaml",
+              "RelativeDocumentMoniker": "AppShell.xaml",
+              "ToolTip": "D:\\projects\\maui\\qrscanner-db\\AppShell.xaml",
+              "RelativeToolTip": "AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-01T10:31:17.787Z",
               "EditorCaption": ""
             }
           ]
