@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QRScanner.Pages.EmailSaleTransactionsPage"
-             Title="EmailFormPage"
+             Title="Email Transactions"
              xmlns:viewModel="clr-namespace:QRScanner.ViewModel"
              x:DataType="viewModel:EmailViewModel">
 
     <VerticalStackLayout>
         <!-- Self-contained Grid for Entries and Button -->
         <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" 
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" 
             ColumnDefinitions="*,*,*"
             Margin="0,0,0,30"
             HorizontalOptions="Center">
@@ -82,11 +82,15 @@
                 Grid.Row="5"
                 Grid.ColumnSpan="3"
                 Text="Send"
-                FontSize="Large"
-                FontAttributes="Bold"
                 TextTransform="Uppercase"
                 Command="{Binding SendMailCommand}"
-                HorizontalOptions="FillAndExpand" />
+                WidthRequest="100"
+                HorizontalOptions="FillAndExpand" 
+                Padding="10"/>
+            <Label Text="." HeightRequest="5" Grid.Row="6"/>
+            <!-- Close Sale Button -->
+            <Button Grid.Row="7" Grid.ColumnSpan="3" Text="Back" BackgroundColor="Green" WidthRequest="100" Padding="10" Clicked="OnGoBackButtonClicked"
+                    HorizontalOptions="Center" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

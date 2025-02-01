@@ -5,7 +5,7 @@
   <Properties>
     <DisplayName>QRScanner</DisplayName>
     <PublisherDisplayName>User Name</PublisherDisplayName>
-    <Logo>appiconStoreLogo.png</Logo>
+    <Logo>artist_palette_colourStoreLogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
@@ -16,14 +16,14 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
-      <uap:VisualElements DisplayName="QRScanner" Description="QRScanner" Square150x150Logo="appiconMediumTile.png" Square44x44Logo="appiconLogo.png" BackgroundColor="transparent">
-        <uap:DefaultTile Square71x71Logo="appiconSmallTile.png" Wide310x150Logo="appiconWideTile.png" Square310x310Logo="appiconLargeTile.png" ShortName="QRScanner">
+      <uap:VisualElements DisplayName="QRScanner" Description="QRScanner" Square150x150Logo="artist_palette_colourMediumTile.png" Square44x44Logo="artist_palette_colourLogo.png" BackgroundColor="transparent">
+        <uap:DefaultTile Square71x71Logo="artist_palette_colourSmallTile.png" Wide310x150Logo="artist_palette_colourWideTile.png" Square310x310Logo="artist_palette_colourLargeTile.png" ShortName="QRScanner">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="splashSplashScreen.png" />
+        <uap:SplashScreen Image="artist_palette_colour_splashSplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>

@@ -7,4 +7,5 @@ File=Resources\Images\listwithpen.png;Link=;BaseSize=;Resize=;TintColor=;Color=;
 File=Resources\Images\paperclip.png;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources\Images\sale.jpg;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources\Images\view.png;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
-File=Resources\AppIcon\appicon.svg;Link=;BaseSize=;Resize=;TintColor=;Color=#512BD4;IsAppIcon=True;ForegroundScale=;ForegroundFile=Resources\AppIcon\appiconfg.svg
+File=Resources\AppIcon\artist_palette_colour.svg;Link=;BaseSize=;Resize=;TintColor=;Color=Orange;IsAppIcon=True;ForegroundScale=0.75;ForegroundFile=
+File=Resources\Splash\artist_palette_colour_splash.svg;Link=;BaseSize=;Resize=;TintColor=;Color=Orange;IsAppIcon=True;ForegroundScale=0.75;ForegroundFile=

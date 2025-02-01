@@ -24,7 +24,7 @@
                     SemanticProperties.HeadingLevel="Level1" />
                 <Label
                     x:Name="MainLabel"
-                    Text="{Binding Text}"
+                    Text="© 2025 Eunoia Studios"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
                     WidthRequest="200"
@@ -71,21 +71,6 @@
                         />
 
                 </HorizontalStackLayout>
-                
-                <Grid
-                    ColumnDefinitions="*,2*"
-                    WidthRequest="200"
-                    HorizontalOptions="Center">
-                    <CheckBox 
-                        IsChecked="{Binding UseExternal}" 
-                        HorizontalOptions="End"
-                        Grid.Column="0"/>
-                    <Label 
-                        Grid.Column="1" 
-                        VerticalTextAlignment="Center"
-                        Margin="10,0,0,0"
-                        Text="Use Bluetooth"/>
-                </Grid>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

@@ -12,8 +12,11 @@ public partial class EmailSaleTransactionsPage : ContentPage
 
     public void OnDateSelected(object sender, DateChangedEventArgs e)
     {
-        // Handle the date selected event
-
+        // TODO: Handle the date selected event
+    }
+    private async void OnGoBackButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
     }
 
 }
