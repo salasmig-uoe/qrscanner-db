@@ -1,6 +1,10 @@
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
+using System.Net.Mail;
+using System.Net;
+using System.Net.Mime;
+using System.Text;
 
 namespace QRScanner.Pages;
 
@@ -27,9 +31,114 @@ public partial class QrArtHomePage : ContentPage
 
     private async void OnEmailButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new QRScanner.Pages.EmailSaleTransactionsPage(_emailViewModel));
-    }
+        bool automatic = false; // TODO email(4)
 
+        if (automatic == false)
+        {
+            Navigation.PushAsync(new QRScanner.Pages.EmailSaleTransactionsPage(_emailViewModel));
+        }
+        else
+        {
+            try
+            {
+                // Email details
+                string fromEmail = "test@gmail.com"; //TODO email(1) Your Gmail address
+                string toEmail = "test@yahoo.com.mx"; // Recipient's email
+                string subject = "New Test Email from .NET MAUI";
+                string body = "This is an automated email sent from a .NET MAUI app.";
+
+                // Gmail SMTP settings
+                string smtpHost = "smtp.gmail.com";
+                int smtpPort = 587;
+                string smtpUsername = "";// TODO email(2) UserEntry.Text; // Your Gmail address
+                string smtpPassword = "";// AccessCodeEntry.Text; // Your App Password or Gmail password
+
+                // Create the email message
+                MailMessage mail = new MailMessage(fromEmail, toEmail, subject, body);
+
+                // String to be attached as a text file
+                string attachmentContent = "This is the content of the text file.";
+                string attachmentFileName = "attachment.txt";
+
+                // Convert the string to a MemoryStream
+                byte[] attachmentBytes = Encoding.UTF8.GetBytes(attachmentContent);
+                MemoryStream attachmentStream = new MemoryStream(attachmentBytes);
+
+                // Create the attachment
+                Attachment attachment = new Attachment(attachmentStream, attachmentFileName, MediaTypeNames.Text.Plain);
+                mail.Attachments.Add(attachment);
+
+                // Set up the SMTP client
+                SmtpClient smtpClient = new SmtpClient(smtpHost, smtpPort)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(smtpUsername, smtpPassword)
+                };
+
+                // Send the email
+                smtpClient.Send(mail);
+
+                // Update the status label
+                await Application.Current.MainPage.DisplayAlert("Status: Email sent successfully!", "email sent", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Handle errors
+                string StatusLabel = $"Status: Error - {ex.Message}";
+                await Application.Current.MainPage.DisplayAlert(StatusLabel, "email not sent", "OK");
+            }
+        }
+    }
+    /*
+    private async void OnEmailButtonClicked(object sender, EventArgs e)
+    {
+        bool automatic = false;
+
+        if (automatic == false)
+        {
+            Navigation.PushAsync(new QRScanner.Pages.EmailSaleTransactionsPage(_emailViewModel));
+        }
+        else
+        {
+            try
+            {
+                // Email details
+                string fromEmail = "youraccount@gmail.com"; // Your Gmail address
+                string toEmail = "youraccount@yahoo.com.mx"; // Recipient's email
+                string subject = "Test Email from .NET MAUI";
+                string body = "This is an automated email sent from a .NET MAUI app.";
+
+                // Gmail SMTP settings
+                string smtpHost = "smtp.gmail.com";
+                int smtpPort = 587;
+                string smtpUsername = ""; // UserEntry.Text; // Your Gmail address
+                string smtpPassword = ""; // AccessCodeEntry.Text; // Your App Password or Gmail password
+
+                // Create the email message
+                MailMessage mail = new MailMessage(fromEmail, toEmail, subject, body);
+
+                // Set up the SMTP client
+                SmtpClient smtpClient = new SmtpClient(smtpHost, smtpPort)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(smtpUsername, smtpPassword)
+                };
+
+                // Send the email
+                smtpClient.Send(mail);
+
+                // Update the status label
+                await Application.Current.MainPage.DisplayAlert("Status: Email sent successfully!", "email sent", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Handle errors
+                string StatusLabel= $"Status: Error - {ex.Message}";
+                await Application.Current.MainPage.DisplayAlert(StatusLabel, "email not sent", "OK");
+            }
+        }
+    }
+    */
     private async void OnEditTransferButtonClicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new QRScanner.Pages.EditSaleTransactionsPage(_dbService, _vm));

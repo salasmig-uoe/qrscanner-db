@@ -32,6 +32,14 @@
                     BackgroundColor="Azure"
                     Padding="2,1">
                 </Label>
+                <!-- TODO email (3)
+                <Entry x:Name="UserEntry"
+                       Text="Eunoia">
+                </Entry>
+                <Entry x:Name="AccessCodeEntry"
+                       Text="Eunoia">
+                </Entry>
+                -->
                 <HorizontalStackLayout
                     Spacing="10"  
                     VerticalOptions="End"
