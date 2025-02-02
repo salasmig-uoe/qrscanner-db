@@ -32,12 +32,10 @@
                     BackgroundColor="Azure"
                     Padding="2,1">
                 </Label>
-
                 <HorizontalStackLayout
                     Spacing="10"  
                     VerticalOptions="End"
                     HorizontalOptions="Center">
-
                     <Grid
                         BackgroundColor="DarkGreen"
                         Padding="2"
@@ -51,13 +49,11 @@
                             Clicked="OnSellingButtonClicked"
                             BackgroundColor="Transparent" />
                     </Grid>
-
                     <ImageButton
                         Source="view.png"
                         HeightRequest="40"
                         WidthRequest="40"
                         Clicked="OnViewButtonClicked" />
-                    
                     <ImageButton
                         Source="email.png"
                         HeightRequest="40"
@@ -69,7 +65,12 @@
                         WidthRequest="40" 
                         Clicked="OnEditTransferButtonClicked" 
                         />
-
+                    <ImageButton
+                        Source="toolbox_black.png"
+                        HeightRequest="40"
+                        WidthRequest="40" 
+                        Clicked="OnToolsTransferButtonClicked" 
+                        />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

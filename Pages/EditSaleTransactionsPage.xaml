@@ -48,7 +48,7 @@
                         <Label Text="Sale Transaction" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Item Code" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Quantity" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Transaction Type" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Text="Payment Type" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Amount" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Action" Grid.Row="0" Grid.Column="6" VerticalOptions="Center" HorizontalOptions="Center"/>
 
@@ -75,60 +75,112 @@
                     </Grid>
                 </Border>
 
-                <!-- ListView wrapped in a ScrollView -->
-                <ScrollView>
-                    <ListView x:Name="listView" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1.5*" />
-                                            <!-- PaymentId 0 -->
-                                            <ColumnDefinition Width="3*" />
-                                            <!-- TransactionCode 1 -->
-                                            <ColumnDefinition Width="2*" />
-                                            <!-- Created 2 -->
-                                            <ColumnDefinition Width="4*" />
-                                            <!-- ItemCode 3 -->
-                                            <ColumnDefinition Width="2*" />
-                                            <!-- TransactionType 4 -->
-                                            <ColumnDefinition Width="2.5*" />
-                                            <!-- Quantity 5 -->
-                                            <ColumnDefinition Width="0.5*" />
-                                            <!-- Spacer 6 -->
-                                            <ColumnDefinition Width="2.0*" />
-                                            <!-- Amount 7 -->
+                <Grid>
+                    <!-- Define two rows: one for the header and one for the ListView -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <!-- Header row -->
+                        <RowDefinition Height="*" />
+                        <!-- ListView row -->
+                    </Grid.RowDefinitions>
 
-                                        </Grid.ColumnDefinitions>
+                    <!-- Header Row -->
+                    <Grid BackgroundColor="Green" Padding="5" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*" />
+                            <!-- PaymentId 0 -->
+                            <ColumnDefinition Width="3*" />
+                            <!-- TransactionCode 1 -->
+                            <ColumnDefinition Width="2*" />
+                            <!-- Created 2 -->
+                            <ColumnDefinition Width="4*" />
+                            <!-- ItemCode 3 -->
+                            <ColumnDefinition Width="2*" />
+                            <!-- TransactionType 4 -->
+                            <ColumnDefinition Width="2.5*" />
+                            <!-- Quantity 5 -->
+                            <ColumnDefinition Width="0.5*" />
+                            <!-- Spacer 6 -->
+                            <ColumnDefinition Width="2.0*" />
+                            <!-- Amount 7 -->
+                        </Grid.ColumnDefinitions>
 
-                                        <!-- PaymentId -->
-                                        <Label x:Name="PaymentIdLabel" Grid.Column="0" Text="{Binding PaymentId}" FontSize="17" />
+                        <!-- PaymentId Header -->
+                        <Label Grid.Column="0" Text="Payment ID" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
 
-                                        <!-- TransactionCode (new column) -->
-                                        <Label x:Name="TransactionCodeLabel" Grid.Column="1" Text="{Binding TransactionCode, StringFormat='{0:12}'}" TextColor="Blue" FontAttributes="Bold" FontSize="18" />
+                        <!-- TransactionCode Header -->
+                        <Label Grid.Column="1" Text="Receipt Number" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
 
-                                        <!-- Created Time -->
-                                        <Label x:Name="CreatedLabel" Grid.Column="2" Text="{Binding Created, StringFormat='{0:HH:mm}'}" TextColor="Green" FontAttributes="Bold" FontSize="18" HorizontalTextAlignment="Start" />
+                        <!-- Created Header -->
+                        <Label Grid.Column="2" Text="Created" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
 
-                                        <!-- ItemCode -->
-                                        <Label x:Name="ItemCodeLabel" Grid.Column="3" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
+                        <!-- ItemCode Header -->
+                        <Label Grid.Column="3" Text="Item Code" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
 
-                                        <!-- TransactionType -->
-                                        <Label x:Name="TransactionTypeLabel" Grid.Column="4" Text="{Binding TransactionType}" FontSize="17" />
+                        <!-- TransactionType Header -->
+                        <Label Grid.Column="4" Text="Payment Type" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
 
-                                        <!-- Quantity -->
-                                        <Label x:Name="QuantityLabel" Grid.Column="5" Text="{Binding Quantity}" FontSize="17" />
+                        <!-- Quantity Header -->
+                        <Label Grid.Column="5" Text="Quantity" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
 
-                                        <!-- Spacer -->
-                                        <Label x:Name="AmountLabel" Grid.Column="7" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
+                        <!-- Amount Header -->
+                        <Label Grid.Column="7" Text="Amount" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </Grid>
 
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollView>
+                    <!-- ListView -->
+                    <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
+                        <ListView x:Name="listView" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*" />
+                                                <!-- PaymentId 0 -->
+                                                <ColumnDefinition Width="3*" />
+                                                <!-- TransactionCode 1 -->
+                                                <ColumnDefinition Width="2*" />
+                                                <!-- Created 2 -->
+                                                <ColumnDefinition Width="4*" />
+                                                <!-- ItemCode 3 -->
+                                                <ColumnDefinition Width="2*" />
+                                                <!-- TransactionType 4 -->
+                                                <ColumnDefinition Width="2.5*" />
+                                                <!-- Quantity 5 -->
+                                                <ColumnDefinition Width="0.5*" />
+                                                <!-- Spacer 6 -->
+                                                <ColumnDefinition Width="2.0*" />
+                                                <!-- Amount 7 -->
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- PaymentId -->
+                                            <Label x:Name="PaymentIdLabel" Grid.Column="0" Text="{Binding PaymentId}" FontSize="17" />
+
+                                            <!-- TransactionCode (new column) -->
+                                            <Label x:Name="TransactionCodeLabel" Grid.Column="1" Text="{Binding TransactionCode, StringFormat='{0:12}'}" TextColor="Blue" FontAttributes="Bold" FontSize="18" />
+
+                                            <!-- Created Time -->
+                                            <Label x:Name="CreatedLabel" Grid.Column="2" Text="{Binding Created, StringFormat='{0:HH:mm}'}" TextColor="Green" FontAttributes="Bold" FontSize="18" HorizontalTextAlignment="Start" />
+
+                                            <!-- ItemCode -->
+                                            <Label x:Name="ItemCodeLabel" Grid.Column="3" Text="{Binding ItemCode}" FontSize="17" FontAttributes="Bold" />
+
+                                            <!-- TransactionType -->
+                                            <Label x:Name="TransactionTypeLabel" Grid.Column="4" Text="{Binding TransactionType}" FontSize="17" />
+
+                                            <!-- Quantity -->
+                                            <Label x:Name="QuantityLabel" Grid.Column="5" HorizontalTextAlignment="Center" Text="{Binding Quantity}" FontSize="17" />
+
+                                            <!-- Spacer -->
+                                            <Label x:Name="AmountLabel" Grid.Column="7" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="17" HorizontalTextAlignment="End" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollView>
+                </Grid>
+
             </VerticalStackLayout>
         </ScrollView>
 

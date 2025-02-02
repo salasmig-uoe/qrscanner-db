@@ -470,8 +470,8 @@ public partial class CreateSaleTransactionsPage : ContentPage
 
         if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
         {
-            string message = "You need to generate a transaction group before Scanning";
-            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+            string message = "This is required before your FIRST scan to group customer sales";
+            await App.Current.MainPage.DisplayAlert("You need to click the Recepit icon before Scanning", message, "Ok");
 
             return;
         }

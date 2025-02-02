@@ -17,12 +17,7 @@ D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\QRScanner.csproj.Assembly
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\mauiimage.inputs
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\mauifont.inputs
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\mauisplash.inputs
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-hdpi\splash.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-mdpi\splash.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-v31\maui_splash_image.xml
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xhdpi\splash.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxhdpi\splash.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxxhdpi\splash.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable\maui_splash_image.xml
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\values\maui_colors.xml
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\mauisplash.stamp
@@ -990,16 +985,6 @@ D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\stamp\_ConvertResourcesCa
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\stamp\_GenerateJavaStubs.stamp
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\stamp\_GeneratePackageManagerJava.stamp
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\stamp\_ResolveLibraryProjectImports.stamp
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-hdpi\artist_palette_colour.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-mdpi\artist_palette_colour.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xhdpi\artist_palette_colour.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxhdpi\artist_palette_colour.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxxhdpi\artist_palette_colour.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-hdpi\artist_palette_colour1.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-mdpi\artist_palette_colour1.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xhdpi\artist_palette_colour1.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxhdpi\artist_palette_colour1.png
-D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxxhdpi\artist_palette_colour1.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-hdpi\artist_palette_colour_splash.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-mdpi\artist_palette_colour_splash.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\sp\drawable-xhdpi\artist_palette_colour_splash.png
@@ -1027,3 +1012,7 @@ D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\mipmap-xxxh
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\mipmap-xxxhdpi\artist_palette_colour_splash_background.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\mipmap-xxxhdpi\artist_palette_colour_splash_foreground.png
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\mipmap-xxxhdpi\artist_palette_colour_splash_round.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\drawable\toolbox_black.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\drawable\paid.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\drawable\receipt.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-android\resizetizer\r\drawable\scanner.png

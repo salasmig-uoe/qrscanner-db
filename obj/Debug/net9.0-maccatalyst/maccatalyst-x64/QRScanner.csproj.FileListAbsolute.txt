@@ -322,3 +322,16 @@ D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\refin
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.pdb
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.genruntimeconfig.cache
 D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\ref\QRScanner.dll
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\Contents.json
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splashItunesArtwork.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash83.5x83.5@2x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash76x76@2x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash60x60@3x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash60x60@2x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash40x40@3x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash40x40@2x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash29x29@3x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash29x29@2x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash20x20@3x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\artist_palette_colour_splash.appiconset\artist_palette_colour_splash20x20@2x.png
+D:\projects\maui\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\toolbox.png
