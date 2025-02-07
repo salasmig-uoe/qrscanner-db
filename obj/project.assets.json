@@ -505,7 +505,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -522,6 +522,52 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Android/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "android-arm"
+          },
+          "runtimes/android-arm64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x86/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "android-x86"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -2708,6 +2754,69 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/Xamarin.KotlinX.Serialization.Core.Jvm.targets": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -3264,7 +3373,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -3281,6 +3390,37 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Android/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "native": {
+          "runtimes/android-arm64/native/libSkiaSharp.so": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -5467,6 +5607,69 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/Xamarin.KotlinX.Serialization.Core.Jvm.targets": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -6023,7 +6226,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -6040,6 +6243,37 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Android/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "native": {
+          "runtimes/android-x64/native/libSkiaSharp.so": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -8226,6 +8460,69 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/Xamarin.KotlinX.Serialization.Core.Jvm.targets": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -8782,7 +9079,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -8799,6 +9096,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Android/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -10985,6 +11310,69 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/Xamarin.KotlinX.Serialization.Core.Jvm.targets": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -11541,7 +11929,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -11558,6 +11946,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Android/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -13744,6 +14160,69 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/Xamarin.KotlinX.Serialization.Core.Jvm.targets": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -14300,7 +14779,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -14317,6 +14796,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Android/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-android30.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -16505,6 +17012,69 @@
           "buildTransitive/net8.0-android34.0/Xamarin.KotlinX.Serialization.Core.Jvm.targets": {}
         }
       },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "ZXing.Net/0.16.9": {
         "type": "package",
         "compile": {
@@ -17032,7 +17602,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -17049,6 +17619,60 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/ios/native/libSkiaSharp.framework/Info.plist": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/libSkiaSharp.framework/_CodeSignature/CodeResources": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/libSkiaSharp.framework/libSkiaSharp": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/iossimulator/native/libSkiaSharp.framework/Info.plist": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          },
+          "runtimes/iossimulator/native/libSkiaSharp.framework/_CodeSignature/CodeResources": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          },
+          "runtimes/iossimulator/native/libSkiaSharp.framework/libSkiaSharp": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -17133,6 +17757,69 @@
         "type": "package",
         "compile": {
           "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
             "related": ".xml"
           }
         }
@@ -17653,7 +18340,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -17670,6 +18357,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -17754,6 +18469,69 @@
         "type": "package",
         "compile": {
           "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
             "related": ".xml"
           }
         }
@@ -18274,7 +19052,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -18291,6 +19069,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -18375,6 +19181,69 @@
         "type": "package",
         "compile": {
           "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
             "related": ".xml"
           }
         }
@@ -18895,7 +19764,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -18912,6 +19781,39 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "native": {
+          "runtimes/iossimulator/native/libSkiaSharp.framework/Info.plist": {},
+          "runtimes/iossimulator/native/libSkiaSharp.framework/_CodeSignature/CodeResources": {},
+          "runtimes/iossimulator/native/libSkiaSharp.framework/libSkiaSharp": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -18996,6 +19898,69 @@
         "type": "package",
         "compile": {
           "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
             "related": ".xml"
           }
         }
@@ -19516,7 +20481,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -19533,6 +20498,39 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "native": {
+          "runtimes/ios/native/libSkiaSharp.framework/Info.plist": {},
+          "runtimes/ios/native/libSkiaSharp.framework/_CodeSignature/CodeResources": {},
+          "runtimes/ios/native/libSkiaSharp.framework/libSkiaSharp": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -19617,6 +20615,69 @@
         "type": "package",
         "compile": {
           "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
             "related": ".xml"
           }
         }
@@ -20137,7 +21198,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -20154,6 +21215,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-ios13.6/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -20238,6 +21327,69 @@
         "type": "package",
         "compile": {
           "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
             "related": ".xml"
           }
         }
@@ -20758,7 +21910,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -20775,6 +21927,40 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.MacCatalyst": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/maccatalyst/native/libSkiaSharp.framework.zip": {
+            "assetType": "native",
+            "rid": "maccatalyst"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -20951,6 +22137,69 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -21469,7 +22718,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -21486,6 +22735,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.MacCatalyst": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -21579,6 +22856,69 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -22097,7 +23437,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -22114,6 +23454,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.MacCatalyst": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -22207,6 +23575,69 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -22725,7 +24156,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -22742,6 +24173,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.MacCatalyst": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -22832,6 +24291,69 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -23350,7 +24872,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -23367,6 +24889,37 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.MacCatalyst": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "native": {
+          "runtimes/maccatalyst/native/libSkiaSharp.framework.zip": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -23460,6 +25013,69 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -23978,7 +25594,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.0": {
+      "Microsoft.NET.ILLink.Tasks/9.0.1": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -23995,6 +25611,34 @@
         "build": {
           "build/Microsoft.Windows.CsWinRT.props": {},
           "build/Microsoft.Windows.CsWinRT.targets": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.MacCatalyst": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0-maccatalyst13.5/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -24085,6 +25729,69 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -24833,6 +26540,61 @@
           }
         }
       },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -25028,6 +26790,69 @@
           "runtimes/win/lib/net9.0/System.Speech.dll": {
             "assetType": "runtime",
             "rid": "win"
+          }
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -25735,6 +27560,41 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -25842,6 +27702,69 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -26548,6 +28471,41 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -26655,6 +28613,69 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -27361,6 +29382,41 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -27465,6 +29521,69 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -28171,6 +30290,41 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -28278,6 +30432,69 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -28993,6 +31210,44 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "compile": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {}
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -29100,6 +31355,69 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.5.0",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]",
+          "Xceed.Pdf": "[4.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {}
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "type": "package",
+        "dependencies": {
+          "Xceed.Document.NET": "[4.0.25103.5784]",
+          "Xceed.Drawing.NET": "[1.0.25103.5784]"
+        },
+        "compile": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.9": {
@@ -30418,10 +32736,10 @@
         "microsoft.maui.resizetizer.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.0": {
-      "sha512": "zAwp213evC3UkimtVXRb+Dlgc/40QG145nmZDtp2LO9zJJMfrp+i/87BnXN7tRXEA4liyzdFkjqG1HE8/RPb4A==",
+    "Microsoft.NET.ILLink.Tasks/9.0.1": {
+      "sha512": "BKFAkdhUUJivAoKuSWcT23WH9E+AWQMJootzt9X+lnesOD2a2yNIe1ZQFtxB8H3ayskLBD5gYyIbj5GIfw7rZg==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.0",
+      "path": "microsoft.net.illink.tasks/9.0.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -30435,7 +32753,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.0.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.1.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -31403,6 +33721,193 @@
         "tools/net6.0/System.Text.Json.dll",
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
+      ]
+    },
+    "SkiaSharp/2.88.8": {
+      "sha512": "bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
+      "type": "package",
+      "path": "skiasharp/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "interactive-extensions/dotnet/SkiaSharp.DotNet.Interactive.dll",
+        "lib/monoandroid1.0/SkiaSharp.dll",
+        "lib/monoandroid1.0/SkiaSharp.pdb",
+        "lib/monoandroid1.0/SkiaSharp.xml",
+        "lib/net462/SkiaSharp.dll",
+        "lib/net462/SkiaSharp.pdb",
+        "lib/net462/SkiaSharp.xml",
+        "lib/net6.0-android30.0/SkiaSharp.dll",
+        "lib/net6.0-android30.0/SkiaSharp.pdb",
+        "lib/net6.0-android30.0/SkiaSharp.xml",
+        "lib/net6.0-ios13.6/SkiaSharp.dll",
+        "lib/net6.0-ios13.6/SkiaSharp.pdb",
+        "lib/net6.0-ios13.6/SkiaSharp.xml",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.dll",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.pdb",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.xml",
+        "lib/net6.0-macos10.15/SkiaSharp.dll",
+        "lib/net6.0-macos10.15/SkiaSharp.pdb",
+        "lib/net6.0-macos10.15/SkiaSharp.xml",
+        "lib/net6.0-tizen7.0/SkiaSharp.dll",
+        "lib/net6.0-tizen7.0/SkiaSharp.pdb",
+        "lib/net6.0-tizen7.0/SkiaSharp.xml",
+        "lib/net6.0-tvos13.4/SkiaSharp.dll",
+        "lib/net6.0-tvos13.4/SkiaSharp.pdb",
+        "lib/net6.0-tvos13.4/SkiaSharp.xml",
+        "lib/net6.0/SkiaSharp.dll",
+        "lib/net6.0/SkiaSharp.pdb",
+        "lib/net6.0/SkiaSharp.xml",
+        "lib/netcoreapp3.1/SkiaSharp.dll",
+        "lib/netcoreapp3.1/SkiaSharp.pdb",
+        "lib/netcoreapp3.1/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.pdb",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/netstandard2.0/SkiaSharp.dll",
+        "lib/netstandard2.0/SkiaSharp.pdb",
+        "lib/netstandard2.0/SkiaSharp.xml",
+        "lib/netstandard2.1/SkiaSharp.dll",
+        "lib/netstandard2.1/SkiaSharp.pdb",
+        "lib/netstandard2.1/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.pdb",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0.10240/SkiaSharp.dll",
+        "lib/uap10.0.10240/SkiaSharp.pdb",
+        "lib/uap10.0.10240/SkiaSharp.xml",
+        "lib/uap10.0.16299/SkiaSharp.dll",
+        "lib/uap10.0.16299/SkiaSharp.pdb",
+        "lib/uap10.0.16299/SkiaSharp.xml",
+        "lib/xamarinios1.0/SkiaSharp.dll",
+        "lib/xamarinios1.0/SkiaSharp.pdb",
+        "lib/xamarinios1.0/SkiaSharp.xml",
+        "lib/xamarinmac2.0/SkiaSharp.dll",
+        "lib/xamarinmac2.0/SkiaSharp.pdb",
+        "lib/xamarinmac2.0/SkiaSharp.xml",
+        "lib/xamarintvos1.0/SkiaSharp.dll",
+        "lib/xamarintvos1.0/SkiaSharp.pdb",
+        "lib/xamarintvos1.0/SkiaSharp.xml",
+        "lib/xamarinwatchos1.0/SkiaSharp.dll",
+        "lib/xamarinwatchos1.0/SkiaSharp.pdb",
+        "lib/xamarinwatchos1.0/SkiaSharp.xml",
+        "skiasharp.2.88.8.nupkg.sha512",
+        "skiasharp.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.Android/2.88.8": {
+      "sha512": "tq417LpTlN9BB02LDnODI5WpTiaf2Wqwp9VsrUpLv1XOAXsIMscQrCagJbYkpfheZ0YoiqG4QuTMcQXL+P+4kg==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.android/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/monoandroid1.0/SkiaSharp.NativeAssets.Android.targets",
+        "build/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets",
+        "buildTransitive/monoandroid1.0/SkiaSharp.NativeAssets.Android.targets",
+        "buildTransitive/net6.0-android30.0/SkiaSharp.NativeAssets.Android.targets",
+        "lib/monoandroid1.0/_._",
+        "lib/net6.0-android30.0/_._",
+        "runtimes/android-arm/native/libSkiaSharp.so",
+        "runtimes/android-arm64/native/libSkiaSharp.so",
+        "runtimes/android-x64/native/libSkiaSharp.so",
+        "runtimes/android-x86/native/libSkiaSharp.so",
+        "skiasharp.nativeassets.android.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.android.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.iOS/2.88.8": {
+      "sha512": "bo00z/N46eptBnCrdrLNMwLpJnjjMHJDW8c3/gA6WsGEc4M+n02WpQUbCukZMZzAGq4XmLMzBg46LcElHlAU6Q==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.ios/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets",
+        "build/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets",
+        "buildTransitive/net6.0-ios13.6/SkiaSharp.NativeAssets.iOS.targets",
+        "buildTransitive/xamarinios1.0/SkiaSharp.NativeAssets.iOS.targets",
+        "lib/net6.0-ios13.6/_._",
+        "lib/xamarinios1.0/_._",
+        "runtimes/ios/native/libSkiaSharp.framework/Info.plist",
+        "runtimes/ios/native/libSkiaSharp.framework/_CodeSignature/CodeResources",
+        "runtimes/ios/native/libSkiaSharp.framework/libSkiaSharp",
+        "runtimes/iossimulator/native/libSkiaSharp.framework/Info.plist",
+        "runtimes/iossimulator/native/libSkiaSharp.framework/_CodeSignature/CodeResources",
+        "runtimes/iossimulator/native/libSkiaSharp.framework/libSkiaSharp",
+        "skiasharp.nativeassets.ios.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.ios.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.MacCatalyst/2.88.8": {
+      "sha512": "qwoqbad4RbMbfTa7cG27S0YtzyXcfoU4xu2t2Nux3GUxTKMnOneR1Ebj3QiGUTiGkYYejgmjEZpE1iSq6KmhYA==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.maccatalyst/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets",
+        "buildTransitive/net6.0-maccatalyst13.5/SkiaSharp.NativeAssets.MacCatalyst.targets",
+        "lib/net6.0-maccatalyst13.5/_._",
+        "runtimes/maccatalyst/native/libSkiaSharp.framework.zip",
+        "skiasharp.nativeassets.maccatalyst.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.maccatalyst.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.8": {
+      "sha512": "6Kn5TSkKlfyS6azWHF3Jk2sW5C4jCE5uSshM/5AbfFrR+5n6qM5XEnz9h4VaVl7LTxBvHvMkuPb/3bpbq0vxTw==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.macos/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net462/SkiaSharp.NativeAssets.macOS.targets",
+        "build/net6.0-macos10.15/SkiaSharp.NativeAssets.macOS.targets",
+        "build/xamarinmac2.0/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/net6.0-macos10.15/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/xamarinmac2.0/SkiaSharp.NativeAssets.macOS.targets",
+        "lib/net462/_._",
+        "lib/net6.0-macos10.15/_._",
+        "lib/net6.0/_._",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard1.3/_._",
+        "lib/xamarinmac2.0/_._",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "skiasharp.nativeassets.macos.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.macos.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.8": {
+      "sha512": "O9QXoWEXA+6cweR4h3BOnwMz+pO9vL9mXdjLrpDd0w1QzCgWmLQBxa1VgySDITiH7nQndrDG1h6937zm9pLj1Q==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.win32/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net462/SkiaSharp.NativeAssets.Win32.targets",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets",
+        "lib/net462/_._",
+        "lib/net6.0/_._",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard1.3/_._",
+        "runtimes/win-arm64/native/libSkiaSharp.dll",
+        "runtimes/win-x64/native/libSkiaSharp.dll",
+        "runtimes/win-x86/native/libSkiaSharp.dll",
+        "skiasharp.nativeassets.win32.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.win32.nuspec"
       ]
     },
     "sqlite-net-pcl/1.9.172": {
@@ -33700,6 +36205,74 @@
         "xamarin.kotlinx.serialization.core.jvm.nuspec"
       ]
     },
+    "Xceed.Document.NET/4.0.25103.5784": {
+      "sha512": "LWz/udAl1dudQ/4gyrCTws+wTQI5cz3V8nr+gFAMVu3NkRrVajVEJMqBMuNhX0dsFJjGdyNbwEWkkWTe/kjuTg==",
+      "type": "package",
+      "path": "xceed.document.net/4.0.25103.5784",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License Agreement.txt",
+        "images/Words.png",
+        "lib/net40/Xceed.Document.NET.dll",
+        "lib/net40/Xceed.Document.NET.xml",
+        "lib/net5.0/Xceed.Document.NET.dll",
+        "lib/net5.0/Xceed.Document.NET.xml",
+        "xceed.document.net.4.0.25103.5784.nupkg.sha512",
+        "xceed.document.net.nuspec"
+      ]
+    },
+    "Xceed.Drawing.NET/1.0.25103.5784": {
+      "sha512": "/JK5NNQN4YGC0G/gp7KMgnARHbdnUAMckM3TGcesKyNlWLVTIT3CI56BDWcbUyh5BScNHvmLtIDc7rKoYyDT+w==",
+      "type": "package",
+      "path": "xceed.drawing.net/1.0.25103.5784",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License Agreement.txt",
+        "images/Words.png",
+        "lib/net40/Xceed.Drawing.NET.dll",
+        "lib/net40/Xceed.Drawing.NET.xml",
+        "lib/net5.0/Xceed.Drawing.NET.dll",
+        "lib/net5.0/Xceed.Drawing.NET.xml",
+        "xceed.drawing.net.1.0.25103.5784.nupkg.sha512",
+        "xceed.drawing.net.nuspec"
+      ]
+    },
+    "Xceed.Pdf/4.0.25103.5784": {
+      "sha512": "2BWh2Wstg/qG2rmHOGd62mzhf450e6sltbKFwKos20eYy2oQMEx3sEU4Z3ta3WVHkfV4ea82z261yBWmJ+1ogw==",
+      "type": "package",
+      "path": "xceed.pdf/4.0.25103.5784",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License Agreement.txt",
+        "images/PDFCreator.png",
+        "lib/net40/Xceed.Pdf.dll",
+        "lib/net5.0/Xceed.PDF.NET.dll",
+        "xceed.pdf.4.0.25103.5784.nupkg.sha512",
+        "xceed.pdf.nuspec"
+      ]
+    },
+    "Xceed.Words.NET/4.0.25103.5784": {
+      "sha512": "LJeVkLGV6RpRdWCIDkmeNURgZIU4TSMAmM/lJnNHuT+nJFvsj2dmD1Ak9EH31DIFR0Tf4psQlgBwDzIndjkeuA==",
+      "type": "package",
+      "path": "xceed.words.net/4.0.25103.5784",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License Agreement.txt",
+        "images/Words.png",
+        "lib/net40/Xceed.Words.NET.dll",
+        "lib/net40/Xceed.Words.NET.xml",
+        "lib/net5.0/Xceed.Words.NET.dll",
+        "lib/net5.0/Xceed.Words.NET.xml",
+        "tools/init.ps1",
+        "xceed.words.net.4.0.25103.5784.nupkg.sha512",
+        "xceed.words.net.nuspec"
+      ]
+    },
     "ZXing.Net/0.16.9": {
       "sha512": "7WaVMHklpT3Ye2ragqRIwlFRsb6kOk63BOGADV0fan3ulVfGLUYkDi5yNUsZS/7FVNkWbtHAlDLmu4WnHGfqvQ==",
       "type": "package",
@@ -33827,9 +36400,10 @@
       "DocumentFormat.OpenXml >= 3.2.0",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.30",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.0",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.1",
       "Microsoft.Windows.CsWinRT >= 2.2.0",
       "SqlitePCLRaw.bundle_green >= 2.1.10",
+      "Xceed.Words.NET >= 4.0.25103.5784",
       "ZXing.Net.Maui.Controls >= 0.4.0",
       "sqlite-net-pcl >= 1.9.172"
     ],
@@ -33839,9 +36413,10 @@
       "DocumentFormat.OpenXml >= 3.2.0",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.30",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.0",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.1",
       "Microsoft.Windows.CsWinRT >= 2.2.0",
       "SqlitePCLRaw.bundle_green >= 2.1.10",
+      "Xceed.Words.NET >= 4.0.25103.5784",
       "ZXing.Net.Maui.Controls >= 0.4.0",
       "sqlite-net-pcl >= 1.9.172"
     ],
@@ -33851,9 +36426,10 @@
       "DocumentFormat.OpenXml >= 3.2.0",
       "Microsoft.Extensions.Logging.Debug >= 9.0.0",
       "Microsoft.Maui.Controls >= 9.0.30",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.0",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.1",
       "Microsoft.Windows.CsWinRT >= 2.2.0",
       "SqlitePCLRaw.bundle_green >= 2.1.10",
+      "Xceed.Words.NET >= 4.0.25103.5784",
       "ZXing.Net.Maui.Controls >= 0.4.0",
       "sqlite-net-pcl >= 1.9.172"
     ],
@@ -33865,29 +36441,30 @@
       "Microsoft.Maui.Controls >= 9.0.30",
       "Microsoft.Windows.CsWinRT >= 2.2.0",
       "SqlitePCLRaw.bundle_green >= 2.1.10",
+      "Xceed.Words.NET >= 4.0.25103.5784",
       "ZXing.Net.Maui.Controls >= 0.4.0",
       "sqlite-net-pcl >= 1.9.172"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\salas\\.nuget\\packages\\": {},
+    "C:\\Users\\msalasz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj",
+      "projectUniqueName": "C:\\Users\\msalasz\\source\\qrscanner-db\\QRScanner.csproj",
       "projectName": "QRScanner",
-      "projectPath": "D:\\projects\\maui\\qrscanner-db\\QRScanner.csproj",
-      "packagesPath": "C:\\Users\\salas\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\maui\\qrscanner-db\\obj\\",
+      "projectPath": "C:\\Users\\msalasz\\source\\qrscanner-db\\QRScanner.csproj",
+      "packagesPath": "C:\\Users\\msalasz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\msalasz\\source\\qrscanner-db\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\salas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\msalasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -33959,7 +36536,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.0, )",
+            "version": "[9.0.1, )",
             "autoReferenced": true
           },
           "Microsoft.Windows.CsWinRT": {
@@ -33969,6 +36546,10 @@
           "SqlitePCLRaw.bundle_green": {
             "target": "Package",
             "version": "[2.1.10, )"
+          },
+          "Xceed.Words.NET": {
+            "target": "Package",
+            "version": "[4.0.25103.5784, )"
           },
           "ZXing.Net.Maui.Controls": {
             "target": "Package",
@@ -33998,7 +36579,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       },
       "net9.0-ios18.1": {
         "targetAlias": "net9.0-ios",
@@ -34026,7 +36607,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.0, )",
+            "version": "[9.0.1, )",
             "autoReferenced": true
           },
           "Microsoft.Windows.CsWinRT": {
@@ -34036,6 +36617,10 @@
           "SqlitePCLRaw.bundle_green": {
             "target": "Package",
             "version": "[2.1.10, )"
+          },
+          "Xceed.Words.NET": {
+            "target": "Package",
+            "version": "[4.0.25103.5784, )"
           },
           "ZXing.Net.Maui.Controls": {
             "target": "Package",
@@ -34065,7 +36650,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       },
       "net9.0-maccatalyst18.1": {
         "targetAlias": "net9.0-maccatalyst",
@@ -34093,7 +36678,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.0, )",
+            "version": "[9.0.1, )",
             "autoReferenced": true
           },
           "Microsoft.Windows.CsWinRT": {
@@ -34103,6 +36688,10 @@
           "SqlitePCLRaw.bundle_green": {
             "target": "Package",
             "version": "[2.1.10, )"
+          },
+          "Xceed.Words.NET": {
+            "target": "Package",
+            "version": "[4.0.25103.5784, )"
           },
           "ZXing.Net.Maui.Controls": {
             "target": "Package",
@@ -34133,7 +36722,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       },
       "net9.0-windows10.0.19041": {
         "targetAlias": "net9.0-windows10.0.19041.0",
@@ -34166,6 +36755,10 @@
             "target": "Package",
             "version": "[2.1.10, )"
           },
+          "Xceed.Words.NET": {
+            "target": "Package",
+            "version": "[4.0.25103.5784, )"
+          },
           "ZXing.Net.Maui.Controls": {
             "target": "Package",
             "version": "[0.4.0, )"
@@ -34189,7 +36782,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
-            "version": "[10.0.19041.54, 10.0.19041.54]"
+            "version": "[10.0.19041.57, 10.0.19041.57]"
           }
         ],
         "frameworkReferences": {
@@ -34200,7 +36793,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

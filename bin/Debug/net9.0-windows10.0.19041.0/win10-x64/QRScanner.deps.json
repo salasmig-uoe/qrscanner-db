@@ -16,20 +16,25 @@
           "Microsoft.Maui.Controls": "9.0.30",
           "Microsoft.Windows.CsWinRT": "2.2.0",
           "SQLitePCLRaw.bundle_green": "2.1.10",
+          "Xceed.Words.NET": "4.0.25103.5784",
           "ZXing.Net.Maui.Controls": "0.4.0",
           "sqlite-net-pcl": "1.9.172",
           "Microsoft.Web.WebView2.Core.Projection": "1.0.2792.45",
-          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.19041.54"
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.19041.57"
         },
         "runtime": {
           "QRScanner.dll": {}
         }
       },
-      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.19041.54": {
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.19041.57": {
         "runtime": {
           "Microsoft.Windows.SDK.NET.dll": {
             "assemblyVersion": "10.0.19041.38",
-            "fileVersion": "10.0.19041.52"
+            "fileVersion": "10.0.19041.55"
+          },
+          "WinRT.Runtime.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.48161"
           }
         }
       },
@@ -421,14 +426,7 @@
           }
         }
       },
-      "Microsoft.Windows.CsWinRT/2.2.0": {
-        "runtime": {
-          "lib/net8.0/WinRT.Runtime.dll": {
-            "assemblyVersion": "2.2.0.0",
-            "fileVersion": "2.2.0.48161"
-          }
-        }
-      },
+      "Microsoft.Windows.CsWinRT/2.2.0": {},
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {},
       "Microsoft.WindowsAppSDK/1.6.241114003": {
         "dependencies": {
@@ -507,6 +505,26 @@
           }
         }
       },
+      "SkiaSharp/2.88.8": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.8.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {},
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "dependencies": {
           "SQLitePCLRaw.bundle_green": "2.1.10"
@@ -576,6 +594,53 @@
           }
         }
       },
+      "Xceed.Document.NET/4.0.25103.5784": {
+        "dependencies": {
+          "System.IO.Packaging": "8.0.1",
+          "Xceed.Drawing.NET": "1.0.25103.5784",
+          "Xceed.Pdf": "4.0.25103.5784"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET.dll": {
+            "assemblyVersion": "4.0.25103.5784",
+            "fileVersion": "4.0.25103.5784"
+          }
+        }
+      },
+      "Xceed.Drawing.NET/1.0.25103.5784": {
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Drawing.NET.dll": {
+            "assemblyVersion": "1.0.25103.5784",
+            "fileVersion": "1.0.25103.5784"
+          }
+        }
+      },
+      "Xceed.Pdf/4.0.25103.5784": {
+        "dependencies": {
+          "Xceed.Drawing.NET": "1.0.25103.5784"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET.dll": {
+            "assemblyVersion": "4.0.25103.5784",
+            "fileVersion": "4.0.25103.5784"
+          }
+        }
+      },
+      "Xceed.Words.NET/4.0.25103.5784": {
+        "dependencies": {
+          "Xceed.Document.NET": "4.0.25103.5784",
+          "Xceed.Drawing.NET": "1.0.25103.5784"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET.dll": {
+            "assemblyVersion": "4.0.25103.5784",
+            "fileVersion": "4.0.25103.5784"
+          }
+        }
+      },
       "ZXing.Net/0.16.9": {
         "runtime": {
           "lib/net7.0/zxing.dll": {
@@ -623,7 +688,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.19041.54": {
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.19041.57": {
       "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
@@ -831,6 +896,27 @@
       "path": "microsoft.windowsappsdk/1.6.241114003",
       "hashPath": "microsoft.windowsappsdk.1.6.241114003.nupkg.sha512"
     },
+    "SkiaSharp/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
+      "path": "skiasharp/2.88.8",
+      "hashPath": "skiasharp.2.88.8.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Kn5TSkKlfyS6azWHF3Jk2sW5C4jCE5uSshM/5AbfFrR+5n6qM5XEnz9h4VaVl7LTxBvHvMkuPb/3bpbq0vxTw==",
+      "path": "skiasharp.nativeassets.macos/2.88.8",
+      "hashPath": "skiasharp.nativeassets.macos.2.88.8.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O9QXoWEXA+6cweR4h3BOnwMz+pO9vL9mXdjLrpDd0w1QzCgWmLQBxa1VgySDITiH7nQndrDG1h6937zm9pLj1Q==",
+      "path": "skiasharp.nativeassets.win32/2.88.8",
+      "hashPath": "skiasharp.nativeassets.win32.2.88.8.nupkg.sha512"
+    },
     "sqlite-net-pcl/1.9.172": {
       "type": "package",
       "serviceable": true,
@@ -886,6 +972,34 @@
       "sha512": "sha512-z8mvEVBfWSi0692vPOra8MougSEJCDzlaLj4g0aA87XDZpJoJD3BJTcJ0MuFbbN1fOT9Cr2ZFqXhZc+zzX0Gwg==",
       "path": "system.speech/9.0.0",
       "hashPath": "system.speech.9.0.0.nupkg.sha512"
+    },
+    "Xceed.Document.NET/4.0.25103.5784": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LWz/udAl1dudQ/4gyrCTws+wTQI5cz3V8nr+gFAMVu3NkRrVajVEJMqBMuNhX0dsFJjGdyNbwEWkkWTe/kjuTg==",
+      "path": "xceed.document.net/4.0.25103.5784",
+      "hashPath": "xceed.document.net.4.0.25103.5784.nupkg.sha512"
+    },
+    "Xceed.Drawing.NET/1.0.25103.5784": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/JK5NNQN4YGC0G/gp7KMgnARHbdnUAMckM3TGcesKyNlWLVTIT3CI56BDWcbUyh5BScNHvmLtIDc7rKoYyDT+w==",
+      "path": "xceed.drawing.net/1.0.25103.5784",
+      "hashPath": "xceed.drawing.net.1.0.25103.5784.nupkg.sha512"
+    },
+    "Xceed.Pdf/4.0.25103.5784": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2BWh2Wstg/qG2rmHOGd62mzhf450e6sltbKFwKos20eYy2oQMEx3sEU4Z3ta3WVHkfV4ea82z261yBWmJ+1ogw==",
+      "path": "xceed.pdf/4.0.25103.5784",
+      "hashPath": "xceed.pdf.4.0.25103.5784.nupkg.sha512"
+    },
+    "Xceed.Words.NET/4.0.25103.5784": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LJeVkLGV6RpRdWCIDkmeNURgZIU4TSMAmM/lJnNHuT+nJFvsj2dmD1Ak9EH31DIFR0Tf4psQlgBwDzIndjkeuA==",
+      "path": "xceed.words.net/4.0.25103.5784",
+      "hashPath": "xceed.words.net.4.0.25103.5784.nupkg.sha512"
     },
     "ZXing.Net/0.16.9": {
       "type": "package",

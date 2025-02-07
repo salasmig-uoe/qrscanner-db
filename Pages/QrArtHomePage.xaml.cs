@@ -5,6 +5,13 @@ using System.Net.Mail;
 using System.Net;
 using System.Net.Mime;
 using System.Text;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.Drawing;
+using Run = DocumentFormat.OpenXml.Wordprocessing.Run;
+using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Primitives;
+
 
 namespace QRScanner.Pages;
 
@@ -29,9 +36,20 @@ public partial class QrArtHomePage : ContentPage
         Navigation.PushAsync(new QRScanner.Pages.CreateSaleTransactionsPage(_dbService, _vm));
     }
 
+
+    private async Task<string> Get_day_transactionAsync(string formattedDate)
+    {
+        var items = await _dbService.GetPaymentTransferByDate(formattedDate);
+        string result = "";
+        foreach (var item in items)
+            result += item.PaymentId + ";" + item.TransactionCode + ";" + item.ItemCode + ";" + item.Quantity + ";" + item.Amount + ";" + item.TransactionType + ";" + item.Created + ";" + item.Updated + "\n";
+
+        return result;
+    }
+
     private async void OnEmailButtonClicked(object sender, EventArgs e)
     {
-        bool automatic = false; // TODO email(4)
+        bool automatic = true; // TODO email(4)
 
         if (automatic == false)
         {
@@ -42,23 +60,32 @@ public partial class QrArtHomePage : ContentPage
             try
             {
                 // Email details
-                string fromEmail = "test@gmail.com"; //TODO email(1) Your Gmail address
-                string toEmail = "test@yahoo.com.mx"; // Recipient's email
+                string fromEmail = "salasmig@gmail.com"; //TODO email(1) Your Gmail address
+                string toEmail = "salasmig@yahoo.com.mx"; // Recipient's email
                 string subject = "New Test Email from .NET MAUI";
                 string body = "This is an automated email sent from a .NET MAUI app.";
 
                 // Gmail SMTP settings
                 string smtpHost = "smtp.gmail.com";
                 int smtpPort = 587;
-                string smtpUsername = "";// TODO email(2) UserEntry.Text; // Your Gmail address
-                string smtpPassword = "";// AccessCodeEntry.Text; // Your App Password or Gmail password
+                string smtpUsername = "salasmig@gmail.com";// TODO email(2) UserEntry.Text; // Your Gmail address
+                string smtpPassword = "nlwf hqwt lmcm vqkb";// AccessCodeEntry.Text; // Your App Password or Gmail password
 
                 // Create the email message
                 MailMessage mail = new MailMessage(fromEmail, toEmail, subject, body);
 
+
+                string transactions = await Get_day_transactionAsync("2025-02-07");
+
                 // String to be attached as a text file
-                string attachmentContent = "This is the content of the text file.";
+                string attachmentContent = transactions;
                 string attachmentFileName = "attachment.txt";
+
+
+                // testing replacing image
+                replaceImage();
+
+
 
                 // Convert the string to a MemoryStream
                 byte[] attachmentBytes = Encoding.UTF8.GetBytes(attachmentContent);
@@ -269,6 +296,165 @@ public partial class QrArtHomePage : ContentPage
         catch (Exception ex)
         {
             await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    private static string AddImageToDocument(MainDocumentPart mainPart, byte[] imageBytes)
+    {
+        // Add the image part to the document
+        ImagePart imagePart = mainPart.AddImagePart(ImagePartType.Png);
+        using (MemoryStream stream = new MemoryStream(imageBytes))
+        {
+            imagePart.FeedData(stream);
+        }
+
+        // Return the relationship ID of the image
+        return mainPart.GetIdOfPart(imagePart);
+    }
+
+    private static void ProcessParagraph(DocumentFormat.OpenXml.Wordprocessing.Paragraph paragraph, string token)
+    {
+        if (paragraph.InnerText.Contains(token))
+        {
+            int a = 0;
+        }
+    }
+    private static void ReplaceTokenWithImage(MainDocumentPart mainPart, string token, string imageId)
+    {
+        // Iterate through all paragraphs in the document
+        foreach (var paragraph in mainPart.Document.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
+        {
+            // Check if the paragraph contains the token
+            if (paragraph.InnerText.Contains(token))
+            {
+                // Remove the token
+                paragraph.RemoveAllChildren<Run>();
+
+                // Create a new run with the image
+                Run run = new Run();
+                Drawing drawing = CreateImageDrawing(imageId);
+                run.AppendChild(drawing);
+
+                // Add the run to the paragraph
+                paragraph.AppendChild(run);
+            }
+        }
+
+        // Check main body
+        foreach (var paragraph in mainPart.Document.Body.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
+        {
+            ProcessParagraph(paragraph, token);
+        }
+
+        // Check tables
+        foreach (var table in mainPart.Document.Descendants<DocumentFormat.OpenXml.Wordprocessing.Table>())
+        {
+            foreach (var row in table.Descendants<DocumentFormat.OpenXml.Wordprocessing.TableRow>())
+            {
+                foreach (var cell in row.Descendants<DocumentFormat.OpenXml.Wordprocessing.TableCell>())
+                {
+                    foreach (var paragraph in cell.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
+                    {
+                        ProcessParagraph(paragraph, token);
+                    }
+                }
+            }
+        }
+
+        // Check headers
+        foreach (var headerPart in mainPart.HeaderParts)
+        {
+            foreach (var paragraph in headerPart.Header.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
+            {
+                ProcessParagraph(paragraph, token);
+            }
+        }
+
+        // Check footers
+        foreach (var footerPart in mainPart.FooterParts)
+        {
+            foreach (var paragraph in footerPart.Footer.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
+            {
+                ProcessParagraph(paragraph, token);
+            }
+        }
+
+        mainPart.Document.Save();
+        Console.WriteLine("Processing complete.");
+
+
+    }
+
+    private static Drawing CreateImageDrawing(string imageId)
+    {
+        // Define the image size (you can adjust these values)
+        long width = 1000000; // Width in EMUs (English Metric Units)
+        long height = 1000000; // Height in EMUs
+
+        // Create the drawing element
+        Drawing drawing = new Drawing(
+            new DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
+                new DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() { Cx = width, Cy = height },
+                new DocumentFormat.OpenXml.Drawing.Wordprocessing.EffectExtent() { LeftEdge = 0L, TopEdge = 0L, RightEdge = 0L, BottomEdge = 0L },
+                new DocumentFormat.OpenXml.Drawing.Wordprocessing.DocProperties() { Id = 1U, Name = "Picture 1" },
+                new DocumentFormat.OpenXml.Drawing.Wordprocessing.NonVisualGraphicFrameDrawingProperties(
+                    new DocumentFormat.OpenXml.Drawing.GraphicFrameLocks() { NoChangeAspect = true }),
+                new DocumentFormat.OpenXml.Drawing.Graphic(
+                    new DocumentFormat.OpenXml.Drawing.GraphicData(
+                        new DocumentFormat.OpenXml.Drawing.Pictures.Picture(
+                            new DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureProperties(
+                                new DocumentFormat.OpenXml.Drawing.Pictures.NonVisualDrawingProperties() { Id = 0U, Name = "Picture 1" },
+                                new DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureDrawingProperties()),
+                            new DocumentFormat.OpenXml.Drawing.Pictures.BlipFill(
+                                new DocumentFormat.OpenXml.Drawing.Blip() { Embed = imageId },
+                                new DocumentFormat.OpenXml.Drawing.Stretch(
+                                    new DocumentFormat.OpenXml.Drawing.FillRectangle())),
+                            new DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties(
+                                new DocumentFormat.OpenXml.Drawing.Transform2D(
+                                    new DocumentFormat.OpenXml.Drawing.Offset() { X = 0L, Y = 0L },
+                                    new DocumentFormat.OpenXml.Drawing.Extents() { Cx = width, Cy = height }),
+                                new DocumentFormat.OpenXml.Drawing.PresetGeometry(
+                                    new DocumentFormat.OpenXml.Drawing.AdjustValueList())
+                                { Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle }))
+                    )
+                    { Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture" }))
+        );
+
+        return drawing;
+    }
+    private async void replaceImage()
+    {
+        // Path to the Word document
+        string documentPath = "C:\\Users\\msalasz\\Documents\\docwithimgage.docx";
+
+        // Path to the image you want to insert
+        string imagePath = "C:\\Users\\msalasz\\Downloads\\gatofrio.png";
+
+        // Token to be replaced by the image
+        string token = "IMAGE_TOKEN";
+
+
+        // Open the Word document
+        using (WordprocessingDocument document = WordprocessingDocument.Open(documentPath, true))
+        {
+            // Get the main document part
+            MainDocumentPart mainPart = document.MainDocumentPart;
+
+            // Load the image into a byte array
+            byte[] imageBytes = File.ReadAllBytes(imagePath);
+
+            // Add the image to the document and get its relationship ID
+            string imageId = AddImageToDocument(mainPart, imageBytes);
+
+            // Find and replace the token with the image
+            ReplaceTokenWithImage(mainPart, token, imageId);
+
+            // Save the document
+            mainPart.Document.Save();
+
+            Console.WriteLine("Image inserted successfully!");
+
+
         }
     }
 }
