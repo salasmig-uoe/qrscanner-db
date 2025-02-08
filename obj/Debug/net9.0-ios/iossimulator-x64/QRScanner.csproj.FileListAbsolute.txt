@@ -613,7 +613,6 @@ C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\libxa
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.a
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
-C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\build-signature\signature
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\mauifont.inputs
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\mauisplash.inputs
@@ -694,3 +693,12 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\refin
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\QRScanner.pdb
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\QRScanner.genruntimeconfig.cache
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-ios\iossimulator-x64\ref\QRScanner.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Win32.SystemEvents.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\QRCoder.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\SixLabors.ImageSharp.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\SkiaSharp.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\System.Drawing.Common.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Windows.Core.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\Info.plist
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\CodeResources
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-ios\iossimulator-x64\libSkiaSharp

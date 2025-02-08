@@ -78,6 +78,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.QrArtHomeP
 build_metadata.AdditionalFiles.TargetPath = Pages\QrArtHomePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\QrArtHomePage.xaml
 
+[C:/Users/msalasz/source/qrscanner-db/Pages/QrGeneratorPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.QrGeneratorPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\QrGeneratorPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\QrGeneratorPage.xaml
+
 [C:/Users/msalasz/source/qrscanner-db/Pages/ViewSaleTransactionsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = QRScanner.Pages.ViewSaleTransactionsPage.xaml

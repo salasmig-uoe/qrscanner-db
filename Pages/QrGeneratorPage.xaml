@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRScanner.Pages.QrGeneratorPage"
+             Title="QrGeneratorPage">
+    <ContentPage.Resources>
+        <Style x:Key="LockedButtonStyle" TargetType="Button">
+            <!-- Set appearance to look enabled -->
+            <Setter Property="BackgroundColor" Value="LightGray" />
+            <Setter Property="TextColor" Value="Black" />
+            <!-- Add more setters to mimic an enabled style -->
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20" Spacing="10">
+        <!-- Email Entry -->
+        <Label Text="Generate Artist Item Word Documents"  WidthRequest="300" x:Name="GenerateLabel" />
+        <Button Text="Proceed" Clicked="OnSubmitClicked" Style="{StaticResource LockedButtonStyle}"
+                IsEnabled="False" />
+        <Button Text="Cancel" Clicked="OnCancelClicked" />
+    </StackLayout>
+</ContentPage>

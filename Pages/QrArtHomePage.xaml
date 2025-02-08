@@ -32,30 +32,23 @@
                     BackgroundColor="Azure"
                     Padding="2,1">
                 </Label>
-                <!-- TODO email (3)
-                <Entry x:Name="UserEntry"
-                       Text="Eunoia">
-                </Entry>
-                <Entry x:Name="AccessCodeEntry"
-                       Text="Eunoia">
-                </Entry>
-                -->
                 <HorizontalStackLayout
                     Spacing="10"  
                     VerticalOptions="End"
                     HorizontalOptions="Center">
                     <Grid
-                        BackgroundColor="DarkGreen"
+                        BackgroundColor="DarkOliveGreen"
                         Padding="2"
                         WidthRequest="50"
                         HeightRequest="50">
-
-                        <ImageButton
+                        <Border Stroke="Black" StrokeThickness="0.5">
+                            <ImageButton
                             Source="sale.jpg"
                             HeightRequest="40"
                             WidthRequest="40"
                             Clicked="OnSellingButtonClicked"
                             BackgroundColor="Transparent" />
+                        </Border>
                     </Grid>
                     <ImageButton
                         Source="view.png"
@@ -78,6 +71,12 @@
                         HeightRequest="40"
                         WidthRequest="40" 
                         Clicked="OnToolsTransferButtonClicked" 
+                        />
+                    <ImageButton
+                        Source="generate_docs.png"
+                        HeightRequest="40"
+                        WidthRequest="40" 
+                        Clicked="OnDisplayGeneratorClicked" 
                         />
                 </HorizontalStackLayout>
             </VerticalStackLayout>

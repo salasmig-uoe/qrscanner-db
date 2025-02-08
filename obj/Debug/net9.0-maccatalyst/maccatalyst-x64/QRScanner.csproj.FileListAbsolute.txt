@@ -672,3 +672,10 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x6
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.pdb
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\QRScanner.genruntimeconfig.cache
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\ref\QRScanner.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Win32.SystemEvents.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\QRCoder.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SixLabors.ImageSharp.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\System.Drawing.Common.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\System.Private.Windows.Core.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libSkiaSharp.framework.zip

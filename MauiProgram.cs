@@ -25,11 +25,12 @@ namespace QRScanner
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<AlertService>();
             builder.Services.AddSingleton<EmailViewModel>();
-            builder.Services.AddSingleton<EmailSaleTransactionsPage>();
             builder.Services.AddSingleton<EditSaleTransactionsPage>();
             builder.Services.AddSingleton<CameraPopupPage>();
             builder.Services.AddSingleton<CreateSaleTransactionsPage>();
             builder.Services.AddSingleton<ViewSaleTransactionsPage>();
+            builder.Services.AddSingleton<EmailSaleTransactionsPage>();
+            builder.Services.AddSingleton<QrGeneratorPage>();
 
 
 #if DEBUG

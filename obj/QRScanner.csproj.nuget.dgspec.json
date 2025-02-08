@@ -97,13 +97,21 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "QRCoder-ImageSharp": {
+              "target": "Package",
+              "version": "[0.10.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[3.116.1, )"
+            },
             "SqlitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.10, )"
             },
-            "Xceed.Words.NET": {
+            "System.Drawing.Common": {
               "target": "Package",
-              "version": "[4.0.25103.5784, )"
+              "version": "[9.0.1, )"
             },
             "ZXing.Net.Maui.Controls": {
               "target": "Package",
@@ -168,13 +176,21 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "QRCoder-ImageSharp": {
+              "target": "Package",
+              "version": "[0.10.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[3.116.1, )"
+            },
             "SqlitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.10, )"
             },
-            "Xceed.Words.NET": {
+            "System.Drawing.Common": {
               "target": "Package",
-              "version": "[4.0.25103.5784, )"
+              "version": "[9.0.1, )"
             },
             "ZXing.Net.Maui.Controls": {
               "target": "Package",
@@ -239,13 +255,21 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "QRCoder-ImageSharp": {
+              "target": "Package",
+              "version": "[0.10.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[3.116.1, )"
+            },
             "SqlitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.10, )"
             },
-            "Xceed.Words.NET": {
+            "System.Drawing.Common": {
               "target": "Package",
-              "version": "[4.0.25103.5784, )"
+              "version": "[9.0.1, )"
             },
             "ZXing.Net.Maui.Controls": {
               "target": "Package",
@@ -305,13 +329,21 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "QRCoder-ImageSharp": {
+              "target": "Package",
+              "version": "[0.10.0, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[3.116.1, )"
+            },
             "SqlitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.10, )"
             },
-            "Xceed.Words.NET": {
+            "System.Drawing.Common": {
               "target": "Package",
-              "version": "[4.0.25103.5784, )"
+              "version": "[9.0.1, )"
             },
             "ZXing.Net.Maui.Controls": {
               "target": "Package",

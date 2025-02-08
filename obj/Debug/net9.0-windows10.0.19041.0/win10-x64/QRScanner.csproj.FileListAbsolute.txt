@@ -1204,9 +1204,12 @@ C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Win32.SystemEvents.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\QRCoder.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SixLabors.ImageSharp.dll
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Xceed.Document.NET.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Xceed.Drawing.NET.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Xceed.PDF.NET.dll
-C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Xceed.Words.NET.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\System.Drawing.Common.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\System.Private.Windows.Core.dll
 C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libSkiaSharp.dll
+C:\Users\msalasz\source\qrscanner-db\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\generate_docs.scale-100.png
+C:\Users\msalasz\source\qrscanner-db\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\generate_docs.scale-100.png

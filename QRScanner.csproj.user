@@ -29,6 +29,9 @@
     <MauiXaml Update="Pages\QrArtHomePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Pages\QrGeneratorPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Pages\ViewSaleTransactionsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

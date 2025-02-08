@@ -15,8 +15,10 @@
           "Microsoft.Extensions.Logging.Debug": "9.0.0",
           "Microsoft.Maui.Controls": "9.0.30",
           "Microsoft.Windows.CsWinRT": "2.2.0",
+          "QRCoder-ImageSharp": "0.10.0",
+          "SkiaSharp": "3.116.1",
           "SQLitePCLRaw.bundle_green": "2.1.10",
-          "Xceed.Words.NET": "4.0.25103.5784",
+          "System.Drawing.Common": "9.0.1",
           "ZXing.Net.Maui.Controls": "0.4.0",
           "sqlite-net-pcl": "1.9.172",
           "Microsoft.Web.WebView2.Core.Projection": "1.0.2792.45",
@@ -426,6 +428,14 @@
           }
         }
       },
+      "Microsoft.Win32.SystemEvents/9.0.1": {
+        "runtime": {
+          "runtimes/win/lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.124.61010"
+          }
+        }
+      },
       "Microsoft.Windows.CsWinRT/2.2.0": {},
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {},
       "Microsoft.WindowsAppSDK/1.6.241114003": {
@@ -505,20 +515,42 @@
           }
         }
       },
-      "SkiaSharp/2.88.8": {
+      "QRCoder-ImageSharp/0.10.0": {
         "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "2.88.8",
-          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+          "SixLabors.ImageSharp": "2.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
-          "lib/net6.0/SkiaSharp.dll": {
-            "assemblyVersion": "2.88.0.0",
-            "fileVersion": "2.88.8.0"
+          "lib/net8.0/QRCoder.dll": {
+            "assemblyVersion": "0.10.0.0",
+            "fileVersion": "0.10.0.0"
           }
         }
       },
-      "SkiaSharp.NativeAssets.macOS/2.88.8": {},
-      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+      "SixLabors.ImageSharp/2.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "SkiaSharp/3.116.1": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "3.116.1"
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.19041/SkiaSharp.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.116.1": {
         "native": {
           "runtimes/win-x64/native/libSkiaSharp.dll": {
             "fileVersion": "0.0.0.0"
@@ -577,6 +609,21 @@
           }
         }
       },
+      "System.Drawing.Common/9.0.1": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "9.0.1"
+        },
+        "runtime": {
+          "lib/net9.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.124.61006"
+          },
+          "lib/net9.0/System.Private.Windows.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.124.61006"
+          }
+        }
+      },
       "System.IO.Packaging/8.0.1": {
         "runtime": {
           "lib/net8.0/System.IO.Packaging.dll": {
@@ -586,6 +633,7 @@
         }
       },
       "System.Memory/4.5.3": {},
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
       "System.Speech/9.0.0": {
         "runtime": {
           "runtimes/win/lib/net9.0/System.Speech.dll": {
@@ -594,53 +642,7 @@
           }
         }
       },
-      "Xceed.Document.NET/4.0.25103.5784": {
-        "dependencies": {
-          "System.IO.Packaging": "8.0.1",
-          "Xceed.Drawing.NET": "1.0.25103.5784",
-          "Xceed.Pdf": "4.0.25103.5784"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.Document.NET.dll": {
-            "assemblyVersion": "4.0.25103.5784",
-            "fileVersion": "4.0.25103.5784"
-          }
-        }
-      },
-      "Xceed.Drawing.NET/1.0.25103.5784": {
-        "dependencies": {
-          "SkiaSharp": "2.88.8"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.Drawing.NET.dll": {
-            "assemblyVersion": "1.0.25103.5784",
-            "fileVersion": "1.0.25103.5784"
-          }
-        }
-      },
-      "Xceed.Pdf/4.0.25103.5784": {
-        "dependencies": {
-          "Xceed.Drawing.NET": "1.0.25103.5784"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.PDF.NET.dll": {
-            "assemblyVersion": "4.0.25103.5784",
-            "fileVersion": "4.0.25103.5784"
-          }
-        }
-      },
-      "Xceed.Words.NET/4.0.25103.5784": {
-        "dependencies": {
-          "Xceed.Document.NET": "4.0.25103.5784",
-          "Xceed.Drawing.NET": "1.0.25103.5784"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.Words.NET.dll": {
-            "assemblyVersion": "4.0.25103.5784",
-            "fileVersion": "4.0.25103.5784"
-          }
-        }
-      },
+      "System.Text.Encoding.CodePages/8.0.0": {},
       "ZXing.Net/0.16.9": {
         "runtime": {
           "lib/net7.0/zxing.dll": {
@@ -875,6 +877,13 @@
       "path": "microsoft.web.webview2/1.0.2792.45",
       "hashPath": "microsoft.web.webview2.1.0.2792.45.nupkg.sha512"
     },
+    "Microsoft.Win32.SystemEvents/9.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OxjcwJqBW/5A1111+vL9d+5KYTvOzeCTJY9zHZ0kpQI4wX075p6L7inHPSYuf0MGakVjUvaShvw9e9pfbInU2Q==",
+      "path": "microsoft.win32.systemevents/9.0.1",
+      "hashPath": "microsoft.win32.systemevents.9.0.1.nupkg.sha512"
+    },
     "Microsoft.Windows.CsWinRT/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -896,26 +905,33 @@
       "path": "microsoft.windowsappsdk/1.6.241114003",
       "hashPath": "microsoft.windowsappsdk.1.6.241114003.nupkg.sha512"
     },
-    "SkiaSharp/2.88.8": {
+    "QRCoder-ImageSharp/0.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
-      "path": "skiasharp/2.88.8",
-      "hashPath": "skiasharp.2.88.8.nupkg.sha512"
+      "sha512": "sha512-Gk45RWAK/XIg5PjhlU8IusuYYiZmvzL1pPTH+FG2/Q3anTlIATWoCx5yqKsEFhZUz9mn+Sa2MPvawpqxVx10HA==",
+      "path": "qrcoder-imagesharp/0.10.0",
+      "hashPath": "qrcoder-imagesharp.0.10.0.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.macOS/2.88.8": {
+    "SixLabors.ImageSharp/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6Kn5TSkKlfyS6azWHF3Jk2sW5C4jCE5uSshM/5AbfFrR+5n6qM5XEnz9h4VaVl7LTxBvHvMkuPb/3bpbq0vxTw==",
-      "path": "skiasharp.nativeassets.macos/2.88.8",
-      "hashPath": "skiasharp.nativeassets.macos.2.88.8.nupkg.sha512"
+      "sha512": "sha512-hZmADrZvn1q9tjPNuuvvl8F8vkz+LFEhnfBkuvwq6Bjgyj3BcOBk6ct4qfssrs25vWIITeH1HkIVdcCYWacpLw==",
+      "path": "sixlabors.imagesharp/2.0.0",
+      "hashPath": "sixlabors.imagesharp.2.0.0.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.Win32/2.88.8": {
+    "SkiaSharp/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-O9QXoWEXA+6cweR4h3BOnwMz+pO9vL9mXdjLrpDd0w1QzCgWmLQBxa1VgySDITiH7nQndrDG1h6937zm9pLj1Q==",
-      "path": "skiasharp.nativeassets.win32/2.88.8",
-      "hashPath": "skiasharp.nativeassets.win32.2.88.8.nupkg.sha512"
+      "sha512": "sha512-DNDwbRjP+aMo27dV2h/uHCVTcWubWWxHnPLiePNyl24f4Pv43mQ8AQQeseOrKR+J3AOCEs6t0sUjo0aa3j3RWQ==",
+      "path": "skiasharp/3.116.1",
+      "hashPath": "skiasharp.3.116.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/3.116.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dRQ75MCI8oz6zAs2Y1w6pq6ARs4MhdNG+gf3doOxOxdnueDXffQLGQIxON54GDoxc0WjKOoHMKBR4DhaduwwQw==",
+      "path": "skiasharp.nativeassets.win32/3.116.1",
+      "hashPath": "skiasharp.nativeassets.win32.3.116.1.nupkg.sha512"
     },
     "sqlite-net-pcl/1.9.172": {
       "type": "package",
@@ -952,6 +968,13 @@
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.10",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512"
     },
+    "System.Drawing.Common/9.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TTPkCqSMyMaG8BXlBKYTTJFtLV0SvjjsvgUN598hYgHaX/5B7tdUc2JhQF9vwrYmlzxId+gwFnKYuxQ2XsSz2g==",
+      "path": "system.drawing.common/9.0.1",
+      "hashPath": "system.drawing.common.9.0.1.nupkg.sha512"
+    },
     "System.IO.Packaging/8.0.1": {
       "type": "package",
       "serviceable": true,
@@ -966,6 +989,13 @@
       "path": "system.memory/4.5.3",
       "hashPath": "system.memory.4.5.3.nupkg.sha512"
     },
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    },
     "System.Speech/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -973,33 +1003,12 @@
       "path": "system.speech/9.0.0",
       "hashPath": "system.speech.9.0.0.nupkg.sha512"
     },
-    "Xceed.Document.NET/4.0.25103.5784": {
+    "System.Text.Encoding.CodePages/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LWz/udAl1dudQ/4gyrCTws+wTQI5cz3V8nr+gFAMVu3NkRrVajVEJMqBMuNhX0dsFJjGdyNbwEWkkWTe/kjuTg==",
-      "path": "xceed.document.net/4.0.25103.5784",
-      "hashPath": "xceed.document.net.4.0.25103.5784.nupkg.sha512"
-    },
-    "Xceed.Drawing.NET/1.0.25103.5784": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/JK5NNQN4YGC0G/gp7KMgnARHbdnUAMckM3TGcesKyNlWLVTIT3CI56BDWcbUyh5BScNHvmLtIDc7rKoYyDT+w==",
-      "path": "xceed.drawing.net/1.0.25103.5784",
-      "hashPath": "xceed.drawing.net.1.0.25103.5784.nupkg.sha512"
-    },
-    "Xceed.Pdf/4.0.25103.5784": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-2BWh2Wstg/qG2rmHOGd62mzhf450e6sltbKFwKos20eYy2oQMEx3sEU4Z3ta3WVHkfV4ea82z261yBWmJ+1ogw==",
-      "path": "xceed.pdf/4.0.25103.5784",
-      "hashPath": "xceed.pdf.4.0.25103.5784.nupkg.sha512"
-    },
-    "Xceed.Words.NET/4.0.25103.5784": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-LJeVkLGV6RpRdWCIDkmeNURgZIU4TSMAmM/lJnNHuT+nJFvsj2dmD1Ak9EH31DIFR0Tf4psQlgBwDzIndjkeuA==",
-      "path": "xceed.words.net/4.0.25103.5784",
-      "hashPath": "xceed.words.net.4.0.25103.5784.nupkg.sha512"
+      "sha512": "sha512-OZIsVplFGaVY90G2SbpgU7EnCoOO5pw1t4ic21dBF3/1omrJFpAGoNAVpPyMVOC90/hvgkGG3VFqR13YgZMQfg==",
+      "path": "system.text.encoding.codepages/8.0.0",
+      "hashPath": "system.text.encoding.codepages.8.0.0.nupkg.sha512"
     },
     "ZXing.Net/0.16.9": {
       "type": "package",

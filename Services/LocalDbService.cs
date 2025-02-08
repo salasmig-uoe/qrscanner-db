@@ -24,7 +24,9 @@ namespace QRScanner.Services
 
         public async Task<List<ArtItem>> GetArtItems()
         {
-            return await _connection.Table<ArtItem>().ToListAsync();
+            return await _connection.Table<ArtItem>()
+                .OrderBy(x => x.ArtistCode)
+                .ThenBy(x => x.ItemCode).ToListAsync();
         }
 
         public async Task<ArtItem> GetById(int id)
