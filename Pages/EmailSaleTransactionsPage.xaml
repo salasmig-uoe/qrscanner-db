@@ -14,7 +14,14 @@
         <!-- Date Picker -->
         <DatePicker Format="dd/MM/yyyy" WidthRequest="300" x:Name="DatePicker" />
 
-        <!-- Submit Button -->
-        <Button Text="Submit" Clicked="OnSubmitClicked" />
+        <!-- Comments Editor -->
+        <Editor Placeholder="Add comments..." 
+                WidthRequest="300" 
+                HeightRequest="100"
+            AutoSize="TextChanges"
+            x:Name="CommentsEditor" />
+
+            <!-- Submit Button -->
+            <Button Text="Submit" Clicked="OnSubmitClicked" />
     </StackLayout>
 </ContentPage>

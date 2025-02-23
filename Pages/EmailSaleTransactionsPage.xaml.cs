@@ -14,7 +14,7 @@ public partial class EmailSaleTransactionsPage : ContentPage
     private string _email_provider = "gmail.com";
 
     // Event to return the user input
-    public event Action<string, string, DateTime> OnSubmit;
+    public event Action<string, string, string, DateTime> OnSubmit;
     public EmailSaleTransactionsPage(AlertService alertService, LocalDbService dbService)
     {
         InitializeComponent();
@@ -51,7 +51,7 @@ public partial class EmailSaleTransactionsPage : ContentPage
     }
 
 
-    private async Task OnEmailButtonClicked(string username, string password, DateTime date)
+    private async Task OnEmailButtonClicked(string username, string password, string comments, DateTime date)
     {
         string day_of_sale = date.ToString("D");
         string date_to_query = date.ToString("yyyy-MM-dd");
@@ -60,7 +60,7 @@ public partial class EmailSaleTransactionsPage : ContentPage
         string fromEmail = $"{username}@{_email_provider}";
         string toEmail = $"{username}@yahoo.com.mx, {username}.cees@{_email_provider}";
         string subject = $"Sales report: {day_of_sale}";
-        string body = "Email sent from a QRScanner app";
+        string body = $"{comments}\n Email sent from a QRScanner app";
 
         // Gmail SMTP settings
         string smtpHost = $"smtp.{_email_provider}";
@@ -133,16 +133,17 @@ public partial class EmailSaleTransactionsPage : ContentPage
         // Get the user input
         string email = EmailEntry.Text;
         string password = PasswordEntry.Text;
+        string comments = CommentsEditor.Text;
         DateTime date = DatePicker.Date;
 
         // Trigger the event with the user input
-        OnSubmit?.Invoke(email, password, date);
+        OnSubmit?.Invoke(email, password, comments, date);
 
 
         // Close the popup on the UI thread
         MainThread.BeginInvokeOnMainThread(async () =>
         {
-            await OnEmailButtonClicked(email, password, date);
+            await OnEmailButtonClicked(email, password, comments, date);
 
             //await Navigation.PopModalAsync();
             await App.Current.MainPage.Navigation.PopModalAsync();
