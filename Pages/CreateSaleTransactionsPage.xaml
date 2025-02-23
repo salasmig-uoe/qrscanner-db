@@ -17,12 +17,13 @@
             <VerticalStackLayout Padding="10" BackgroundColor="Beige">
 
                 <Grid HorizontalOptions="FillAndExpand" 
-                      ColumnDefinitions="100,200,120,200,*">
+                      ColumnDefinitions="100,200,120,200,*,150">
                     <Label Text="Sale:" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="0" />
                     <Label x:Name="transaction_group_EntryLabel"  FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="End" Grid.Column="1" />
                     <Label x:Name="time_EntryLabel"  FontSize="Large" Text="--:--" VerticalOptions="Center" Grid.Column="2" HorizontalTextAlignment="End" />
                     <ImageButton Grid.Column="3" Source="receipt.png"  HeightRequest="50" WidthRequest="50"  Clicked="generateNextTransactionGroupButton_Clicked" />
                     <ImageButton Grid.Column="4" Source="scanner.png"  HeightRequest="50" WidthRequest="50"  Clicked="OnScanQRCodeClicked" />
+                    <ImageButton Grid.Column="5" Source="manual.png"  HeightRequest="50" WidthRequest="50"  Clicked="OnManualQRCodeClicked" />
                 </Grid>
 
                 <Border Stroke="#CCCCCC"

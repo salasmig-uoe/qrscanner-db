@@ -32,18 +32,9 @@
                     <!-- Row for the close button -->
                 </Grid.RowDefinitions>
 
-                <!-- CameraBarcodeReaderView -->
-                <zxing:CameraBarcodeReaderView
-                    x:Name="codeReader"
-                    Grid.Row="0"
-                    HeightRequest="300"
-                    WidthRequest="300"
-                    BarcodesDetected="OnBarcodeDetected"/>
-
                 <!-- Close Button -->
-                <!--
                 <Button Text="X"
-                        Grid.Row="1"
+                        Grid.Row="0"
                         HorizontalOptions="End"
                         VerticalOptions="Start"
                         BackgroundColor="Transparent"
@@ -51,7 +42,14 @@
                         FontSize="16"
                         Margin="10"
                         Clicked="OnCloseButtonClicked"/>
-                -->
+
+                <!-- CameraBarcodeReaderView -->
+                <zxing:CameraBarcodeReaderView
+                    x:Name="codeReader"
+                    Grid.Row="1"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    BarcodesDetected="OnBarcodeDetected"/>
             </Grid>
         </Border>
     </Grid>

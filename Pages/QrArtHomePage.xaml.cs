@@ -226,7 +226,6 @@ public partial class QrArtHomePage : ContentPage
         }
         else
         {
-            
             // TODO: Select directory path
             string directoryPath = "c://Users//msalasz//Downloads//input_files";
             if (!string.IsNullOrEmpty(directoryPath))

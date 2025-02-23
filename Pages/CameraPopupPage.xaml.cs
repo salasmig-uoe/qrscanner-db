@@ -30,10 +30,18 @@ public partial class CameraPopupPage : ContentPage
             // Close the popup on the UI thread
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                //await Navigation.PopModalAsync();
                 Debug.WriteLine("Navigation.ModalStack  PopModal ===> {0}", App.Current.MainPage.Navigation.ModalStack.Count);
                 await App.Current.MainPage.Navigation.PopModalAsync();
             });
         }
+    }
+    private void OnCloseButtonClicked(object sender, EventArgs e)
+    {
+        // Close the popup on the UI thread
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            Debug.WriteLine("Navigation.ModalStack  PopModal ===> {0}", App.Current.MainPage.Navigation.ModalStack.Count);
+            await App.Current.MainPage.Navigation.PopModalAsync();
+        });
     }
 }

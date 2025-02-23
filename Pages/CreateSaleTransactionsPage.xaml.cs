@@ -408,6 +408,31 @@ public partial class CreateSaleTransactionsPage : ContentPage
         }
     }
 
+    private async Task refresh_item(string item_code)
+    {
+        var art_item = await _dbService.GetByItemCode(item_code);
+
+        if (art_item != null)
+        {
+            var artistItemData = new ArtistItemData
+            {
+                TextboxText = art_item.ItemCode,
+                ItemCodeLabel = art_item.ItemCode,
+                ArtistCodeLabel = art_item.ArtistCode,
+                TitleLabel = art_item.Title,
+                MaterialLabel = art_item.WorkType,
+                DimensionsLabel = art_item.Size,
+                PriceLabel = art_item.Price.ToString(),
+                AmountLabel = art_item.Amount.ToString(),
+            };
+            UpdateParsedScanResults(artistItemData);
+        }
+        else
+        {
+            string message = "The item code does not exist in the database";
+            await App.Current.MainPage.DisplayAlert("Error: ", message, "Ok");
+        }
+    }
     private void analyseContent(String strcode)
     {
         String[] fields = strcode.Split(':');
@@ -415,53 +440,8 @@ public partial class CreateSaleTransactionsPage : ContentPage
         {
             Dictionary<string, string> field_key = new Dictionary<string, string>(8);
             String full_text = "";
-            for (int i = 0; i < fields.Length; i++)
-            {
-                String field_value = fields[i].Trim();
-                switch (i)
-                {
-                    case 0:
-                        field_key.Add("artist_code", field_value);
-                        break;
-                    case 1:
-                        field_key.Add("title", field_value);
-                        full_text = "Title:   " + field_value + "    ";
-                        break;
-                    case 2:
-                        field_key.Add("work_type", field_value);
-                        full_text += "Media:    " + field_value + "     ";
-                        break;
-                    case 3:
-                        field_key.Add("size", field_value);
-                        full_text += "Dimensions:    " + field_value + " (cm)";
-                        break;
-                    case 4:
-                        field_key.Add("price", field_value);
-                        break;
-                    case 5:
-                        field_key.Add("amount", field_value);
-                        break;
-                    case 6:
-                        field_key.Add("item_code", field_value);
-                        break;
-                    case 7:
-                        field_key.Add("qr_id", field_value);
-                        break;
-                }
-            }
-
-            var artistItemData = new ArtistItemData
-            {
-                TextboxText = field_key["item_code"],
-                ItemCodeLabel = field_key["item_code"],
-                ArtistCodeLabel = field_key["artist_code"],
-                TitleLabel = field_key["title"],
-                MaterialLabel = field_key["work_type"],
-                DimensionsLabel = field_key["size"],
-                PriceLabel = field_key["price"],
-                AmountLabel = field_key["amount"],
-            };
-            UpdateParsedScanResults(artistItemData);
+            string item_code = fields[0].Trim();
+            await refresh_item(item_code);
         });
     }
 
@@ -491,5 +471,41 @@ public partial class CreateSaleTransactionsPage : ContentPage
     private async void OnClosingSaleButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
+    }
+
+    public async Task<string> GetUserInputAsync(string title, string message)
+    {
+        // Display a prompt and await the user's response
+        string result = await Shell.Current.DisplayPromptAsync(title, message);
+
+        // Return the user's input
+        return result;
+    }
+
+    private async void OnManualQRCodeClicked(object sender, EventArgs e)
+    {
+        if (transaction_group_EntryLabel is null || transaction_group_EntryLabel.Text is null || transaction_group_EntryLabel.Text == "")
+        {
+            string message = "This is required before your FIRST scan to group customer sales";
+            await App.Current.MainPage.DisplayAlert("You need to click the Recepit icon before Scanning", message, "Ok");
+
+            return;
+        }
+        // Call the method to display the popup
+        string userInput = await GetUserInputAsync("Art Item Code", "Maximum of 7 characters:");
+
+        // Check if the user entered something (not null or empty)
+        if (!string.IsNullOrEmpty(userInput))
+        {
+            string item_code = userInput.Trim().ToUpper();
+            await refresh_item(item_code);
+            // Do something with the user's input
+            await DisplayAlert("Input Received", $"You entered: {userInput}", "OK");
+        }
+        else
+        {
+            // Handle the case where the user canceled or didn't enter anything
+            await DisplayAlert("No Input", "You didn't enter anything.", "OK");
+        }
     }
 }
