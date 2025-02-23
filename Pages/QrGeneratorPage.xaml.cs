@@ -10,10 +10,10 @@ namespace QRScanner.Pages;
 
 public partial class QrGeneratorPage : ContentPage
 {
-	private LocalDbService _dbService;
+    private LocalDbService _dbService;
     public QrGeneratorPage(LocalDbService dbService)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _dbService = dbService;
     }
 
@@ -28,31 +28,6 @@ public partial class QrGeneratorPage : ContentPage
 
         // Return the relationship ID of the image
         return mainPart.GetIdOfPart(imagePart);
-    }
-
-    private static void ReplaceItemDetailsxx(MainDocumentPart mainPart, Dictionary<string, string> tokenReplacements)
-    {
-        // Iterate through all paragraphs in the document
-        foreach (var paragraph in mainPart.Document.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
-        {
-            foreach (var token in tokenReplacements.Keys)
-            {
-                if (paragraph.InnerText.Contains(token))
-                {
-                    // Replace token with the corresponding text
-                    string newText = paragraph.InnerText.Replace(token, tokenReplacements[token]);
-
-                    // Remove existing runs
-                    paragraph.RemoveAllChildren<Run>();
-
-                    // Create a new run with the text
-                    Run run = new Run(new Text(newText));
-
-                    // Add the run to the paragraph
-                    paragraph.AppendChild(run);
-                }
-            }
-        }
     }
 
     private static void ReplaceItemDetails(MainDocumentPart mainPart, Dictionary<string, string> tokenReplacements)
@@ -73,7 +48,6 @@ public partial class QrGeneratorPage : ContentPage
                 }
             }
         }
-     //   mainPart.Document.Save();
     }
 
 
@@ -104,8 +78,8 @@ public partial class QrGeneratorPage : ContentPage
     private static Drawing CreateImageDrawing(string imageId)
     {
         // Define the image size (you can adjust these values)
-        long width = 1000000; // Width in EMUs (English Metric Units)
-        long height = 1000000; // Height in EMUs
+        long width = 914400; // One inch in EMUs (English Metric Units)
+        long height = 914400; // One inch in EMUs
 
         // Create the drawing element
         Drawing drawing = new Drawing(
@@ -190,7 +164,7 @@ public partial class QrGeneratorPage : ContentPage
         PngByteQRCode qRCode = new PngByteQRCode(qrCodeData);
         return qRCode;
     }
-    
+
     public void SaveQrCodeAsPng(string message, string filePath, PngByteQRCode qRCode, int size)
     {
         byte[] qrCodeBytes = qRCode.GetGraphic(size);
@@ -226,7 +200,7 @@ public partial class QrGeneratorPage : ContentPage
                 string word_name = $"{item.ItemCode}.docx";
 
                 string data_for_code = $"{item.ArtistCode}:{item.ItemCode}:{item.Price}:{item.WorkType}:{item.Size}";
-
+                data_for_code = $"{item.ItemCode}";
                 // Filling the item information
                 Dictionary<string, string> tokenReplacements = new Dictionary<string, string>();
                 tokenReplacements.Add("_ARTIST", item.ArtistName);

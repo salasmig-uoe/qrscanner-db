@@ -15,7 +15,7 @@
         <!-- Email Entry -->
         <Label Text="Generate Artist Item Word Documents"  WidthRequest="300" x:Name="GenerateLabel" />
         <Button Text="Proceed" Clicked="OnSubmitClicked" Style="{StaticResource LockedButtonStyle}"
-                IsEnabled="False" />
+                IsEnabled="True" />
         <Button Text="Cancel" Clicked="OnCancelClicked" />
     </StackLayout>
 </ContentPage>
