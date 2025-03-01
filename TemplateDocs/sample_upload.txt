@@ -1,4 +1,4 @@
 Miguel Salas
-MISA29
-This is a very long title	:Oil and Wax	:23 x 25	:1700	:1	:MISA29-001
-Another very long title		: Oil and Wax	:5 x 5		:20		:50	:MISA29-002
+MISA
+This is a very long title	:Oil and Wax	:23 x 25	:1700	:1	:MISA01
+Another very long title		: Oil and Wax	:5 x 5		:20		:50	:MISA02
