@@ -20,6 +20,5 @@ namespace QRScanner.Database
 
         public string AmountLabel { get; set; }
 
-
     }
 }

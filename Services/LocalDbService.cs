@@ -151,8 +151,5 @@ namespace QRScanner.Services
         {
             await _connection.UpdateAsync(item);
         }
-
-
-
     }
 }
