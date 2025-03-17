@@ -58,7 +58,7 @@ public partial class EmailSaleTransactionsPage : ContentPage
 
         // Email details
         string fromEmail = $"{username}@{_email_provider}";
-        string toEmail = $"{username}@yahoo.com.mx, {username}.cees@{_email_provider}";
+        string toEmail = $"kdavies55@{_email_provider}, {username}.cees@{_email_provider}";
         string subject = $"Sales report: {day_of_sale}";
         string body = $"{comments}\n Email sent from a QRScanner app";
 
