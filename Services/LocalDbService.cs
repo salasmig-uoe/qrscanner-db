@@ -20,6 +20,7 @@ namespace QRScanner.Services
             _connection.CreateTableAsync<ArtItem>().Wait();
             _connection.CreateTableAsync<PaymentTransaction>().Wait();
             _connection.CreateTableAsync<LastTransactions>().Wait();
+            _connection.CreateTableAsync<ArtistDetail>().Wait();
         }
 
         public async Task<List<ArtItem>> GetArtItems()
@@ -150,6 +151,26 @@ namespace QRScanner.Services
         public async Task UpdateLastTransaction(LastTransactions item)
         {
             await _connection.UpdateAsync(item);
+        }
+
+        public async Task CreateArtist(ArtistDetail item)
+        {
+            await _connection.InsertAsync(item);
+        }
+
+        public async Task UpdateArtist(ArtistDetail item)
+        {
+            await _connection.UpdateAsync(item);
+        }
+
+        public async Task DeleteArtist(ArtistDetail item)
+        {
+            await _connection.DeleteAsync(item);
+        }
+
+        public async Task<ArtistDetail> GetArtistAsync(string code)
+        {
+            return await _connection.Table<ArtistDetail>().Where(x => x.ArtistCode == code).FirstOrDefaultAsync();
         }
     }
 }

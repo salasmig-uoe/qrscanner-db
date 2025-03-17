@@ -1,6 +1,7 @@
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
+using System.Text.RegularExpressions;
 namespace QRScanner.Pages;
 
 public partial class QrArtHomePage : ContentPage
@@ -47,23 +48,34 @@ public partial class QrArtHomePage : ContentPage
         int line_num = 0;
         string ArtistName = "";
         string ArtistCode = "";
+        string ArtistEmail = "";
 
         while ((line = stringReader.ReadLine()) != null)
         {
-            var tokens = line.Split(":");
+            var tokens = line.Split(",");
+
             switch (line_num)
             {
                 case 0:
                     // Artist name
-                    ArtistName = tokens[0].Trim();
+                    ArtistName = tokens[1].Trim();
                     break;
                 case 1:
                     // Artist code
-                    ArtistCode = tokens[0].Trim();
+                    ArtistCode = tokens[1].Trim();
+                    break;
+                case 2:
+                    // Artist email
+                    ArtistEmail = tokens[0].Trim();
+                    break;
+                case 3:
+                    //Title headers
                     break;
                 default:
                     // Artist items
                     ArtItem item = new ArtItem();
+                    ArtistDetail artist = new ArtistDetail();
+
                     int field_num = 0;
                     foreach (var token in tokens)
                     {
@@ -72,7 +84,7 @@ public partial class QrArtHomePage : ContentPage
                             case 0: item.Title = token.Trim(); break;
                             case 1: item.WorkType = token.Trim(); break;
                             case 2: item.Size = token.Trim(); break;
-                            case 3: if (float.TryParse(token, out float price)) item.Price = price; break;
+                            case 3: if (float.TryParse(token.Replace("\"", ""), out float price)) item.Price = price; break;
                             case 4: if (float.TryParse(token, out float amount)) item.Amount = amount; break;
                             case 5: item.ItemCode = token.Trim(); break;
                         }
@@ -84,12 +96,21 @@ public partial class QrArtHomePage : ContentPage
                     item.Updated = DateTime.Now;
                     item.PriceBalance = item.Price;
                     item.AmountBalance = item.Amount;
-
+                    
                     string item_code = item.ItemCode;
                     var existing_item = await _dbService.GetByItemCode(item_code);
                     if (existing_item == null)
                     {
                         await _dbService.Create(item);
+                    }
+
+                    artist.ArtistName = ArtistName; 
+                    artist.ArtistCode = ArtistCode;
+                    artist.ArtistEmail = ArtistEmail;
+                    var existing_artist = await _dbService.GetArtistAsync(artist.ArtistCode);
+                    if (existing_artist == null)
+                    {
+                        await _dbService.CreateArtist(artist);
                     }
                     break;
             }
@@ -100,7 +121,7 @@ public partial class QrArtHomePage : ContentPage
     private async Task ProcessAllTextFilesInDirectory(string directoryPath)
     {
         // Get all txt files in the directory
-        var txtFiles = Directory.GetFiles(directoryPath, "*.txt");
+        var txtFiles = Directory.GetFiles(directoryPath, "*.csv");
 
         foreach (var filePath in txtFiles)
         {
@@ -219,7 +240,7 @@ public partial class QrArtHomePage : ContentPage
         // 2. Backup the DB import to csv
         // 3. Add the restore option in the header ¬
         // 4. Transfer to tablen with upload_bacukp = true
-        bool upload_backup = true;
+        bool upload_backup = false;
         if (upload_backup)
         {
             UploadBackup();
