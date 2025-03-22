@@ -208,6 +208,7 @@ public partial class QrGeneratorPage : ContentPage
                 tokenReplacements.Add("_MEDIA", item.WorkType);
                 tokenReplacements.Add("_SIZE", item.Size);
                 tokenReplacements.Add("_PRICE", $"{item.Price:C2}");
+                tokenReplacements.Add("_ITEM_CODE", $"{item.ItemCode}");
 
                 int small_size = 2;
                 int large_size = 10;
