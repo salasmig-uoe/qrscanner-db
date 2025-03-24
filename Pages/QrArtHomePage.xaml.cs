@@ -189,12 +189,12 @@ public partial class QrArtHomePage : ContentPage
                                 case 11: item.ItemCode = token; break;
                                 case 12: item.Created = DateTime.Now; break;
                                 case 13: item.Updated = DateTime.Now; break;
+                                case 14: item.LabelType = token; break;
                             }
                             field_num++;
                         }
                         item.PriceBalance = item.Price;
                         item.AmountBalance = item.Amount;
-                        item.LabelType = "w";
 
                         string item_code = item.ItemCode;
                         var existing_item = await _dbService.GetByItemCode(item_code);
