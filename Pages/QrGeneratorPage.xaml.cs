@@ -177,7 +177,13 @@ public partial class QrGeneratorPage : ContentPage
         File.WriteAllBytes(filePath, qrCodeBytes);
     }
 
-
+    public static string ReplaceFileName(string originalPath, string newFileName)
+    {
+        return Path.Combine(
+            Path.GetDirectoryName(originalPath),
+            newFileName + Path.GetExtension(originalPath)
+        );
+    }
     private async Task prepare_dirsAsync(string word_template_path)
     {
         AlertService alertService = new AlertService();
@@ -222,6 +228,26 @@ public partial class QrGeneratorPage : ContentPage
 
                 string template_doc_path = word_template_path;
                 string target_doc_path = item_file;
+
+                switch (item.LabelType.ToLower())
+                {
+                    case ("w"):
+                        template_doc_path = word_template_path;
+                        target_doc_path = Path.Combine(artist_directory, $"{item.ItemCode}-wall.docx");
+                        break;
+                    case ("c"):
+                        template_doc_path = ReplaceFileName(word_template_path, "CardLabelsTemplate");
+                        target_doc_path = Path.Combine(artist_directory, $"{item.ItemCode}-card.docx");
+                        break;
+                    case ("o"):
+                        template_doc_path = ReplaceFileName(word_template_path, "LabelCombinedTemplate");
+                        target_doc_path = Path.Combine(artist_directory, $"{item.ItemCode}-other.docx");
+                        break;
+                    default:
+                        template_doc_path = word_template_path;
+                        target_doc_path = Path.Combine(artist_directory, $"{item.ItemCode}-unknown.docx");
+                        break;
+                }
 
                 InsertItemsAndQRIntoDocument(template_doc_path, target_doc_path,
                     Path.Combine(image_directory, qr_small), Path.Combine(image_directory, qr_large),

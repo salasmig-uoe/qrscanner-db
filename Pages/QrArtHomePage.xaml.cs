@@ -96,6 +96,7 @@ public partial class QrArtHomePage : ContentPage
                     item.Updated = DateTime.Now;
                     item.PriceBalance = item.Price;
                     item.AmountBalance = item.Amount;
+                    item.LabelType = "w";
                     
                     string item_code = item.ItemCode;
                     var existing_item = await _dbService.GetByItemCode(item_code);
@@ -193,6 +194,7 @@ public partial class QrArtHomePage : ContentPage
                         }
                         item.PriceBalance = item.Price;
                         item.AmountBalance = item.Amount;
+                        item.LabelType = "w";
 
                         string item_code = item.ItemCode;
                         var existing_item = await _dbService.GetByItemCode(item_code);

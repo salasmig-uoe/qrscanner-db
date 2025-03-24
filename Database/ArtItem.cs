@@ -48,5 +48,8 @@ namespace QRScanner.Database
 
         [Column("updated")]
         public DateTime Updated { get; set; }
+
+        [Column("label_type")]
+        public string LabelType { get; set; }
     }
 }
