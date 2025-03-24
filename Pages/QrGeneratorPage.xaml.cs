@@ -50,21 +50,23 @@ public partial class QrGeneratorPage : ContentPage
         }
     }
 
-
     private static void ReplaceTokenWithImage(MainDocumentPart mainPart, string token, string imageId)
     {
+        // Determine the size based on the token
+        double sizeInInches = token == "_SMALL_IMAGE" ? 1.0 : 2.0;
+
         // Iterate through all paragraphs in the document
         foreach (var paragraph in mainPart.Document.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
         {
-            // Check if the paragraph contains the small_token
+            // Check if the paragraph contains the token
             if (paragraph.InnerText.Contains(token))
             {
-                // Remove the small_token
+                // Remove the token
                 paragraph.RemoveAllChildren<Run>();
 
                 // Create a new run with the image
                 Run run = new Run();
-                Drawing drawing = CreateImageDrawing(imageId);
+                Drawing drawing = CreateImageDrawing(imageId, sizeInInches);
                 run.AppendChild(drawing);
 
                 // Add the run to the paragraph
@@ -75,16 +77,16 @@ public partial class QrGeneratorPage : ContentPage
         Console.WriteLine("Processing complete.");
     }
 
-    private static Drawing CreateImageDrawing(string imageId)
+    private static Drawing CreateImageDrawing(string imageId, double sizeInInches)
     {
-        // Define the image size (you can adjust these values)
-        long width = 914400; // One inch in EMUs (English Metric Units)
-        long height = 914400; // One inch in EMUs
+        // Convert inches to EMUs (English Metric Units)
+        // 1 inch = 914400 EMUs
+        long sizeInEmus = (long)(sizeInInches * 914400);
 
         // Create the drawing element
         Drawing drawing = new Drawing(
             new DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
-                new DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() { Cx = width, Cy = height },
+                new DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() { Cx = sizeInEmus, Cy = sizeInEmus },
                 new DocumentFormat.OpenXml.Drawing.Wordprocessing.EffectExtent() { LeftEdge = 0L, TopEdge = 0L, RightEdge = 0L, BottomEdge = 0L },
                 new DocumentFormat.OpenXml.Drawing.Wordprocessing.DocProperties() { Id = 1U, Name = "Picture 1" },
                 new DocumentFormat.OpenXml.Drawing.Wordprocessing.NonVisualGraphicFrameDrawingProperties(
@@ -102,7 +104,7 @@ public partial class QrGeneratorPage : ContentPage
                             new DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties(
                                 new DocumentFormat.OpenXml.Drawing.Transform2D(
                                     new DocumentFormat.OpenXml.Drawing.Offset() { X = 0L, Y = 0L },
-                                    new DocumentFormat.OpenXml.Drawing.Extents() { Cx = width, Cy = height }),
+                                    new DocumentFormat.OpenXml.Drawing.Extents() { Cx = sizeInEmus, Cy = sizeInEmus }),
                                 new DocumentFormat.OpenXml.Drawing.PresetGeometry(
                                     new DocumentFormat.OpenXml.Drawing.AdjustValueList())
                                 { Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle }))
@@ -138,16 +140,18 @@ public partial class QrGeneratorPage : ContentPage
             MainDocumentPart mainPart = document.MainDocumentPart;
 
             // Load the image into a byte array
-            byte[] imageBytes = File.ReadAllBytes(imagePath);
+            byte[] smallImageBytes = File.ReadAllBytes(small_image_path);
+            byte[] largeImageBytes = File.ReadAllBytes(large_image_path);
 
             // Add the image to the document and get its relationship ID
-            string imageId = AddImageToDocument(mainPart, imageBytes);
+            string smallImageId = AddImageToDocument(mainPart, smallImageBytes);
+            string largeImageId = AddImageToDocument(mainPart, largeImageBytes);
 
             // Find and replace the small_token with the image
-            ReplaceTokenWithImage(mainPart, small_token, imageId);
+            ReplaceTokenWithImage(mainPart, small_token, smallImageId);
 
             // Find and replace the large_token with the image
-            ReplaceTokenWithImage(mainPart, large_token, imageId);
+            ReplaceTokenWithImage(mainPart, large_token, largeImageId);
 
             ReplaceItemDetails(mainPart, tokenReplacements);
 
