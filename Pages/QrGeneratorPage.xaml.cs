@@ -193,7 +193,7 @@ public partial class QrGeneratorPage : ContentPage
         {
             foreach (var item in items)
             {
-                string curr_directory = FileSystem.AppDataDirectory;
+                string curr_directory = FileSystem.AppDataDirectory + "//qr-labels";
                 string artist_directory = Path.Combine(curr_directory, item.ArtistCode);
                 string item_file = Path.Combine(artist_directory, $"{item.ItemCode}.docx");
                 string image_directory = Path.Combine(artist_directory, "images");
