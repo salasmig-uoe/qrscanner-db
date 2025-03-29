@@ -228,7 +228,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 itemCodeEntryField.Text = item.ItemCode;
                 quantityEntryField.Text = item.Quantity.ToString();
                 UpdateTransactionTypePicker(item.TransactionType);
-                amountEntryField.Text = item.Amount.ToString();
+                amountEntryField.Text = $"£{item.Amount.ToString("0.00")}";
                 _editCreateUpdateDate = DateTime.Now;
                 break;
             case "Delete":
