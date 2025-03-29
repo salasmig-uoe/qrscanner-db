@@ -46,10 +46,18 @@ public partial class EmailSaleTransactionsPage : ContentPage
         var items = await _dbService.GetPaymentTransferByDate(formattedDate);
         string result = "";
         foreach (var item in items)
-            result += item.PaymentId + ";" + item.TransactionCode + ";" + item.ItemCode + ";" + item.Quantity + ";" + item.Amount + ";" + item.TransactionType + ";" + item.Created + ";" + item.Updated + "\n";
+            result += $"{item.PaymentId};{item.TransactionCode};{item.ItemCode};{item.Quantity};{item.Amount};{item.TransactionType};{item.Created};{item.Updated}\n";
         return result;
     }
 
+    private async Task<string> Get_logs_day_transactionAsync(string formattedDate)
+    {
+        var items = await _dbService.GetTransactionLogsByDate(formattedDate);
+        string result = "";
+        foreach (var item in items)
+            result += $"{item.TransactionCode};{item.ItemCode};{item.OperationType};{item.PaymentId};{item.OldQuantity};{item.OldAmount};{item.OldTransactionType};{item.NewQuantity};{item.NewAmount};{item.NewTransactionType};{item.Created};\n";
+        return result;
+    }
 
     private async Task OnEmailButtonClicked(string username, string password, string comments, DateTime date)
     {
@@ -61,7 +69,8 @@ public partial class EmailSaleTransactionsPage : ContentPage
         string toEmail = $"kdavies55@{_email_provider}, {username}.cees@{_email_provider}";
         string subject = $"Sales report: {day_of_sale}";
         string body = $"{comments}\n Email sent from a QRScanner app";
-
+        //TODO: Remove this condition so the email is sent to K&M
+        toEmail = $"{username}.cees@{_email_provider}";
         // Gmail SMTP settings
         string smtpHost = $"smtp.{_email_provider}";
         int smtpPort = 587;
@@ -82,12 +91,18 @@ public partial class EmailSaleTransactionsPage : ContentPage
         List<decimal> stats = await Get_stats_transactionAsync(date_to_query);
         string transactions = await Get_day_transactionAsync(date_to_query);
 
+        // Getting the logs for the transactions for the day
+        string logs = await Get_logs_day_transactionAsync(date_to_query);
+
         string total = $"{stats[1] + stats[2]:C2}";
         string alert_message = $" {(int)stats[0]} Transactions for a total of {total} on the {day_of_sale}";
 
         bool result = await _alertService.ShowConfirmationAsync("Confirm the information is correct", alert_message, "OK", "Cancel");
         if (result)
         {
+            //--------------------
+            // Main transactions
+            //--------------------
             // String to be attached as a text file
             string attachmentContent = transactions;
             string attachmentFileName = $"{date_to_query}.csv";
@@ -99,6 +114,22 @@ public partial class EmailSaleTransactionsPage : ContentPage
             // Create the attachment
             Attachment attachment = new Attachment(attachmentStream, attachmentFileName, MediaTypeNames.Text.Plain);
             mail.Attachments.Add(attachment);
+
+            //--------------------
+            // LOGS 
+            //--------------------
+            // String to be attached as second text file
+            string attachmentContentLogs = logs;
+            string attachmentFileNameLogs = $"{date_to_query}-logs.csv";
+
+            // Convert the string to a MemoryStream
+            byte[] attachmentLogBytes = Encoding.UTF8.GetBytes(attachmentContentLogs);
+            MemoryStream attachmentLogStream = new MemoryStream(attachmentLogBytes);
+
+            // Create the attachment
+            Attachment attachmentLogs = new Attachment(attachmentLogStream, attachmentFileNameLogs, MediaTypeNames.Text.Plain);
+            mail.Attachments.Add(attachmentLogs);
+
 
             // Set up the SMTP client
             SmtpClient smtpClient = new SmtpClient(smtpHost, smtpPort)

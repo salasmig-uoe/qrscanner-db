@@ -21,6 +21,7 @@ namespace QRScanner.Services
             _connection.CreateTableAsync<PaymentTransaction>().Wait();
             _connection.CreateTableAsync<LastTransactions>().Wait();
             _connection.CreateTableAsync<ArtistDetail>().Wait();
+            _connection.CreateTableAsync<TransactionLog>().Wait();
         }
 
         public async Task<List<ArtItem>> GetArtItems()
@@ -171,6 +172,25 @@ namespace QRScanner.Services
         public async Task<ArtistDetail> GetArtistAsync(string code)
         {
             return await _connection.Table<ArtistDetail>().Where(x => x.ArtistCode == code).FirstOrDefaultAsync();
+        }
+
+        //============ Transaction Logs ================
+        public async Task CreateLog(TransactionLog item)
+        {
+            await _connection.InsertAsync(item);
+        }
+
+        public async Task<List<TransactionLog>> GetTransactionLogsByDate(string datestr)
+        {
+
+            DateTime dt1 = DateTime.ParseExact(datestr + " 00:00", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            DateTime dt2 = DateTime.ParseExact(datestr + " 23:59", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+
+            String sql_command = string.Format("" +
+                "SELECT * FROM [transaction_log] " +
+                "WHERE ([created]>={0} and [created]<={1}) " +
+                "ORDER BY [created] ", dt1.Ticks, dt2.Ticks);
+            return await _connection.QueryAsync<TransactionLog>(sql_command);
         }
     }
 }

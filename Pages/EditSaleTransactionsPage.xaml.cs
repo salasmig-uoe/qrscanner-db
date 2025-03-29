@@ -197,14 +197,15 @@ public partial class EditSaleTransactionsPage : ContentPage
                 itemCodeEntryField.Text = item.ItemCode;
                 quantityEntryField.Text = item.Quantity.ToString();
                 UpdateTransactionTypePicker(item.TransactionType);
-                amountEntryField.Text = item.Amount.ToString();
+                amountEntryField.Text = $"£{item.Amount.ToString("0.00")}";
                 _editCreateUpdateDate = DateTime.Now;
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
                 float quantity = -item.Quantity; // Towards Quantity
                 float payment_float = -item.Amount; // Towards Price
-
+                // Add transaction log (3) Delete
+                updateLogs(item, item, "Delete");
                 updateItemHeader(payment_float, quantity);
 
                 formattedDate = item.Created.ToString("yyyy-MM-dd");
@@ -270,7 +271,63 @@ public partial class EditSaleTransactionsPage : ContentPage
         transactionTypePicker.SelectedIndex = -1;
         _editPaymentTransferRecordId = 0;
     }
-
+    private async void updateLogs(PaymentTransaction old_transaction, PaymentTransaction new_transaction, string Operation)
+    {
+        switch (Operation)
+        {
+            case "Add":
+                TransactionLog tn = new TransactionLog
+                {
+                    TransactionCode = new_transaction.TransactionCode,
+                    ItemCode = new_transaction.ItemCode,
+                    OperationType = Operation,
+                    PaymentId = new_transaction.PaymentId,
+                    OldQuantity = 0,
+                    OldAmount = 0,
+                    OldTransactionType = new_transaction.TransactionType,
+                    NewQuantity = new_transaction.Quantity,
+                    NewAmount = new_transaction.Amount,
+                    NewTransactionType = new_transaction.TransactionType,
+                    Created = DateTime.Now,
+                };
+                await _dbService.CreateLog(tn);
+                break;
+            case "Update":
+                TransactionLog tu = new TransactionLog
+                {
+                    TransactionCode = old_transaction.TransactionCode,
+                    ItemCode = old_transaction.ItemCode,
+                    OperationType = Operation,
+                    PaymentId = old_transaction.PaymentId,
+                    OldQuantity = old_transaction.Quantity,
+                    OldAmount = old_transaction.Amount,
+                    OldTransactionType = old_transaction.TransactionType,
+                    NewQuantity = new_transaction.Quantity,
+                    NewAmount = new_transaction.Amount,
+                    NewTransactionType = new_transaction.TransactionType,
+                    Created = DateTime.Now,
+                };
+                await _dbService.CreateLog(tu);
+                break;
+            case "Delete":
+                TransactionLog td = new TransactionLog
+                {
+                    TransactionCode = old_transaction.TransactionCode,
+                    ItemCode = old_transaction.ItemCode,
+                    OperationType = Operation,
+                    PaymentId = old_transaction.PaymentId,
+                    OldQuantity = old_transaction.Quantity,
+                    OldAmount = old_transaction.Amount,
+                    OldTransactionType = old_transaction.TransactionType,
+                    NewQuantity = 0,
+                    NewAmount = 0,
+                    NewTransactionType = old_transaction.TransactionType,
+                    Created = DateTime.Now,
+                };
+                await _dbService.CreateLog(td);
+                break;
+        }
+    }
     private async void updateItemHeader(float payment_float, float quantity)
     {
         await _dbService.Update(new ArtItem
@@ -354,9 +411,9 @@ public partial class EditSaleTransactionsPage : ContentPage
                 await App.Current.MainPage.DisplayAlert("Please correct the item quantity", error_message, "Ok");
                 return;
             }
- 
+
             // Add PaymentTransaction
-            await _dbService.UpdatePaymentItem(new PaymentTransaction
+            PaymentTransaction new_transaction = new PaymentTransaction
             {
                 PaymentId = _editPaymentTransferRecordId,
                 TransactionCode = existingTransaction.TransactionCode,
@@ -366,8 +423,10 @@ public partial class EditSaleTransactionsPage : ContentPage
                 TransactionType = selectedPaymentType,
                 Updated = DateTime.Now,
                 Created = existingTransaction.Created,
-            });
-
+            };
+            await _dbService.UpdatePaymentItem(new_transaction);
+            // Add transaction log (2) Update
+            updateLogs(existingTransaction, new_transaction, "Update");
             updateItemHeader(amount_difference, quantity_difference);
 
             _editPaymentItemId = 0;

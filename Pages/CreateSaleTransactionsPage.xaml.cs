@@ -1,6 +1,8 @@
+using DocumentFormat.OpenXml.Drawing;
 using QRScanner.Database;
 using QRScanner.Services;
 using QRScanner.ViewModel;
+using System.Diagnostics.Tracing;
 
 namespace QRScanner.Pages;
 
@@ -237,6 +239,8 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 float quantity = -item.Quantity; // Towards Quantity
                 float payment_float = -item.Amount; // Towards Price
 
+                // Add transaction log (3) Delete
+                updateLogs(item, item, "Delete");
                 updateItemHeader(payment_float, quantity);
 
                 String formattedDate = item.Created.ToString("yyyy-MM-dd");
@@ -254,7 +258,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
         string transaction_code, string formattedDate)
     {
         // Add PaymentTransaction
-        await _dbService.CreatePaymentItem(new PaymentTransaction
+        PaymentTransaction new_transaction = new PaymentTransaction
         {
             TransactionCode = transaction_group_EntryLabel.Text,
             ItemCode = item_code,
@@ -263,7 +267,10 @@ public partial class CreateSaleTransactionsPage : ContentPage
             TransactionType = ttype,
             Created = DateTime.Now,
             Updated = DateTime.Now,
-        });
+        };
+        await _dbService.CreatePaymentItem(new_transaction);
+        // Add transaction log (1)
+        updateLogs(new_transaction, new_transaction, "Add");
         var items = await _dbService.GetPaymentTransferByCodeAndDate(transaction_code, formattedDate);
         MainThread.BeginInvokeOnMainThread(() =>
         {
@@ -272,6 +279,64 @@ public partial class CreateSaleTransactionsPage : ContentPage
             calculateTotals(items);
         });
         
+    }
+
+    private async void updateLogs(PaymentTransaction old_transaction, PaymentTransaction new_transaction, string Operation)
+    {
+        switch (Operation)
+        {
+            case "Add":
+                TransactionLog tn = new TransactionLog
+                {
+                    TransactionCode = new_transaction.TransactionCode,
+                    ItemCode = new_transaction.ItemCode,
+                    OperationType = Operation,
+                    PaymentId = new_transaction.PaymentId,
+                    OldQuantity = 0,
+                    OldAmount = 0,
+                    OldTransactionType = new_transaction.TransactionType,
+                    NewQuantity = new_transaction.Quantity,
+                    NewAmount = new_transaction.Amount,
+                    NewTransactionType = new_transaction.TransactionType,
+                    Created = DateTime.Now,
+                };
+                await _dbService.CreateLog(tn);
+                break;
+            case "Update":
+                TransactionLog tu = new TransactionLog
+                {
+                    TransactionCode = old_transaction.TransactionCode,
+                    ItemCode = old_transaction.ItemCode,
+                    OperationType = Operation,
+                    PaymentId = old_transaction.PaymentId,
+                    OldQuantity = old_transaction.Quantity,
+                    OldAmount = old_transaction.Amount,
+                    OldTransactionType = old_transaction.TransactionType,
+                    NewQuantity = new_transaction.Quantity,
+                    NewAmount = new_transaction.Amount,
+                    NewTransactionType = new_transaction.TransactionType,
+                    Created = DateTime.Now,
+                };
+                await _dbService.CreateLog(tu);
+                break;
+            case "Delete":
+                TransactionLog td = new TransactionLog
+                {
+                    TransactionCode = old_transaction.TransactionCode,
+                    ItemCode = old_transaction.ItemCode,
+                    OperationType = Operation,
+                    PaymentId = old_transaction.PaymentId,
+                    OldQuantity = old_transaction.Quantity,
+                    OldAmount = old_transaction.Amount,
+                    OldTransactionType = old_transaction.TransactionType,
+                    NewQuantity = 0,
+                    NewAmount = 0,
+                    NewTransactionType = old_transaction.TransactionType,
+                    Created = DateTime.Now,
+                };
+                await _dbService.CreateLog(td);
+                break;
+        }   
     }
 
     private async void updateItemHeader(float payment_float, float quantity)
@@ -414,7 +479,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 return;
             }
             // Add PaymentTransaction
-            await _dbService.UpdatePaymentItem(new PaymentTransaction
+            PaymentTransaction new_transaction = new PaymentTransaction
             {
                 PaymentId = _editPaymentTransferRecordId,
                 TransactionCode = existingTransaction.TransactionCode,
@@ -424,8 +489,10 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 TransactionType = selectedPaymentType,
                 Updated = DateTime.Now,
                 Created = existingTransaction.Created,
-            });
-
+            };
+            await _dbService.UpdatePaymentItem(new_transaction);
+            // Add transaction log (2) Update
+            updateLogs(existingTransaction, new_transaction, "Update");
             updateItemHeader(amount_difference, quantity_difference);
 
             _editPaymentItemId = 0;
