@@ -92,8 +92,8 @@ namespace QRScanner.Services
 
             String sql_command = string.Format("" +
                 "SELECT * FROM[payment_transaction] " +
-                "WHERE[transaction_code] = '{0}' " +
-                "and [transaction_code] = {1} ", itemCode, groupCode);
+                "WHERE[item_code] = '{0}' " +
+                "and [transaction_code] = '{1}' ", itemCode, groupCode);
             return await _connection.QueryAsync<PaymentTransaction>(sql_command);
         }
 
