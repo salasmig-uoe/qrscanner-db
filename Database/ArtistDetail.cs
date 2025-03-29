@@ -2,6 +2,7 @@
 
 namespace QRScanner.Database
 {
+    [Table("artist_detail")]
     public class ArtistDetail
     {
         [PrimaryKey]
