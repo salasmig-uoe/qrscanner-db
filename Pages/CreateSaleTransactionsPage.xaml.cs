@@ -19,6 +19,10 @@ public partial class CreateSaleTransactionsPage : ContentPage
     // Popup variables
     private MainViewModel VM;
 
+    // Required to automatically calculate the sale amount
+    private decimal _unitPrice = 0.00m;  
+    private bool _isQuantityChanging = false;
+
     public CreateSaleTransactionsPage(LocalDbService dbService, MainViewModel vm)
     {
         InitializeComponent();
@@ -45,8 +49,37 @@ public partial class CreateSaleTransactionsPage : ContentPage
         VM.DbPriceBalance = 0;
         VM.DbAmount = 0;
         VM.DbAmountBalance = 0;
+
+        quantityEntryField.TextChanged += OnQuantityChanged;
     }
 
+    private void OnQuantityChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_isQuantityChanging) return;
+
+        try
+        {
+            _isQuantityChanging = true;
+
+            // Format the quantity to 2 decimal places
+            if (decimal.TryParse(e.NewTextValue, out decimal quantity))
+            {
+                quantityEntryField.Text = quantity.ToString();
+
+                // Calculate and update the amount
+                decimal amount = quantity * _unitPrice;
+                amountEntryField.Text = amount.ToString("C");
+            }
+            else if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                amountEntryField.Text = string.Empty;
+            }
+        }
+        finally
+        {
+            _isQuantityChanging = false;
+        }
+    }
 
     public void UpdateParsedScanResults(ArtistItemData data)
     {
@@ -59,8 +92,9 @@ public partial class CreateSaleTransactionsPage : ContentPage
 
         // Updating the payment row
         itemCodeEntryField.Text = data.ItemCodeLabel;
-        quantityEntryField.Text = data.AmountLabel;
-        amountEntryField.Text = data.PriceLabel; // This is the original price
+        quantityEntryField.Text = "0"; //Quantity will be 0 by default to force input
+        amountEntryField.Text = "0";   //Amount will change automatically when Quantity is updated
+        _unitPrice = decimal.Parse(data.PriceLabel);
 
 
         // Execute the list update
@@ -276,14 +310,13 @@ public partial class CreateSaleTransactionsPage : ContentPage
     {
         String payment_str = amountEntryField.Text;
         String item_code = itemCodeEntryField.Text;
-        float payment_float = float.Parse(payment_str);
+        float payment_float = float.Parse(payment_str.Replace("£",""));
         String selectedPaymentType = "Cash";
         int quantity = int.Parse(quantityEntryField.Text);
         if (transactionTypePicker.SelectedIndex != -1)
         {
             selectedPaymentType = transactionTypePicker.SelectedItem.ToString();
         }
-
         // Extract the date from the transaction group date
         string transaction_code = transaction_group_EntryLabel.Text;
         string formattedDate = getDateFromCode(transaction_code);
@@ -337,13 +370,31 @@ public partial class CreateSaleTransactionsPage : ContentPage
         }
         if (_editPaymentTransferRecordId == 0)
         {
+            //Check if there is another record for the same item already in receipt
+            String item_code = itemCodeEntryField.Text;
+            String transaction_code = transaction_group_EntryLabel.Text;
+            var existingTransaction = await _dbService.GetItemsGroupNotDoneAsync(item_code,transaction_code);
+            if (existingTransaction.Count > 0)
+            {
+                string validation_message = "Please edit item or use a different receipt";
+                await App.Current.MainPage.DisplayAlert("Item already in receipt ", validation_message, "Ok");
+                return;
+            }
+            int quantity = int.Parse(quantityEntryField.Text);
+            // Validating there is enough inventory left
+            if (_loaded_item.AmountBalance - quantity < 0)
+            {
+                string error_message = $"Not enough items to sell ({_loaded_item.AmountBalance})";
+                await App.Current.MainPage.DisplayAlert("Please correct the item quantity", error_message, "Ok");
+                return;
+            }
             saveSaleTransaction();
         }
         else
         {
             String payment_str = amountEntryField.Text;
             String item_code = itemCodeEntryField.Text;
-            float payment_float = float.Parse(payment_str);
+            float payment_float = float.Parse(payment_str.Replace("£",""));
             String selectedPaymentType = "Cash";
             int quantity = int.Parse(quantityEntryField.Text);
             if (transactionTypePicker.SelectedIndex != -1)
@@ -352,7 +403,16 @@ public partial class CreateSaleTransactionsPage : ContentPage
             }
 
             var existingTransaction = await _dbService.GetPaymentItemByIdAsync(_editPaymentTransferRecordId);
+            float amount_difference = -(existingTransaction.Amount - payment_float); // Towards price
+            float quantity_difference = -(existingTransaction.Quantity - quantity); // Towards quantity
 
+            // Validating there is enough inventory left
+            if (_loaded_item.AmountBalance - quantity_difference < 0)
+            {
+                string error_message = $"Not enough items to sell ({_loaded_item.AmountBalance})";
+                await App.Current.MainPage.DisplayAlert("Please correct the item quantity", error_message, "Ok");
+                return;
+            }
             // Add PaymentTransaction
             await _dbService.UpdatePaymentItem(new PaymentTransaction
             {
@@ -365,9 +425,6 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 Updated = DateTime.Now,
                 Created = existingTransaction.Created,
             });
-
-            float amount_difference = existingTransaction.Amount - payment_float; // Towards price
-            float quantity_difference = existingTransaction.Quantity - quantity; // Towards quantity
 
             updateItemHeader(amount_difference, quantity_difference);
 
@@ -382,7 +439,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 calculateTotals(items);
             });
         }
-        quantityEntryField.Text = "1";
+        quantityEntryField.Text = "0";
         amountEntryField.Text = "0";
         string message = " The changes has been saved";
         await App.Current.MainPage.DisplayAlert("Operation completed: ", message, "Ok");
@@ -422,7 +479,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 TitleLabel = art_item.Title,
                 MaterialLabel = art_item.WorkType,
                 DimensionsLabel = art_item.Size,
-                PriceLabel = art_item.Price.ToString(),
+                PriceLabel = art_item.Price.ToString("0.00"),
                 AmountLabel = art_item.Amount.ToString(),
             };
             UpdateParsedScanResults(artistItemData);

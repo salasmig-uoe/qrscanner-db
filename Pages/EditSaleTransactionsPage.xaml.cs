@@ -13,11 +13,15 @@ public partial class EditSaleTransactionsPage : ContentPage
 
     private string _lastCreated;
     private string _lastTransactionGroup;
+    private ArtItem _loaded_item;
     private DateTime _queryDate;
 
     // Popup variables
     private MainViewModel VM;
-    
+
+    // Required to automatically calculate the sale amount
+    private decimal _unitPrice = 0.00m;
+    private bool _isQuantityChanging = false;
     public EditSaleTransactionsPage(LocalDbService dbService, MainViewModel vm)
     {
         InitializeComponent();
@@ -31,7 +35,9 @@ public partial class EditSaleTransactionsPage : ContentPage
         // Variables for the Popup
         VM = vm;
 
-        BindingContext = VM;       
+        BindingContext = VM;
+
+        quantityEntryField.TextChanged += OnQuantityChanged;
     }
 
     private void OnDateSelected(object sender, DateChangedEventArgs e)
@@ -48,6 +54,35 @@ public partial class EditSaleTransactionsPage : ContentPage
             });
         });
     }
+
+    private void OnQuantityChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_isQuantityChanging) return;
+
+        try
+        {
+            _isQuantityChanging = true;
+
+            // Format the quantity to 2 decimal places
+            if (decimal.TryParse(e.NewTextValue, out decimal quantity))
+            {
+                quantityEntryField.Text = quantity.ToString();
+
+                // Calculate and update the amount
+                decimal amount = quantity * _unitPrice;
+                amountEntryField.Text = amount.ToString("C");
+            }
+            else if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                amountEntryField.Text = string.Empty;
+            }
+        }
+        finally
+        {
+            _isQuantityChanging = false;
+        }
+    }
+
 
     private void OnDateInitialized(DateTime initialDate)
     {
@@ -148,9 +183,12 @@ public partial class EditSaleTransactionsPage : ContentPage
     private async void listView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         var item = (PaymentTransaction)e.Item;
-        var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Duplicate", "Delete");
+        //TODO: Remove "Duplicate" process
+        var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Delete");
         String formattedDate;
-
+        // Get the full item loaded
+        _loaded_item = await _dbService.GetByItemCode(item.ItemCode);
+        _unitPrice = (decimal)_loaded_item.Price;
         switch (action)
         {
             case "Edit":
@@ -164,6 +202,11 @@ public partial class EditSaleTransactionsPage : ContentPage
                 break;
             case "Delete":
                 await _dbService.DeletePaymentTransaction(item);
+                float quantity = -item.Quantity; // Towards Quantity
+                float payment_float = -item.Amount; // Towards Price
+
+                updateItemHeader(payment_float, quantity);
+
                 formattedDate = item.Created.ToString("yyyy-MM-dd");
                 var items = await _dbService.GetPaymentTransferByDate(formattedDate);
                 MainThread.BeginInvokeOnMainThread(() =>
@@ -228,6 +271,38 @@ public partial class EditSaleTransactionsPage : ContentPage
         _editPaymentTransferRecordId = 0;
     }
 
+    private async void updateItemHeader(float payment_float, float quantity)
+    {
+        await _dbService.Update(new ArtItem
+        {
+            Id = _loaded_item.Id,
+            Title = _loaded_item.Title,
+            WorkType = _loaded_item.WorkType,
+            Size = _loaded_item.Size,
+            ArtistCode = _loaded_item.ArtistCode,
+            ArtistName = _loaded_item.ArtistName,
+            Price = _loaded_item.Price,
+            Amount = _loaded_item.Amount,
+            PriceBalance = _loaded_item.PriceBalance - payment_float,
+            AmountBalance = _loaded_item.AmountBalance - quantity,
+            ItemStatus = _loaded_item.ItemStatus,
+            ItemCode = _loaded_item.ItemCode,
+            Created = _loaded_item.Created,
+            Updated = DateTime.Now
+        });
+
+        var updated_art_item = await _dbService.GetById(_loaded_item.Id);
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            // Update the ArtItem balances in the header
+            VM.DbPrice = (decimal)updated_art_item.Price;
+            VM.DbPriceBalance = (decimal)updated_art_item.PriceBalance;
+            VM.DbAmount = (decimal)updated_art_item.Amount;
+            VM.DbAmountBalance = (decimal)updated_art_item.AmountBalance;
+            _loaded_item = updated_art_item;
+        });
+    }
+
     private async void applyButton_Clicked(object sender, EventArgs e)
     {
         if (itemCodeEntryField.Text == "")
@@ -257,7 +332,7 @@ public partial class EditSaleTransactionsPage : ContentPage
         {
             String payment_str = amountEntryField.Text;
             String item_code = itemCodeEntryField.Text;
-            float payment_float = float.Parse(payment_str);
+            float payment_float = float.Parse(payment_str.Replace("£",""));
             String selectedPaymentType = "Cash";
             int quantity = int.Parse(quantityEntryField.Text);
             if (transactionTypePicker.SelectedIndex != -1)
@@ -266,7 +341,20 @@ public partial class EditSaleTransactionsPage : ContentPage
             }
 
             var existingTransaction = await _dbService.GetPaymentItemByIdAsync(_editPaymentTransferRecordId);
+            
+            _loaded_item = await _dbService.GetByItemCode(item_code);
 
+            float amount_difference = -(existingTransaction.Amount - payment_float); // Towards price
+            float quantity_difference = -(existingTransaction.Quantity - quantity); // Towards quantity
+
+            // Validating there is enough inventory left
+            if (_loaded_item.AmountBalance - quantity_difference < 0)
+            {
+                string error_message = $"Not enough items to sell ({_loaded_item.AmountBalance})";
+                await App.Current.MainPage.DisplayAlert("Please correct the item quantity", error_message, "Ok");
+                return;
+            }
+ 
             // Add PaymentTransaction
             await _dbService.UpdatePaymentItem(new PaymentTransaction
             {
@@ -279,6 +367,9 @@ public partial class EditSaleTransactionsPage : ContentPage
                 Updated = DateTime.Now,
                 Created = existingTransaction.Created,
             });
+
+            updateItemHeader(amount_difference, quantity_difference);
+
             _editPaymentItemId = 0;
 
             String formattedDate = existingTransaction.Created.ToString("yyyy-MM-dd");

@@ -11,7 +11,7 @@
             <RowDefinition Height="0.15*" />
             <!-- 30% of the screen for other content -->
         </Grid.RowDefinitions>
-        
+
         <!-- Main content area -->
         <ScrollView Grid.Row="0">
             <VerticalStackLayout Padding="10" BackgroundColor="Beige">
@@ -60,7 +60,7 @@
                         <Label Text="" FontAttributes="Bold" Grid.Row="2" Grid.Column="3" />
 
                         <!-- Fourth Row -->
-                       
+
                         <Label x:Name="DbPriceLabel" Grid.Row="4" Grid.Column="1" Text="{Binding DbPrice, StringFormat='£{0:N2}'}"
                         FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Center" Margin="0,0,20,0" TextColor="Blue" FontAttributes="Bold" TextDecorations="Underline"/>
 
@@ -98,9 +98,9 @@
                         <Label Text="Payment ID" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Sale Transaction" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Item Code" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Quantity" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Text="Item Quantity" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Payment Type" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Amount" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Text="Amount (£)" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Label Text="Action" Grid.Row="0" Grid.Column="6" VerticalOptions="Center" HorizontalOptions="Center"/>
 
                         <!-- Entry Row -->
@@ -118,7 +118,7 @@
                             </Picker.ItemsSource>
                             <Picker.SelectedIndex>1</Picker.SelectedIndex>
                         </Picker>
-                        <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric"/>
+                        <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric" HorizontalOptions="End"/>
                         <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="applyButton_Clicked" />
 
                         <!-- Clear Button Row -->
@@ -234,7 +234,7 @@
 
             </VerticalStackLayout>
         </ScrollView>
-        
+
         <!-- Bottom section with Card, Cash, Total labels and amounts -->
         <VerticalStackLayout VerticalOptions="End" Spacing="10" Margin="0,0,0,20" Grid.Row="1">
             <!-- Grid for Card, Cash, Total labels and amounts -->
