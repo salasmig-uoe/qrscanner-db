@@ -193,7 +193,7 @@ public partial class QrArtHomePage : ContentPage
                             }
                             field_num++;
                         }
-                        item.PriceBalance = item.Price;
+                        item.PriceBalance = item.Amount*item.Price;
                         item.AmountBalance = item.Amount;
 
                         string item_code = item.ItemCode;
@@ -207,11 +207,14 @@ public partial class QrArtHomePage : ContentPage
                             item.Id = existing_item.Id;
                             switch (update_option)
                             {
+                                // the item exists and option is (0) don't do anything
                                 case "0": break;
+                                 // the item exists and the option is (1) then update all the info with loaded and calculated values
                                 case "1":
                                     item.Created = existing_item.Created;
                                     await _dbService.Update(item);
                                     break;
+                                // the item exists and the option is (2) only update the balances
                                 case "2":
                                     item.PriceBalance = existing_item.PriceBalance;
                                     item.AmountBalance = existing_item.AmountBalance;
