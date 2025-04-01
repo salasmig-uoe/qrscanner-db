@@ -118,7 +118,7 @@
                             </Picker.ItemsSource>
                             <Picker.SelectedIndex>1</Picker.SelectedIndex>
                         </Picker>
-                        <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric" HorizontalOptions="End"/>
+                        <Entry x:Name="amountEntryField" Grid.Row="1" Grid.Column="5" Text="{Binding SelectedItem.Amount, Mode=TwoWay, StringFormat='{0:C}'}" Keyboard="Numeric" HorizontalOptions="End" IsReadOnly="True"/>
                         <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="applyButton_Clicked" />
 
                         <!-- Clear Button Row -->

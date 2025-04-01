@@ -93,10 +93,11 @@ public partial class CreateSaleTransactionsPage : ContentPage
         DimensionsLabel.Text = data.DimensionsLabel;
 
         // Updating the payment row
-        itemCodeEntryField.Text = data.ItemCodeLabel;
-        quantityEntryField.Text = "0"; //Quantity will be 0 by default to force input
-        amountEntryField.Text = "0";   //Amount will change automatically when Quantity is updated
         _unitPrice = decimal.Parse(data.PriceLabel);
+        itemCodeEntryField.Text = data.ItemCodeLabel;
+        quantityEntryField.Text = "1"; //Quantity will be 0 by default to force input
+        amountEntryField.Text = data.PriceLabel;   //Amount will change automatically when Quantity is updated
+        
 
 
         // Execute the list update
@@ -506,7 +507,7 @@ public partial class CreateSaleTransactionsPage : ContentPage
                 calculateTotals(items);
             });
         }
-        quantityEntryField.Text = "0";
+        quantityEntryField.Text = "1";
         amountEntryField.Text = "0";
         string message = " The changes has been saved";
         await App.Current.MainPage.DisplayAlert("Operation completed: ", message, "Ok");
