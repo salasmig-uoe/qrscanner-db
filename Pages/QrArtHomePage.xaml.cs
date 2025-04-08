@@ -245,7 +245,7 @@ public partial class QrArtHomePage : ContentPage
         // 2. Backup the DB import to csv
         // 3. Add the restore option in the header ¬
         // 4. Transfer to tablen with upload_bacukp = true
-        bool upload_backup = false;
+        bool upload_backup = true;
         if (upload_backup)
         {
             UploadBackup();

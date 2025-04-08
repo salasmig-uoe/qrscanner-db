@@ -122,7 +122,7 @@
                         <Button x:Name="applyButton" Grid.Row="1" Grid.Column="6" Text="Apply" Clicked="applyButton_Clicked" />
 
                         <!-- Clear Button Row -->
-                        <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" WidthRequest="100" />
+                        <Button x:Name="clearButton" Grid.Row="2" Grid.Column="2" Text="Clear" Clicked="clearButton_Clicked" WidthRequest="100" IsVisible="False"/>
                     </Grid>
                 </Border>
 
